@@ -4,6 +4,14 @@
   "description": "A Javascript calendar app using some APIs",
   "main": "index.js",
   "scripts": {
+    "compile:sass": "node-sass src/sass/main.scss assets/css/style.comp.css",
+    "concat:css": "concat -o assets/css/style.concat.css assets/css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' assets/css/style.concat.css -o assets/css/style.prefix.css",
+    "compress:css": "node-sass assets/css/style.prefix.css assets/css/style.css --output-style compressed",
+    "build:css:prod": "npm-run-all compile:sass concat:css prefix:css compress:css",
+    "watch:sass": "node-sass src/sass/main.scss assets/css/style.css -w",
+    "devserver": "live-server",
+    "build:css:dev": "npm-run-all --parallel devserver watch:sass",
     "build:js": "webpack",
     "build:js:dev": "webpack-dev-server",
     "build:js:prod": "webpack --config webpack.config.prod.js"
@@ -18,7 +26,6 @@
     "url": "https://github.com/BartoszGrajdek/Calendar-App/issues"
   },
   "homepage": "https://github.com/BartoszGrajdek/Calendar-App#readme",
-  "browserslist": "> 0.5%",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
@@ -30,6 +37,11 @@
     "eslint": "^7.12.1",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.1"
+    "webpack-dev-server": "^3.8.1",
+    "live-server": "^1.2.1",
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.1",
+    "regenerator-runtime": "^0.13.3"
   }
 }

@@ -1,0 +1,33 @@
+.button {
+  border: none;
+  outline: none;
+
+  &__calendar {
+    font-size: 2.8rem;
+    color: $color-secondary;
+
+    transition: all .3s ease-out;
+
+    &--prev {
+      &:active,
+      &:hover {
+        transform: translateX(-.3rem);
+      }
+
+      &:active {
+        transform: translateX(-.3rem) scale(1.06);
+      }
+    }
+
+    &--next {
+      &:active,
+      &:hover {
+        transform: translateX(.3rem);
+      }
+
+      &:active {
+        transform: translateX(.3rem) scale(1.06);
+      }
+    }
+  }
+}
