@@ -13,51 +13,6 @@
   transform: translate(-50%, -50%);
 }
 
-// FOR FEATURING ACTIVE DAY AND TODAY
-@mixin featureDay($color1, $color2) {
-  position: relative;
-  z-index: 2;
-
-  color: $color-white;
-  font-weight: 500;
-
-  & > span {
-    z-index: 2;
-    position: relative;
-  }
-
-  &::before {
-    height: 2.5rem;
-    width: 2.5rem;
-
-    content: "";
-    display: block;
-    position: absolute;
-    top: 1%;
-    left: 50%;
-    z-index: 1;
-
-    background-color: $color1;
-    border-radius: 100px;
-
-    transform: translateX(-50%);
-  }
-
-  &::after {
-    height: 104%;
-    width: 103%;
-
-    content: '';
-    display: block;
-    position: absolute;
-    top: -1.5%;
-    left: -1.5%;
-
-    border-radius: 5px;
-    border: 2px solid $color2;
-  }
-}
-
 // MEDIA QUERY MANAGER
 /*
 0 - 600px:      Phone

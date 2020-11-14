@@ -1,31 +1,30 @@
 // COLORS
-$color-primary: #1c2b2d;
-$color-primary-light-1: #475d60;
-$color-primary-light-2: #6c8285;
-$color-primary-light-3: #8e9fa2;
-$color-primary-light-4: #b0bcbe;
+$color-primary: #0b2f43;
+$color-primary-light-1: #0f4c75;
+$color-primary-light-2: #3282b8;
+$color-primary-light-3: #8baec6;
+$color-primary-light-4: #bbe1fa;
+$color-primary-light-5: #d5ebf8;
+$color-primary-light-6: #eff8ff;
 
-$color-secondary: #1f6f8b;
-$color-secondary-light-1: #3d86a0;
-$color-secondary-light-2: #5da0b7;
+$color-secondary: #125228;
+$color-secondary-light-1: #2c7e48;
+$color-secondary-light-2: #32b860;
+$color-secondary-light-3: #9aeab6;
 
-$color-tertiary: #99a8b2;
+$color-tertiary: #5B32B8;
 
-$color-light: #e6d5b8;
-$color-light-1: #e0d5c0;
-$color-light-2: #e0d8d1;
-$color-light-3: #efebe8;
+$color-quaternary: #323CB8;
+
+$color-grey-light: #b4b4b4;
+$color-grey-light-1: #d8d8d8;
+$color-grey-light-2: #e5e5e5;
+$color-grey-light-3: #ebebeb;
 
 $color-white: #fff;
 $color-black: #3b3735;
 
 // FONT
 $font-primary: 'Roboto', sans-serif;
-$font-secondary: 'Archivo Black', sans-serif;
+$font-secondary: url('../fonts/Blacksword.otf');
 $default-font-size: 2.4rem;
-
-// GRID
-$grid-width: 114rem;
-$gutter-vertical: 8rem;
-$gutter-vertical-small: 6rem;
-$gutter-horizontal: 6rem;

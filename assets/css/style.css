@@ -49,7 +49,7 @@ a:hover {
   height: 100vh;
   width: 100vw;
   padding: 1%;
-  background-color: #e0d8d1; }
+  background-color: #e5e5e5; }
 
 body {
   font-family: "Roboto", sans-serif;
@@ -57,12 +57,12 @@ body {
   font-size: 2.4rem;
   /*font-size: 16px;*/
   line-height: 1.7;
-  color: #1c2b2d; }
+  color: #0b2f43; }
 
 h1,
 h2,
 h3 {
-  font-family: "Archivo Black", sans-serif; }
+  font-family: url("../fonts/Blacksword.otf"); }
 
 h1 {
   font-size: 6.5rem; }
@@ -103,7 +103,7 @@ h3 {
   outline: none; }
   .button__calendar {
     font-size: 2.8rem;
-    color: #1f6f8b;
+    color: #125228;
     transition: all .3s ease-out; }
     .button__calendar--prev:active, .button__calendar--prev:hover {
       transform: translateX(-0.3rem); }
@@ -113,132 +113,3 @@ h3 {
       transform: translateX(0.3rem); }
     .button__calendar--next:active {
       transform: translateX(0.3rem) scale(1.06); }
-
-.calendar {
-  background-color: #efebe8;
-  width: 80%;
-  height: 100%;
-  margin: auto;
-  padding: 1.5%;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15); }
-  .calendar__header {
-    height: 13.5%;
-    margin: 0 10rem 1.5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; }
-  .calendar__date--primary {
-    font-size: 2.8rem;
-    line-height: 1.2;
-    color: #475d60; }
-  .calendar__date--secondary {
-    font-size: 2.2rem;
-    line-height: 1.2;
-    color: #1f6f8b; }
-  .calendar__table {
-    height: 83.5%;
-    display: grid;
-    border-bottom: 1px solid #b0bcbe;
-    border-right: 1px solid #b0bcbe; }
-    .calendar__table--week {
-      grid-auto-flow: column;
-      grid-template-rows: 8rem repeat(24, 6rem);
-      grid-template-columns: 0.5fr repeat(7, 1fr);
-      overflow-y: scroll; }
-      .calendar__table--week > .calendar__cell {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        position: relative; }
-      .calendar__table--week > .calendar__cell--day {
-        grid-row: 1 / 2;
-        font-size: 1.5rem; }
-        .calendar__table--week > .calendar__cell--day > span {
-          font-size: 2.2rem; }
-      .calendar__table--week > .calendar__cell--today::after {
-        height: 3.5rem;
-        width: 3.5rem;
-        content: "";
-        display: block;
-        position: absolute;
-        bottom: 12.5%;
-        left: 50%;
-        z-index: 1;
-        background-color: #1f6f8b;
-        border-radius: 100px;
-        transform: translateX(-50%); }
-      .calendar__table--week > .calendar__cell--today > span {
-        color: white;
-        z-index: 2; }
-    .calendar__table--month {
-      grid-template-columns: repeat(7, 1fr);
-      grid-template-rows: .3fr;
-      grid-auto-rows: 1fr; }
-      .calendar__table--month > .calendar__cell--active {
-        position: relative;
-        z-index: 2;
-        color: #fff;
-        font-weight: 500; }
-        .calendar__table--month > .calendar__cell--active > span {
-          z-index: 2;
-          position: relative; }
-        .calendar__table--month > .calendar__cell--active::before {
-          height: 2.5rem;
-          width: 2.5rem;
-          content: "";
-          display: block;
-          position: absolute;
-          top: 1%;
-          left: 50%;
-          z-index: 1;
-          background-color: #1f6f8b;
-          border-radius: 100px;
-          transform: translateX(-50%); }
-        .calendar__table--month > .calendar__cell--active::after {
-          height: 104%;
-          width: 103%;
-          content: '';
-          display: block;
-          position: absolute;
-          top: -1.5%;
-          left: -1.5%;
-          border-radius: 5px;
-          border: 2px solid #5da0b7; }
-      .calendar__table--month > .calendar__cell--today {
-        position: relative;
-        z-index: 2;
-        color: #fff;
-        font-weight: 500; }
-        .calendar__table--month > .calendar__cell--today > span {
-          z-index: 2;
-          position: relative; }
-        .calendar__table--month > .calendar__cell--today::before {
-          height: 2.5rem;
-          width: 2.5rem;
-          content: "";
-          display: block;
-          position: absolute;
-          top: 1%;
-          left: 50%;
-          z-index: 1;
-          background-color: #475d60;
-          border-radius: 100px;
-          transform: translateX(-50%); }
-        .calendar__table--month > .calendar__cell--today::after {
-          height: 104%;
-          width: 103%;
-          content: '';
-          display: block;
-          position: absolute;
-          top: -1.5%;
-          left: -1.5%;
-          border-radius: 5px;
-          border: 2px solid #99a8b2; }
-  .calendar__cell {
-    font-size: 1.6rem;
-    color: #475d60;
-    border-top: 1px solid #b0bcbe;
-    border-left: 1px solid #b0bcbe; }
-    .calendar__cell--preview {
-      color: #b0bcbe; }
