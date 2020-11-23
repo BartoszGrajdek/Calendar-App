@@ -1,3 +1,5 @@
+//UTILITIES MIXINS
+
 @mixin clearfix {
   &::after {
     content: '';
@@ -13,6 +15,34 @@
   transform: translate(-50%, -50%);
 }
 
+@mixin flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin spacer {
+  border-bottom: 1px solid $color-grey-light-3;
+}
+
+
+//BOX SHADOW MANAGER
+
+@mixin boxShadow($strength) {
+  @if $strength == weak {
+    box-shadow: 0 0 1rem rgba($color-black, .15);
+  }
+  
+  @if $strength == medium {
+    box-shadow: 0 0 1rem rgba($color-black, .15);
+  }
+  
+  @if $strength == strong {
+    box-shadow: 0 0 1rem rgba($color-black, .15);
+  }
+}
+
+
 // MEDIA QUERY MANAGER
 /*
 0 - 600px:      Phone
@@ -21,7 +51,7 @@
 [1200 - 1800] is where our normal styles apply
 1800px + :      Big desktop
 
-$breakpoint arguement choices:
+$breakpoint argument choices:
 - phone
 - tab-port
 - tab-land
@@ -31,6 +61,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 1em = 16px
 */
+
 @mixin respond($breakpoint) {
   @if $breakpoint == phone {
     @media only screen and (max-width: 37.5em) {

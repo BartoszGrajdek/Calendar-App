@@ -1,3 +1,5 @@
+//NORMALIZE CSS
+
 *,
 *::after,
 *::before {
@@ -10,7 +12,7 @@ html {
   // This defines what 1rem is
   font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
 
-  @include respond(tab-land) {
+/*  @include respond(tab-land) {
     // width < 1200?
     font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
   }
@@ -22,7 +24,7 @@ html {
 
   @include respond(big-desktop) {
     font-size: 75%; //1rem = 12, 12/16
-  }
+  }*/
 }
 
 body {
@@ -38,9 +40,26 @@ a:hover {
   color: inherit;
 }
 
-.page-wrap {
+button {
+  border: 0;
+  outline: 0;
+  
+  background: transparent;
+  
+  cursor: pointer;
+}
+
+//MAIN CONTAINERS STYLES
+
+.page-wrapper {
   height: 100vh;
   width: 100vw;
-  padding: 1%;
-  background-color: $color-grey-light-2;
+  
+  display: flex;
+}
+
+.main {
+  width: 77%;
+  height: 100vh;
+  padding: 0 3.5rem;
 }

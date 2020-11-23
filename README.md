@@ -2,9 +2,9 @@
 The main idea is to make a calendar app that's similar to the one Google is offering. Here's a short description what it's about:
 
 ## Design
-I've designed UI/UX by myself, here you can see the designs for PC, I also have one for mobile but it's not possible to share it right now.
+I've designed UI/UX by myself, here you can see the designs for both mobile and PC, on main page you can switch it in the menu.
 
-PC: https://xd.adobe.com/view/ee72623f-4308-441a-a5c1-901a2d08b370-bb21/
+Design: https://xd.adobe.com/view/ee72623f-4308-441a-a5c1-901a2d08b370-bb21/
 
 ## Tasks
 Here are some of the main features my app will provide:

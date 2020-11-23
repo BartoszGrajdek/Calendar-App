@@ -5,7 +5,7 @@
 [1200 - 1800] is where our normal styles apply
 1800px + :      Big desktop
 
-$breakpoint arguement choices:
+$breakpoint argument choices:
 - phone
 - tab-port
 - tab-land
@@ -15,6 +15,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 1em = 16px
 */
+@font-face {
+  font-family: Blacksword;
+  src: url("/assets/fonts/Blacksword.otf"); }
+
 *,
 *::after,
 *::before {
@@ -23,16 +27,20 @@ ORDER: Base + typography > general layout + grid > page layout > components
   box-sizing: inherit; }
 
 html {
-  font-size: 62.5%; }
-  @media only screen and (max-width: 75em) {
-    html {
-      font-size: 56.25%; } }
-  @media only screen and (max-width: 56.25em) {
-    html {
-      font-size: 50%; } }
-  @media only screen and (min-width: 112.5em) {
-    html {
-      font-size: 75%; } }
+  font-size: 62.5%;
+  /*  @include respond(tab-land) {
+    // width < 1200?
+    font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tab-port) {
+    // width < 900?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12, 12/16
+  }*/ }
 
 body {
   box-sizing: border-box;
@@ -45,11 +53,21 @@ a:hover {
   text-decoration: none;
   color: inherit; }
 
-.page-wrap {
+button {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer; }
+
+.page-wrapper {
   height: 100vh;
   width: 100vw;
-  padding: 1%;
-  background-color: #e5e5e5; }
+  display: flex; }
+
+.main {
+  width: 77%;
+  height: 100vh;
+  padding: 0 3.5rem; }
 
 body {
   font-family: "Roboto", sans-serif;
@@ -62,7 +80,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: url("../fonts/Blacksword.otf"); }
+  font-family: Blacksword; }
 
 h1 {
   font-size: 6.5rem; }
@@ -73,6 +91,15 @@ h2 {
 
 h3 {
   font-size: 2.6rem; }
+
+h5 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.4; }
+
+h6 {
+  font-size: 1.5rem;
+  font-weight: 500; }
 
 .u-center-text {
   text-align: center !important; }
@@ -113,3 +140,180 @@ h3 {
       transform: translateX(0.3rem); }
     .button__calendar--next:active {
       transform: translateX(0.3rem) scale(1.06); }
+
+.nav {
+  height: 9vh;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ebebeb; }
+  .nav__logo {
+    font-size: 3.6rem;
+    padding-right: 1rem;
+    font-family: Blacksword;
+    color: transparent;
+    background: linear-gradient(45deg, #3282b8, #bbe1fa);
+    -webkit-background-clip: text;
+    transform: translateY(0.5rem); }
+  .nav__list {
+    display: flex;
+    list-style: none; }
+  .nav__item {
+    margin-left: 5.1rem; }
+  .nav__link {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(45deg, #0b2f43, #3282b8);
+    color: transparent;
+    -webkit-background-clip: text; }
+    .nav__link:hover {
+      color: transparent; }
+  .nav__icon {
+    height: 3.8rem;
+    width: 3.8rem;
+    fill: #eff8ff; }
+  .nav__text {
+    margin-left: 1.1rem;
+    font-size: 2rem;
+    font-weight: 700; }
+
+.sidebar {
+  width: 23%;
+  height: 100vh;
+  padding: 0 3.5rem;
+  background-color: #eff8ff; }
+
+.profile {
+  height: 9vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  border-bottom: 1px solid #ebebeb; }
+  .profile__greeting {
+    width: 8rem;
+    font-weight: 500; }
+  .profile__info {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .profile__description {
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between; }
+  .profile__image {
+    height: 5.4rem;
+    border-radius: 100px; }
+
+.side-calendar {
+  width: 100%;
+  border-bottom: 1px solid #ebebeb; }
+  .side-calendar__modes {
+    height: 5rem;
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #d5ebf8;
+    border-radius: 1.5rem; }
+  .side-calendar__button {
+    height: 5rem;
+    width: 33%;
+    position: relative;
+    color: #0b2f43;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase; }
+    .side-calendar__button:first-child::after, .side-calendar__button:last-child::after {
+      height: 60%;
+      width: 2px;
+      content: "";
+      position: absolute;
+      top: 20%; }
+    .side-calendar__button--right::after {
+      right: 0;
+      border-right: 2px solid #bbe1fa; }
+    .side-calendar__button--left::after {
+      left: 0;
+      border-left: 2px solid #bbe1fa; }
+    .side-calendar__button--active {
+      height: 4.6rem;
+      width: 32%;
+      margin-left: .5%;
+      color: #3282b8;
+      position: relative;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      background-color: #fff;
+      border-radius: 1.4rem; }
+  .side-calendar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .side-calendar__month {
+    text-align: left; }
+  .side-calendar__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .side-calendar__switch {
+    width: 3rem;
+    position: relative; }
+    .side-calendar__switch::before, .side-calendar__switch::after {
+      height: 2px;
+      width: 1.5rem;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-top: 1px solid black; }
+    .side-calendar__switch--left {
+      margin-right: .5rem; }
+      .side-calendar__switch--left::before {
+        transform: translateY(1rem) rotate(45deg); }
+      .side-calendar__switch--left::after {
+        transform: rotate(-45deg); }
+    .side-calendar__switch--right::before {
+      transform: translateY(1rem) rotate(-45deg); }
+    .side-calendar__switch--right::after {
+      transform: rotate(45deg); }
+  .side-calendar__calendar {
+    position: relative; }
+  .side-calendar__table {
+    margin: 1.5rem 0 2.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 3.5rem;
+    position: relative;
+    z-index: 5;
+    overflow: hidden; }
+    .side-calendar__table div {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+  .side-calendar__day--active {
+    height: 3.5rem;
+    width: 3.5rem;
+    margin: auto;
+    color: #fff;
+    background-color: #0f4c75;
+    border-radius: .5rem; }
+  .side-calendar__day--name {
+    color: #3282b8; }
+  .side-calendar__day--additional {
+    color: #8baec6; }
+  .side-calendar__week {
+    width: 100%;
+    height: 3.5rem;
+    position: absolute;
+    top: 7rem;
+    left: 0;
+    display: block;
+    z-index: 1;
+    background-color: #d5ebf8;
+    border-radius: .5rem; }

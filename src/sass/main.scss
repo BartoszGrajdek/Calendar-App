@@ -11,5 +11,12 @@
 
 //COMPONENTS
 @import 'components/buttons';
-@import 'components/calendarBase';
-@import 'components/calendarWeek';
+
+//LAYOUT
+@import 'layout/navigation';
+@import 'layout/sidebar';
+
+//PAGES
+@import 'pages/calendar';
+@import 'pages/notes';
+@import 'pages/todo';

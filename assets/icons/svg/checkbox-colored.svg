@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37.788" height="37.788" viewBox="0 0 37.788 37.788">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.954" x2="0.054" y2="0.96" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#3282b8"/>
+      <stop offset="1" stop-color="#19415c"/>
+    </linearGradient>
+  </defs>
+  <path id="Checkbox" d="M33.36,37.788H4.428A4.433,4.433,0,0,1,0,33.36V4.428A4.433,4.433,0,0,1,4.428,0H33.36a4.433,4.433,0,0,1,4.428,4.428V33.36A4.433,4.433,0,0,1,33.36,37.788ZM4.428,2.952A1.478,1.478,0,0,0,2.952,4.428V33.36a1.478,1.478,0,0,0,1.476,1.476H33.36a1.478,1.478,0,0,0,1.476-1.476V4.428A1.478,1.478,0,0,0,33.36,2.952ZM31.8,11.17,29.6,9.2,15.952,24.446,8.029,16.914,5.995,19.054l10.127,9.627Zm0,0" fill="url(#linear-gradient)"/>
+</svg>

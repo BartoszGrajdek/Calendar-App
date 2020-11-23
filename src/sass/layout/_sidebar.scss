@@ -1,0 +1,233 @@
+//SIDEBAR CONTAINER
+
+.sidebar {
+  width: 23%;
+  height: 100vh;
+  padding: 0 3.5rem;
+  
+  background-color: $color-primary-light-6;
+}
+
+
+//PROFILE HEADER
+
+.profile {
+  height: 9vh;
+  
+  @include flexBetween;
+  
+  text-align: left;
+  
+  @include spacer;
+  
+  &__greeting {
+    width: 8rem;
+    
+    font-weight: 500;
+  }
+  
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  &__description {
+    margin-right: 1rem;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  
+  &__name {
+    
+    &--sub {
+    
+    }
+  }
+  
+  &__image {
+    height: 5.4rem;
+    border-radius: 100px;
+  }
+}
+
+
+//SIDEBAR CALENDAR
+
+.side-calendar {
+  width: 100%;
+  
+  @include spacer;
+  
+  &__modes {
+    height: 5rem;
+    margin: 2rem 0;
+    
+    @include flexBetween;
+    
+    background-color: $color-primary-light-5;
+    border-radius: 1.5rem;
+  }
+  
+  &__button {
+    height: 5rem;
+    width: 33%;
+    
+    position: relative;
+    
+    color: $color-primary;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  
+    &:first-child::after,
+    &:last-child::after {
+      height: 60%;
+      width: 2px;
+      content: "";
+      
+      position: absolute;
+      top: 20%;
+    }
+    
+    &--right::after {
+      right: 0;
+      border-right: 2px solid $color-primary-light-4;
+    }
+    
+    &--left::after {
+      left: 0;
+      border-left: 2px solid $color-primary-light-4;
+    }
+    
+    &--active {
+      height: 4.6rem;
+      width: 32%;
+      margin-left: .5%;
+      color: $color-primary-light-2;
+      position: relative;
+      top: 0;
+      left: 0;
+      z-index: 2;
+  
+      background-color: $color-white;
+      border-radius: 1.4rem;
+    }
+  }
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  &__month {
+    text-align: left;
+  }
+  
+  &__controls {
+    @include flexBetween;
+  }
+  
+  &__switch {
+    width: 3rem;
+    position: relative;
+    
+    &::before,
+    &::after {
+      height: 2px;
+      width: 1.5rem;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-top: 1px solid black;
+    }
+  
+    &--left {
+      margin-right: .5rem;
+      
+      &::before {
+        transform:  translateY(1rem) rotate(45deg);
+      }
+  
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+    
+    &--right {
+      &::before {
+        transform:  translateY(1rem) rotate(-45deg);
+      }
+  
+      &::after {
+        transform: rotate(45deg);
+      }
+    }
+  }
+  
+  &__calendar {
+    position: relative;
+  }
+  
+  &__table {
+    margin: 1.5rem 0 2.5rem;
+    
+    font-size: 1.6rem;
+    font-weight: 700;
+    
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 3.5rem;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+    
+    & div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  &__day {
+    &--active {
+      height: 3.5rem;
+      width: 3.5rem;
+      margin: auto;
+      color: $color-white;
+      background-color: $color-primary-light-1;
+      border-radius: .5rem;
+    }
+    
+    &--name {
+      color: $color-primary-light-2;
+    }
+    
+    &--additional {
+      color: $color-primary-light-3;
+    }
+  }
+  
+  &__week {
+    width: 100%;
+    height: 3.5rem;
+    
+    position: absolute;
+    top: 7rem;
+    left: 0;
+    display: block;
+    z-index: 1;
+    
+    background-color: $color-primary-light-5;
+    border-radius: .5rem;
+  }
+}
+
+
+//CALENDAR CATEGORIES
