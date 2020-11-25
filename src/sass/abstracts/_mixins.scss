@@ -8,7 +8,13 @@
   }
 }
 
-@mixin absCenter {
+@mixin afterOrBefore {
+  content: "";
+  display: block;
+  position: absolute;
+}
+
+@mixin absoluteCenter {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -23,6 +29,22 @@
 
 @mixin spacer {
   border-bottom: 1px solid $color-grey-light-3;
+}
+
+
+//EVENT DISPLAY
+
+@mixin event($border, $background, $h5, $h4) {
+  border-color: $border;
+  background-color: $background;
+  
+  & h5 {
+    color: $h5;
+  }
+  
+  & button {
+    color: $h4;
+  }
 }
 
 

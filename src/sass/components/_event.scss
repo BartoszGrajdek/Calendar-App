@@ -1,0 +1,22 @@
+.event {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  
+  text-align: left;
+  
+  border-left: 3px solid black;
+  border-radius: 0 .5rem .5rem 0;
+  background-color: orangered;
+  
+  & h5 {
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+  
+  & h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+}
