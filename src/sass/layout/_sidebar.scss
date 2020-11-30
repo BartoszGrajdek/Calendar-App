@@ -262,93 +262,13 @@
     }
   }
   
-  &__checkbox {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  
-  &__checkbox:checked ~ &__checkmark {
-    position: relative;
-    
-    &::after {
-      width: 1px;
-      height: 62.5%;
-      
-      top: 17.5%;
-      left: 58%;
-    
-      @include afterOrBefore;
-      
-      border-left: 1px solid $color-white;
-      transform: rotate(45deg);
-    }
-  
-    &::before {
-      width: 1px;
-      height: 31.25%;
-    
-      top: 45.5%;
-      left: 25%;
-    
-      @include afterOrBefore;
-      
-      border-left: 1px solid $color-white;
-      transform: rotate(-45deg);
-    }
-    
-    &--green {
-      background-color: $color-secondary-light-2;
-    }
-    
-    &--purple {
-      background-color: $color-tertiary;
-    }
-    
-    &--blue {
-      background-color: $color-quaternary;
-    }
-  }
-  
   &__checkmark {
     height: 2.4rem;
     width: 2.4rem;
-    
-    border: 1px solid black;
-    border-radius: .3rem;
-    
-    &::selection {
-      background-color: transparent;
-    }
-    
-    &--green {
-      border-color: $color-secondary-light-2;
-    }
-    
-    &--purple {
-      border-color: $color-tertiary;
-    }
-    
-    &--blue {
-      border-color: $color-quaternary;
-    }
   }
   
   &__label {
     width: 40%;
-    
-    font-size: 1.8rem;
-    font-weight: 700;
-    
-    display: flex;
-    align-items: center;
-    justify-content: right;
-  }
-  
-  &__name {
-    margin-left: 1.5rem;
   }
   
   &__progress-bar {
@@ -384,7 +304,7 @@
     
       &::after {
         width: 90%;
-        background-color: $color-tertiary;
+        background-color: $color-tertiary-light-2;
       }
     }
     
@@ -392,7 +312,7 @@
     
       &::after {
         width: 40%;
-        background-color: $color-quaternary;
+        background-color: $color-quaternary-light-2;
       }
     }
   }
@@ -444,13 +364,17 @@
     font-size: 1.8rem;
     
     //ALL EVENT COLORS
-    @include event($color-primary-light-2, $color-primary-light-4, $color-primary-light-1, $color-primary);
+    @include event($color-primary-light-1, $color-primary-light-4, $color-primary-light-1, $color-primary);
   
     & h3 {
       margin-top: .4rem;
       
       font-size: 3.5rem;
       line-height: 1;
+    }
+    
+    & h5, h3 {
+      margin-left: 0;
     }
     
     & button {
@@ -461,7 +385,7 @@
       font-size: 2.4rem;
       font-weight: 700;
       
-      background-color:  $color-primary-light-2;
+      background-color:  $color-primary-light-1;
       border-radius: .3rem;
     }
     

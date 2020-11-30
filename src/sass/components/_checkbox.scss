@@ -1,0 +1,107 @@
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  
+  &__label {
+    font-size: 1.8rem;
+    font-weight: 700;
+  
+    display: flex;
+    align-items: center;
+    justify-content: right;
+  }
+  
+  &__checkmark {
+    border: 1px solid black;
+    border-radius: .3rem;
+  
+    &::selection {
+      background-color: transparent;
+    }
+  
+    &--green {
+      border-color: $color-secondary-light-2;
+    }
+  
+    &--purple {
+      border-color: $color-tertiary-light-2;
+    }
+  
+    &--blue {
+      border-color: $color-quaternary-light-2;
+    }
+  }
+  
+  &__text {
+    margin-left: 1.5rem;
+  }
+  
+  &:checked ~ &__checkmark {
+    position: relative;
+    
+    &::after {
+      width: 1px;
+      height: 62.5%;
+      
+      top: 17.5%;
+      left: 58%;
+      
+      @include afterOrBefore;
+      
+      border-left: 1px solid $color-white;
+      transform: rotate(45deg);
+    }
+    
+    &::before {
+      width: 1px;
+      height: 31.25%;
+      
+      top: 45.5%;
+      left: 25%;
+      
+      @include afterOrBefore;
+      
+      border-left: 1px solid $color-white;
+      transform: rotate(-45deg);
+    }
+    
+    &--green {
+      background-color: $color-secondary-light-2;
+    }
+    
+    &--purple {
+      background-color: $color-tertiary-light-2;
+    }
+    
+    &--blue {
+      background-color: $color-quaternary-light-2;
+    }
+  }
+  
+  &__checkmark {
+    height: 2.4rem;
+    width: 2.4rem;
+    
+    border: 1px solid black;
+    border-radius: .3rem;
+    
+    &::selection {
+      background-color: transparent;
+    }
+    
+    &--green {
+      border-color: $color-secondary-light-2;
+    }
+    
+    &--purple {
+      border-color: $color-tertiary-light-2;
+    }
+    
+    &--blue {
+      border-color: $color-quaternary-light-2;
+    }
+  }
+}

@@ -1,0 +1,206 @@
+//STYLES FOR ALL CALENDAR TABLES
+
+.calendar {
+  height: 100%;
+  width: 100%;
+  
+  position: relative;
+  
+  &__table-box {
+    height: 88%;
+    overflow: scroll;
+    
+    -ms-overflow-style: none;
+    
+    &--week {
+      width: 100%;
+    }
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+  &__navigation {
+    height: 6rem;
+    margin: 1.5rem 0;
+    
+    @include flexBetween;
+  }
+  
+  &__header {
+    line-height: 1;
+  }
+  
+  &__controls {
+    @include flexBetween;
+  }
+  
+  &__switch {
+    height: 4.5rem;
+    width: 4.5rem;
+    position: relative;
+    top: -.5rem;
+    
+    &::before,
+    &::after {
+      height: 2px;
+      width: 3rem;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-top: 1px solid black;
+    }
+    
+    &--left {
+      margin-right: 3rem;
+      
+      &::before {
+        transform:  translateY(3.1rem) rotate(45deg);
+      }
+      
+      &::after {
+        transform: translateY(1rem) rotate(-45deg);
+      }
+    }
+    
+    &--right {
+      &::before {
+        transform:  translateY(3.1rem) rotate(-45deg);
+      }
+      
+      &::after {
+        transform: translateY(1rem) rotate(45deg);
+      }
+    }
+  }
+  
+  &__labels {
+    width: 100%;
+    
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    
+    background-color: $color-white;
+    
+    & tr {
+      height: 6.5rem;
+    }
+  
+    & th {
+      transform: translateY(0);
+    }
+    
+    & span {
+      display: block;
+    }
+  }
+  
+  &__day {
+    font-size: 3.2rem;
+    font-weight: 500;
+    
+    &--active {
+      height: 3.8rem;
+      width: 3.8rem;
+      margin: .8rem auto;
+      
+      color: $color-white;
+      line-height: 1.3;
+      background-color: $color-primary-light-1;
+      border-radius: .5rem;
+    }
+    
+    &--name {
+      height: 2.5rem;
+      
+      color: $color-primary-light-2;
+      font-size: 2.4rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+  }
+  
+  &__table {
+    height: 100%;
+    width: 100%;
+    margin-top: 10rem;
+    border-collapse: collapse;
+  }
+  
+  &__row {
+    height: 5rem;
+    
+    & th {
+      width: 3.4%;
+      z-index: 1;
+      
+      color: $color-grey-light;
+      font-size: 1.2rem;
+      font-weight: 700;
+      
+      transform: translateY(50%);
+    }
+    
+    & td {
+      width: 13.8%;
+      
+      position: relative;
+    }
+    
+    & td:not(.calendar__label) {
+      border-top: 1px solid $color-grey-light;
+    }
+    
+    &:last-child td:not(.calendar__label) {
+      border-bottom: 1px solid $color-grey-light;
+    }
+    
+    & td:not(:last-child):not(.calendar__label) {
+      border-right: 1px solid $color-grey-light;
+    }
+  }
+  
+  &__pointer {
+    width: 102.5%;
+    height: 3px;
+    
+    position: absolute;
+    top: 52.5rem;
+    right: -.1rem;
+    display: block;
+    
+    border-top: 3px solid #BC1B1B;
+    transform: translateY(-50%);
+    
+    &::after,
+    &::before {
+      height: 3px;
+      width: 1rem;
+      
+      top: 0;
+  
+      @include afterOrBefore;
+  
+      border-top: 3px solid #BC1B1B;
+    }
+    
+    &::after {
+      transform: translate(-80%, -230%) rotate(45deg);
+    }
+    
+    &::before {
+      transform: translate(-80%, 0) rotate(-45deg);
+    }
+  }
+}
+
+
+//STYLES FOR WEEKLY DIVIDED CALENDAR
+
+.calendar__table--week {
+
+}

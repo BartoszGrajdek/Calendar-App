@@ -69,6 +69,10 @@ button {
   height: 100vh;
   padding: 0 3.5rem; }
 
+.content {
+  height: 89vh;
+  width: 100%; }
+
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
@@ -81,7 +85,7 @@ h1 {
   font-size: 6.5rem; }
 
 h2 {
-  font-size: 4.4rem;
+  font-size: 4.5rem;
   line-height: 1.2; }
 
 h3 {
@@ -136,21 +140,247 @@ h6 {
     .button__calendar--next:active {
       transform: translateX(0.3rem) scale(1.06); }
 
+.calendar {
+  height: 100%;
+  width: 100%;
+  position: relative; }
+  .calendar__table-box {
+    height: 88%;
+    overflow: scroll;
+    -ms-overflow-style: none; }
+    .calendar__table-box--week {
+      width: 100%; }
+    .calendar__table-box::-webkit-scrollbar {
+      display: none; }
+  .calendar__navigation {
+    height: 6rem;
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .calendar__header {
+    line-height: 1; }
+  .calendar__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .calendar__switch {
+    height: 4.5rem;
+    width: 4.5rem;
+    position: relative;
+    top: -.5rem; }
+    .calendar__switch::before, .calendar__switch::after {
+      height: 2px;
+      width: 3rem;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-top: 1px solid black; }
+    .calendar__switch--left {
+      margin-right: 3rem; }
+      .calendar__switch--left::before {
+        transform: translateY(3.1rem) rotate(45deg); }
+      .calendar__switch--left::after {
+        transform: translateY(1rem) rotate(-45deg); }
+    .calendar__switch--right::before {
+      transform: translateY(3.1rem) rotate(-45deg); }
+    .calendar__switch--right::after {
+      transform: translateY(1rem) rotate(45deg); }
+  .calendar__labels {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    background-color: #fff; }
+    .calendar__labels tr {
+      height: 6.5rem; }
+    .calendar__labels th {
+      transform: translateY(0); }
+    .calendar__labels span {
+      display: block; }
+  .calendar__day {
+    font-size: 3.2rem;
+    font-weight: 500; }
+    .calendar__day--active {
+      height: 3.8rem;
+      width: 3.8rem;
+      margin: .8rem auto;
+      color: #fff;
+      line-height: 1.3;
+      background-color: #0f4c75;
+      border-radius: .5rem; }
+    .calendar__day--name {
+      height: 2.5rem;
+      color: #3282b8;
+      font-size: 2.4rem;
+      font-weight: 500;
+      line-height: 1; }
+  .calendar__table {
+    height: 100%;
+    width: 100%;
+    margin-top: 10rem;
+    border-collapse: collapse; }
+  .calendar__row {
+    height: 5rem; }
+    .calendar__row th {
+      width: 3.4%;
+      z-index: 1;
+      color: #b4b4b4;
+      font-size: 1.2rem;
+      font-weight: 700;
+      transform: translateY(50%); }
+    .calendar__row td {
+      width: 13.8%;
+      position: relative; }
+    .calendar__row td:not(.calendar__label) {
+      border-top: 1px solid #b4b4b4; }
+    .calendar__row:last-child td:not(.calendar__label) {
+      border-bottom: 1px solid #b4b4b4; }
+    .calendar__row td:not(:last-child):not(.calendar__label) {
+      border-right: 1px solid #b4b4b4; }
+  .calendar__pointer {
+    width: 102.5%;
+    height: 3px;
+    position: absolute;
+    top: 52.5rem;
+    right: -.1rem;
+    display: block;
+    border-top: 3px solid #BC1B1B;
+    transform: translateY(-50%); }
+    .calendar__pointer::after, .calendar__pointer::before {
+      height: 3px;
+      width: 1rem;
+      top: 0;
+      content: "";
+      display: block;
+      position: absolute;
+      border-top: 3px solid #BC1B1B; }
+    .calendar__pointer::after {
+      transform: translate(-80%, -230%) rotate(45deg); }
+    .calendar__pointer::before {
+      transform: translate(-80%, 0) rotate(-45deg); }
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0; }
+  .checkbox__label {
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: right; }
+  .checkbox__checkmark {
+    border: 1px solid black;
+    border-radius: .3rem; }
+    .checkbox__checkmark::selection {
+      background-color: transparent; }
+    .checkbox__checkmark--green {
+      border-color: #32b860; }
+    .checkbox__checkmark--purple {
+      border-color: #5B32B8; }
+    .checkbox__checkmark--blue {
+      border-color: #323CB8; }
+  .checkbox__text {
+    margin-left: 1.5rem; }
+  .checkbox:checked ~ .checkbox__checkmark {
+    position: relative; }
+    .checkbox:checked ~ .checkbox__checkmark::after {
+      width: 1px;
+      height: 62.5%;
+      top: 17.5%;
+      left: 58%;
+      content: "";
+      display: block;
+      position: absolute;
+      border-left: 1px solid #fff;
+      transform: rotate(45deg); }
+    .checkbox:checked ~ .checkbox__checkmark::before {
+      width: 1px;
+      height: 31.25%;
+      top: 45.5%;
+      left: 25%;
+      content: "";
+      display: block;
+      position: absolute;
+      border-left: 1px solid #fff;
+      transform: rotate(-45deg); }
+    .checkbox:checked ~ .checkbox__checkmark--green {
+      background-color: #32b860; }
+    .checkbox:checked ~ .checkbox__checkmark--purple {
+      background-color: #5B32B8; }
+    .checkbox:checked ~ .checkbox__checkmark--blue {
+      background-color: #323CB8; }
+  .checkbox__checkmark {
+    height: 2.4rem;
+    width: 2.4rem;
+    border: 1px solid black;
+    border-radius: .3rem; }
+    .checkbox__checkmark::selection {
+      background-color: transparent; }
+    .checkbox__checkmark--green {
+      border-color: #32b860; }
+    .checkbox__checkmark--purple {
+      border-color: #5B32B8; }
+    .checkbox__checkmark--blue {
+      border-color: #323CB8; }
+
 .event {
+  height: 5rem;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   text-align: left;
   border-left: 3px solid black;
-  border-radius: 0 .5rem .5rem 0;
-  background-color: orangered; }
+  border-radius: 0 .5rem .5rem 0; }
   .event h5 {
+    margin-left: .4rem;
+    margin-top: .4rem;
     font-size: 1.4rem;
-    font-weight: 500; }
+    font-weight: 500;
+    line-height: 1; }
   .event h3 {
+    margin-left: .4rem;
+    margin-top: .6rem;
     font-size: 1.8rem;
-    font-weight: 700; }
+    font-weight: 700;
+    line-height: 1; }
+  .event--green {
+    border-color: #32b860;
+    background-color: #9aeab6; }
+    .event--green h5 {
+      color: #2c7e48; }
+    .event--green h3 {
+      color: #125228; }
+    .event--green button {
+      color: #125228; }
+  .event--purple {
+    border-color: #B299EA;
+    background-color: #d8c7f6; }
+    .event--purple h5 {
+      color: #5B32B8; }
+    .event--purple h3 {
+      color: #442B7C; }
+    .event--purple button {
+      color: #442B7C; }
+  .event--blue {
+    border-color: #85C3E6;
+    background-color: #D5EBF8; }
+    .event--blue h5 {
+      color: #0F4C75; }
+    .event--blue h3 {
+      color: #0B2F43; }
+    .event--blue button {
+      color: #0B2F43; }
 
 .nav {
   height: 9vh;
@@ -350,62 +580,11 @@ h6 {
     justify-content: space-between; }
     .categories__item:not(:last-child) {
       margin-bottom: 1.5rem; }
-  .categories__checkbox {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0; }
-  .categories__checkbox:checked ~ .categories__checkmark {
-    position: relative; }
-    .categories__checkbox:checked ~ .categories__checkmark::after {
-      width: 1px;
-      height: 62.5%;
-      top: 17.5%;
-      left: 58%;
-      content: "";
-      display: block;
-      position: absolute;
-      border-left: 1px solid #fff;
-      transform: rotate(45deg); }
-    .categories__checkbox:checked ~ .categories__checkmark::before {
-      width: 1px;
-      height: 31.25%;
-      top: 45.5%;
-      left: 25%;
-      content: "";
-      display: block;
-      position: absolute;
-      border-left: 1px solid #fff;
-      transform: rotate(-45deg); }
-    .categories__checkbox:checked ~ .categories__checkmark--green {
-      background-color: #32b860; }
-    .categories__checkbox:checked ~ .categories__checkmark--purple {
-      background-color: #5B32B8; }
-    .categories__checkbox:checked ~ .categories__checkmark--blue {
-      background-color: #323CB8; }
   .categories__checkmark {
     height: 2.4rem;
-    width: 2.4rem;
-    border: 1px solid black;
-    border-radius: .3rem; }
-    .categories__checkmark::selection {
-      background-color: transparent; }
-    .categories__checkmark--green {
-      border-color: #32b860; }
-    .categories__checkmark--purple {
-      border-color: #5B32B8; }
-    .categories__checkmark--blue {
-      border-color: #323CB8; }
+    width: 2.4rem; }
   .categories__label {
-    width: 40%;
-    font-size: 1.8rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: right; }
-  .categories__name {
-    margin-left: 1.5rem; }
+    width: 40%; }
   .categories__progress-bar {
     height: .5rem;
     width: 80%;
@@ -459,23 +638,27 @@ h6 {
     position: relative;
     font-weight: 700;
     font-size: 1.8rem;
-    border-color: #3282b8;
+    border-color: #0f4c75;
     background-color: #bbe1fa; }
     .recent__event h5 {
       color: #0f4c75; }
+    .recent__event h3 {
+      color: #0b2f43; }
     .recent__event button {
       color: #0b2f43; }
     .recent__event h3 {
       margin-top: .4rem;
       font-size: 3.5rem;
       line-height: 1; }
+    .recent__event h5, .recent__event h3 {
+      margin-left: 0; }
     .recent__event button {
       padding: .35rem .6rem;
       margin-top: auto;
       color: #fff;
       font-size: 2.4rem;
       font-weight: 700;
-      background-color: #3282b8;
+      background-color: #0f4c75;
       border-radius: .3rem; }
     .recent__event span {
       padding: 0 .4rem;

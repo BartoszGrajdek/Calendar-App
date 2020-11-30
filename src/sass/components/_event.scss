@@ -1,4 +1,11 @@
 .event {
+  height: 5rem;
+  width: 100%;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -8,15 +15,32 @@
   
   border-left: 3px solid black;
   border-radius: 0 .5rem .5rem 0;
-  background-color: orangered;
   
   & h5 {
+    margin-left: .4rem;
+    margin-top: .4rem;
     font-size: 1.4rem;
     font-weight: 500;
+    line-height: 1;
   }
   
   & h3 {
+    margin-left: .4rem;
+    margin-top: .6rem;
     font-size: 1.8rem;
     font-weight: 700;
+    line-height: 1;
+  }
+  
+  &--green {
+    @include event($color-secondary-light-2, $color-secondary-light-3, $color-secondary-light-1, $color-secondary);
+  }
+  
+  &--purple {
+    @include event($color-tertiary-light-3, $color-tertiary-light-4, $color-tertiary-light-2, $color-tertiary-light-1);
+  }
+  
+  &--blue {
+    @include event($color-quaternary-light-3, $color-quaternary-light-4, $color-quaternary-light-1, $color-quaternary);
   }
 }

@@ -34,7 +34,7 @@
 
 //EVENT DISPLAY
 
-@mixin event($border, $background, $h5, $h4) {
+@mixin event($border, $background, $h5, $h3) {
   border-color: $border;
   background-color: $background;
   
@@ -42,8 +42,12 @@
     color: $h5;
   }
   
+  & h3 {
+    color: $h3;
+  }
+  
   & button {
-    color: $h4;
+    color: $h3;
   }
 }
 
