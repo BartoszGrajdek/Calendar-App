@@ -1,0 +1,67 @@
+.details {
+  height: 98%;
+  width: 55%;
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+  
+  background-color: $color-primary-light-6;
+  border-radius: 1.5rem;
+  
+  text-align: left;
+  
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  
+  &__headings {
+  }
+  
+  &__date {
+    color: $color-primary-light-2;
+  }
+  
+  &__time {
+    color: $color-primary-light-2;
+  }
+  
+  &__description {
+    margin-top: 1.5rem;
+  }
+  
+  &__title {
+    font-weight: 500;
+  }
+  
+  &__text {
+    color: $color-primary-light-1;
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+  
+  &__todo {
+    margin-top: 1.5rem;
+  }
+  
+  &__info {
+    
+    &--item {
+      margin-top: 2rem;
+      
+      display: flex;
+      align-items: center;
+      justify-content: left;
+    }
+  }
+  
+  &__icon {
+    height: 3.5rem;
+    width: 3rem;
+    
+    
+    &--title {
+      margin-left: 1rem;
+    }
+  }
+}
