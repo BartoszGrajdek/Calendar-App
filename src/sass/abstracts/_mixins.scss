@@ -31,6 +31,12 @@
   border-bottom: 1px solid $color-grey-light-3;
 }
 
+@mixin transparentSelection {
+  &::selection {
+    background-color: transparent;
+  }
+}
+
 
 //EVENT DISPLAY
 

@@ -9,6 +9,10 @@
   
   text-align: left;
   
+  &--note {
+    width: 100%;
+  }
+  
   &__header {
     display: flex;
     align-items: flex-start;

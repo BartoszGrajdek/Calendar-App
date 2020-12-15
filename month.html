@@ -19,7 +19,7 @@
         <li class="nav__item"><a href="index.html" class="nav__link"><img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon"><span class="nav__text">Calendar</span></a></li>
         <li class="nav__item"><a href="notes.html" class="nav__link"><img src="assets/icons/svg/notes-colored.svg" alt="Notes icon" class="nav__icon"><span class="nav__text">Notes</span></a></li>
         <li
-                class="nav__item"><a href="todos.html"
+                class="nav__item"><a href="todo.html"
                                      class="nav__link"><img src="assets/icons/svg/checkbox-colored.svg" alt="Todo lists icon" class="nav__icon"><span class="nav__text">Todo list</span></a></li>
       </ul>
 
@@ -62,7 +62,14 @@
             <div class="calendar__table--additional">30</div>
             <div class="calendar__table--additional">31</div>
 
-            <div>1</div>
+            <div>1
+              <div class="event event--month event--blue">
+                <h3 class="event__title">Make dinner</h3>
+              </div>
+              <div class="event event--month event--green">
+                <h3 class="event__title">Make dinner</h3>
+              </div>
+            </div>
             <div>2</div>
             <div>3</div>
             <div>4</div>
@@ -136,9 +143,9 @@
     <div class="side-calendar">
 
       <div class="side-calendar__modes">
-        <button class="side-calendar__button"><a href="day.html">Today</a></button>
-        <button class="side-calendar__button side-calendar__button--active"><a href="index.html">Week</a></button>
-        <button class="side-calendar__button"><a href="month.html">Month</a></button>
+        <button class="side-calendar__button side-calendar__button--right"><a href="day.html">Today</a></button>
+        <button class="side-calendar__button"><a href="index.html">Week</a></button>
+        <button class="side-calendar__button side-calendar__button--active"><a href="month.html">Month</a></button>
       </div>
 
       <div class="side-calendar__header">

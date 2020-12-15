@@ -71,4 +71,9 @@ button {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  
+  &--noFlex {
+    display: block;
+    text-align: left;
+  }
 }

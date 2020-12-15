@@ -16,10 +16,6 @@
   border-left: 3px solid black;
   border-radius: 0 1rem 1rem 0;
   
-  &--day {
-    width: 49.5%;
-  }
-  
   &--second {
     left: 50.25%;
   }
@@ -50,5 +46,37 @@
   
   &--blue {
     @include event($color-quaternary-light-3, $color-quaternary-light-4, $color-quaternary-light-1, $color-quaternary);
+  }
+  
+  &--day {
+    width: 49.5%;
+  }
+  
+  &--month {
+    height: 3rem;
+    width: 97.5%;
+    margin-top: .5rem;
+    
+    position: relative;
+    
+    border-radius: 0 10rem 10rem 0;
+    
+    & h3 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  &--todo {
+    height: 4rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  
+    border-radius: 0 1.2rem 1.2rem 0;
+    
+    @include event($color-quaternary-light-3, $color-white, $color-white, $color-primary-light-1);
+    
+    & h3 {
+      margin: auto 0 auto .4rem;
+    }
   }
 }

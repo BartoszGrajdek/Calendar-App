@@ -1,0 +1,39 @@
+.todo {
+  width: 30%;
+  display: block;
+  
+  &__container {
+    @include flexBetween;
+    
+    align-items: flex-start;
+  }
+  
+  &__header {
+    margin: 1.5rem 0;
+  }
+  
+  &__name {
+    font-size: 3.2rem;
+    color: $color-primary-light-1;
+    text-align: center;
+  }
+  
+  &__board {
+    width: 100%;
+    padding: 1rem;
+    
+    border-radius: 1rem;
+    
+    &--pending {
+      background-color: $color-primary-light-5;
+    }
+    
+    &--doing {
+      background-color: $color-primary-light-4;
+    }
+    
+    &--done {
+      background-color: $color-primary-light-3;
+    }
+  }
+}

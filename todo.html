@@ -26,88 +26,86 @@
     </nav>
     <!-- HEADER -->
 
-    <div class="content">
+    <div class="content content--noFlex">
 
-      <div class="details details--note">
 
-        <div class="details__header">
-          <div class="details__headings">
-            <h2 class="details__event">Clean up the house</h2>
-            <h4 class="details__date">7 November 2020</h4>
-          </div>
-          <h5 class="details__time">10:00am - 1:00pm</h5>
-        </div>
+      <h2 class="todo__header">Payments</h2>
 
-        <div class="details__description">
-          <h4 class="details__title">Lorem ipsum</h4>
-          <p class="details__text">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus.</p>
-        </div>
+      <div class="todo__container">
 
-        <div class="details__todo todo">
-          <h4 class="todo__title">To be done</h4>
+        <div class="todo">
+          <h3 class="todo__name">Pending</h3>
+          <div class="todo__board todo__board--pending">
+            <div class="event event--month event--todo">
+              <h3 class="event__title">Electricity</h3>
+            </div>
 
-          <div class="todo__item">
-            <label class="todo__label checkbox__label" for="todo-1">
-              <input type="checkbox" id="todo-1" class="checkbox todo__checkbox" name="todo" checked>
-              <span class="checkbox__checkmark checkbox__checkmark--blue">&nbsp;</span>
-              <span class="todo__text checkbox__text">Empty dishwasher</span>
-            </label>
-          </div>
+            <div class="event event--month event--todo">
+              <h3 class="event__title">Water</h3>
+            </div>
 
-          <div class="todo__item">
-            <label class="todo__label checkbox__label" for="todo-2">
-              <input type="checkbox" id="todo-2" class="checkbox todo__checkbox" name="todo">
-              <span class="checkbox__checkmark checkbox__checkmark--blue">&nbsp;</span>
-              <span class="todo__text checkbox__text">Clean up fridge</span>
-            </label>
-          </div>
-
-          <div class="todo__item todo__item--indent">
-            <label class="todo__label checkbox__label" for="todo-3">
-              <input type="checkbox" id="todo-3" class="checkbox todo__checkbox" name="todo" checked>
-              <span class="checkbox__checkmark checkbox__checkmark--blue">&nbsp;</span>
-              <span class="todo__text checkbox__text">Put in groceries</span>
-            </label>
-          </div>
-
-          <div class="todo__item">
-            <label class="todo__label checkbox__label" for="todo-4">
-              <input type="checkbox" id="todo-4" class="checkbox todo__checkbox" name="todo">
-              <span class="checkbox__checkmark checkbox__checkmark--blue">&nbsp;</span>
-              <span class="todo__text checkbox__text">Wash clothes</span>
-            </label>
-          </div>
-
-          <div class="todo__item">
-            <label class="todo__label checkbox__label" for="todo-5">
-              <input type="checkbox" id="todo-5" class="checkbox todo__checkbox" name="todo">
-              <span class="checkbox__checkmark checkbox__checkmark--blue">&nbsp;</span>
-              <span class="todo__text checkbox__text">Clean the floors</span>
-            </label>
-          </div>
-
-          <div class="todo__item">
-            <label class="todo__label checkbox__label" for="todo-6">
-              <input type="checkbox" id="todo-6" class="checkbox todo__checkbox" name="todo">
-              <span class="checkbox__checkmark checkbox__checkmark--blue">&nbsp;</span>
-              <span class="todo__text checkbox__text">Vacuum</span>
-            </label>
-          </div>
-
-        </div>
-
-        <div class="details__info">
-          <div class="details__info--item">
-            <img src="assets/icons/svg/bell.svg" alt="Notification bell" class="details__icon">
-            <h4 class="details__icon--title">30 minutes before</h4>
-          </div>
-          <div class="details__info--item">
-            <img src="assets/icons/svg/pin.svg" alt="Place pin" class="details__icon">
-            <h4 class="details__icon--title">Warsaw, Poland</h4>
+            <div class="event event--month event--todo">
+              <h3 class="event__title">Gas</h3>
+            </div>
+            <button class="categories__button"><span>+</span> Add more</button>
           </div>
         </div>
+        <!-- TO-DO BOARD -->
+
+        <div class="todo">
+          <h3 class="todo__name">Doing</h3>
+          <div class="todo__board todo__board--doing">
+            <div class="event event--month event--todo">
+              <h3 class="event__title">New bed</h3>
+            </div>
+
+            <div class="event event--month event--todo">
+              <h3 class="event__title">Computer for Jane</h3>
+            </div>
+
+            <div class="event event--month event--todo">
+              <h3 class="event__title">Bedroom renovation</h3>
+            </div>
+
+            <div class="event event--month event--todo">
+              <h3 class="event__title">Gym subscription</h3>
+            </div>
+
+            <div class="event event--month event--todo">
+              <h3 class="event__title">New furniture for dinning room</h3>
+            </div>
+
+            <button class="categories__button"><span>+</span> Add more</button>
+          </div>
+        </div>
+        <!-- TO-DO BOARD -->
+
+        <div class="todo">
+          <h3 class="todo__name">Done</h3>
+          <div class="todo__board todo__board--done">
+            <div class="event event--month event--todo">
+              <h3 class="event__title">House rent</h3>
+            </div>
+
+            <div class="event event--month event--todo">
+              <h3 class="event__title">Car credit</h3>
+            </div>
+
+            <div class="event event--month event--todo">
+              <h3 class="event__title">Roof fix</h3>
+            </div>
+
+            <div class="event event--month event--todo">
+              <h3 class="event__title">New house heating</h3>
+            </div>
+
+            <button class="categories__button"><span>+</span> Add more</button>
+          </div>
+        </div>
+        <!-- TO-DO BOARD -->
 
       </div>
+      <!-- TO-DO CONTAINER -->
 
     </div>
     <!-- CONTENT -->
@@ -133,7 +131,7 @@
     <!-- PROFILE -->
 
     <div class="side-nav">
-      <h4 class="side-nav__heading">Notes</h4>
+      <h4 class="side-nav__heading">Todo boards</h4>
 
 
       <div class="side-nav__category">
@@ -233,7 +231,7 @@
 
     <div class="categories">
 
-      <h4 class="categories__heading">Notepads</h4>
+      <h4 class="categories__heading">Todo lists</h4>
 
       <div class="categories__list">
 

@@ -238,7 +238,7 @@
   
   & .calendar__table {
     height: 92%;
-    margin-top: 6rem;
+    margin-top: 5.5rem;
     
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -283,7 +283,7 @@
       top: 4%;
       left: 50%;
       background-color: $color-primary-light-1;
-      border-radius: .5rem;
+      border-radius: .3rem;
       
       transform: translate(-50%, -10%);
     }
