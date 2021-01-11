@@ -8,27 +8,119 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-<div class="page-wrapper">
 
-  <div class="main">
+<div class="page-wrapper page-wrapper--side">
 
-    <nav class="nav">
+  <nav class="nav">
 
-      <span class="nav__logo">Organized</span>
-      <ul class="nav__list">
-        <li class="nav__item"><a href="index.html" class="nav__link"><img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon"><span class="nav__text">Calendar</span></a></li>
-        <li class="nav__item"><a href="notes.html" class="nav__link"><img src="assets/icons/svg/notes-colored.svg" alt="Notes icon" class="nav__icon"><span class="nav__text">Notes</span></a></li>
-        <li
-                class="nav__item"><a href="todo.html"
-                                     class="nav__link"><img src="assets/icons/svg/checkbox-colored.svg" alt="Todo lists icon" class="nav__icon"><span class="nav__text">Todo list</span></a></li>
-      </ul>
+      <div class="nav__container">
+        <span class="nav__logo">Organized</span>
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="week.html" class="nav__link">
+              <img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon">
+              <span class="nav__text">Calendar</span>
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="notes.html" class="nav__link">
+              <img src="assets/icons/svg/notes-colored.svg" alt="Notes icon" class="nav__icon">
+              <span class="nav__text">Notes</span>
+            </a>
+          </li>
+
+          <li class="nav__item">
+            <a href="todo.html" class="nav__link">
+              <img src="assets/icons/svg/checkbox-colored.svg" alt="Todo lists icon" class="nav__icon">
+              <span class="nav__text">Todo list</span>
+            </a>
+          </li>
+        </ul>
+        <!-- NAVIGATION LINKS -->
+
+        <input type="checkbox" class="nav__checkbox" id="nav-hamburger">
+        <label for="nav-hamburger" class="nav__checkmark">&nbsp;</label>
+        <!-- MOBILE MENU HANDLERS -->
+
+        <div class="nav__mobile">
+          <span class="nav__logo">Organized</span>
+
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="week.html" class="nav__link">
+                <img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon">
+                <span class="nav__text">Calendar</span>
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="notes.html" class="nav__link">
+                <img src="assets/icons/svg/notes-colored.svg" alt="Notes icon" class="nav__icon">
+                <span class="nav__text">Notes</span>
+              </a>
+            </li>
+
+            <li class="nav__item">
+              <a href="todo.html" class="nav__link">
+                <img src="assets/icons/svg/checkbox-colored.svg" alt="Todo lists icon" class="nav__icon">
+                <span class="nav__text">Todo list</span>
+              </a>
+            </li>
+          </ul>
+          <!-- NAVIGATION LINKS -->
+
+          <div class="categories">
+
+            <h4 class="categories__heading">Calendar</h4>
+
+            <div class="categories__list">
+
+              <div class="categories__item">
+
+                <label class="categories__label checkbox__label" for="work-mobile">
+                  <input type="checkbox" id="work-mobile" class="categories__checkbox checkbox" name="category" checked>
+                  <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--green">&nbsp;</span>
+                  <span class="checkbox__text">Work</span>
+                </label>
+                <span class="categories__progress-bar categories__progress-bar--green">&nbsp;</span>
+              </div>
+
+              <div class="categories__item">
+                <label class="categories__label checkbox__label" for="guitar-mobile">
+                  <input type="checkbox" id="guitar-mobile" class="categories__checkbox checkbox" name="category">
+                  <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--purple">&nbsp;</span>
+                  <span class="checkbox__text">Guitar</span>
+                </label>
+                <span class="categories__progress-bar categories__progress-bar--purple">&nbsp;</span>
+              </div>
+
+              <div class="categories__item">
+                <label class="categories__label checkbox__label" for="home-mobile">
+                  <input type="checkbox" id="home-mobile" class="categories__checkbox checkbox" name="category" checked>
+                  <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--blue">&nbsp;</span>
+                  <span class="checkbox__text">Home</span>
+                </label>
+                <span class="categories__progress-bar categories__progress-bar--blue">&nbsp;</span>
+              </div>
+
+              <button class="categories__button"><span>+</span> Add more</button>
+            </div>
+
+          </div>
+          <!-- CALENDAR CATEGORIES -->
+        </div>
+        <!-- MOBILE NAVIGATION -->
+
+      </div>
+      <!-- NAVIGATION CONTAINER -->
 
     </nav>
-    <!-- HEADER -->
+  <!-- HEADER -->
 
-    <div class="content">
+  <div class="content">
 
-      <div class="details details--note">
+    <div class="details details--note">
 
         <div class="details__header">
           <div class="details__headings">
@@ -108,12 +200,10 @@
         </div>
 
       </div>
-
-    </div>
-    <!-- CONTENT -->
+    <!-- DETAILS -->
 
   </div>
-  <!-- MAIN CONTAINER -->
+  <!-- CONTENT -->
 
   <div class="sidebar">
 
@@ -230,6 +320,7 @@
       <!-- SIDE NAV NOTES CATEGORY -->
 
     </div>
+    <!-- NOTES / TO-DO NAVIGATION -->
 
     <div class="categories">
 
@@ -276,6 +367,94 @@
 
 </div>
 <!-- PAGE WRAPPER -->
+
+<!--<div class="popup">-->
+
+<!--  <div class="details details&#45;&#45;popup">-->
+
+<!--    <div class="details__header">-->
+<!--      <div class="details__headings">-->
+<!--        <h2 class="details__event">Clean up the house</h2>-->
+<!--        <h4 class="details__date">7 November 2020</h4>-->
+<!--      </div>-->
+<!--      <h5 class="details__time">10:00am - 1:00pm</h5>-->
+<!--      <span class="details__close">&nbsp;</span>-->
+<!--    </div>-->
+
+<!--    <div class="details__description">-->
+<!--      <h4 class="details__title">Lorem ipsum</h4>-->
+<!--      <p class="details__text">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus.</p>-->
+<!--    </div>-->
+
+<!--    <div class="details__todo todo">-->
+<!--      <h4 class="todo__title">To be done</h4>-->
+
+<!--      <div class="todo__item">-->
+<!--        <label class="todo__label checkbox__label" for="todo-1">-->
+<!--          <input type="checkbox" id="todo-1" class="checkbox todo__checkbox" name="todo" checked>-->
+<!--          <span class="checkbox__checkmark checkbox__checkmark&#45;&#45;blue">&nbsp;</span>-->
+<!--          <span class="todo__text checkbox__text">Empty dishwasher</span>-->
+<!--        </label>-->
+<!--      </div>-->
+
+<!--      <div class="todo__item">-->
+<!--        <label class="todo__label checkbox__label" for="todo-2">-->
+<!--          <input type="checkbox" id="todo-2" class="checkbox todo__checkbox" name="todo">-->
+<!--          <span class="checkbox__checkmark checkbox__checkmark&#45;&#45;blue">&nbsp;</span>-->
+<!--          <span class="todo__text checkbox__text">Clean up fridge</span>-->
+<!--        </label>-->
+<!--      </div>-->
+
+<!--      <div class="todo__item todo__item&#45;&#45;indent">-->
+<!--        <label class="todo__label checkbox__label" for="todo-3">-->
+<!--          <input type="checkbox" id="todo-3" class="checkbox todo__checkbox" name="todo" checked>-->
+<!--          <span class="checkbox__checkmark checkbox__checkmark&#45;&#45;blue">&nbsp;</span>-->
+<!--          <span class="todo__text checkbox__text">Put in groceries</span>-->
+<!--        </label>-->
+<!--      </div>-->
+
+<!--      <div class="todo__item">-->
+<!--        <label class="todo__label checkbox__label" for="todo-4">-->
+<!--          <input type="checkbox" id="todo-4" class="checkbox todo__checkbox" name="todo">-->
+<!--          <span class="checkbox__checkmark checkbox__checkmark&#45;&#45;blue">&nbsp;</span>-->
+<!--          <span class="todo__text checkbox__text">Wash clothes</span>-->
+<!--        </label>-->
+<!--      </div>-->
+
+<!--      <div class="todo__item">-->
+<!--        <label class="todo__label checkbox__label" for="todo-5">-->
+<!--          <input type="checkbox" id="todo-5" class="checkbox todo__checkbox" name="todo">-->
+<!--          <span class="checkbox__checkmark checkbox__checkmark&#45;&#45;blue">&nbsp;</span>-->
+<!--          <span class="todo__text checkbox__text">Clean the floors</span>-->
+<!--        </label>-->
+<!--      </div>-->
+
+<!--      <div class="todo__item">-->
+<!--        <label class="todo__label checkbox__label" for="todo-6">-->
+<!--          <input type="checkbox" id="todo-6" class="checkbox todo__checkbox" name="todo">-->
+<!--          <span class="checkbox__checkmark checkbox__checkmark&#45;&#45;blue">&nbsp;</span>-->
+<!--          <span class="todo__text checkbox__text">Vacuum</span>-->
+<!--        </label>-->
+<!--      </div>-->
+
+<!--    </div>-->
+
+<!--    <div class="details__info">-->
+<!--      <div class="details__info&#45;&#45;item">-->
+<!--        <img src="assets/icons/svg/bell.svg" alt="Notification bell" class="details__icon">-->
+<!--        <h4 class="details__icon&#45;&#45;title">30 minutes before</h4>-->
+<!--      </div>-->
+<!--      <div class="details__info&#45;&#45;item">-->
+<!--        <img src="assets/icons/svg/pin.svg" alt="Place pin" class="details__icon">-->
+<!--        <h4 class="details__icon&#45;&#45;title">Warsaw, Poland</h4>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+<!--  &lt;!&ndash; DETAILS POPUP&ndash;&gt;-->
+
+<!--</div>-->
+<!--&lt;!&ndash; POPUP &ndash;&gt;-->
 
 <script src="assets/js/app.js" async defer></script>
 </body>

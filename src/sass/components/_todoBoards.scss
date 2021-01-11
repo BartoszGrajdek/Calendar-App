@@ -1,15 +1,70 @@
-.todo {
+.todo-list {
   width: 30%;
   display: block;
+  
+  position: relative;
+  
+  @include respond(tab-port) {
+    width: 60%;
+    margin: 1.5rem auto;
+    text-align: center;
+  }
+  
+  @include respond(phone) {
+    width: 80%;
+  }
+  
+  &__close {
+    height: 2.7rem;
+    width: 2.65rem;
+  
+    display: block;
+    position: absolute;
+    top: 3.5%;
+    right: 7%;
+  
+    &::before,
+    &::after {
+      height: .1rem;
+      width: 3.5rem;
+    
+      border-top: 2px solid $color-grey-light;
+    
+      @include afterOrBefore;
+    }
+  
+    &::before {
+      top: 0;
+    
+      transform-origin: top left;
+      transform: rotate(45deg);
+    }
+  
+    &::after {
+      bottom: 0;
+    
+      transform-origin: bottom left;
+      transform: rotate(-45deg);
+    }
+  }
   
   &__container {
     @include flexBetween;
     
     align-items: flex-start;
+    
+    @include respond(tab-port) {
+      flex-direction: column;
+    }
   }
   
   &__header {
     margin: 1.5rem 0;
+  
+    @include respond(tab-port) {
+      margin: 1.5rem auto;
+      text-align: center;
+    }
   }
   
   &__name {
@@ -23,6 +78,10 @@
     padding: 1rem;
     
     border-radius: 1rem;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
     &--pending {
       background-color: $color-primary-light-5;

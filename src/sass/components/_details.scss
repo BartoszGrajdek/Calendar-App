@@ -9,8 +9,51 @@
   
   text-align: left;
   
+  @include respond(tab-land) {
+    margin-bottom: 1%;
+    height: auto;
+  }
+  
+  @include respond(tab-port) {
+    display: none;
+  }
+  
   &--note {
     width: 100%;
+  }
+  
+  &--popup {
+    width: 40%;
+    height: auto;
+    margin: 0;
+    
+    display: block;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    
+    transform: translate(-50%, -50%);
+    
+    @include respond(tab-land) {
+      width: 50%;
+    }
+    
+    @include respond(tab-port) {
+      width: 60%;
+    }
+    
+    @include respond(phone) {
+      width: 95%;
+      margin: auto;
+  
+      position: relative;
+      top: 0;
+      left: 0;
+  
+      transform: translate(0, 0);
+    }
   }
   
   &__header {
@@ -19,15 +62,52 @@
     justify-content: space-between;
   }
   
-  &__headings {
-  }
-  
   &__date {
     color: $color-primary-light-2;
   }
   
   &__time {
     color: $color-primary-light-2;
+    
+    @include respond(phone) {
+      display: none;
+    }
+  }
+  
+  &__close {
+    display: none;
+    
+    @include respond(phone) {
+      height: 2.7rem;
+      width: 2.65rem;
+      
+      display: block;
+      position: relative;
+      
+      &::before,
+      &::after {
+        height: .1rem;
+        width: 3.5rem;
+        
+        border-top: 2px solid $color-grey-light;
+        
+        @include afterOrBefore;
+      }
+      
+      &::before {
+        top: 0;
+        
+        transform-origin: top left;
+        transform: rotate(45deg);
+      }
+      
+      &::after {
+        bottom: 0;
+        
+        transform-origin: bottom left;
+        transform: rotate(-45deg);
+      }
+    }
   }
   
   &__description {

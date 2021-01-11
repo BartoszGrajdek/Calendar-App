@@ -37,6 +37,14 @@
   }
 }
 
+@mixin pointer {
+  cursor: pointer;
+  
+  &::selection {
+    background-color: transparent;
+  }
+}
+
 
 //EVENT DISPLAY
 
@@ -110,8 +118,18 @@ ORDER: Base + typography > general layout + grid > page layout > components
       @content;
     } //1200px
   }
+  @if $breakpoint == small-desktop {
+    @media only screen and (max-width: 87.5em) {
+      @content;
+    } //1400px
+  }
+  @if $breakpoint == desktop {
+    @media only screen and (max-width: 100em) {
+      @content;
+    } //1600px
+  }
   @if $breakpoint == big-desktop {
-    @media only screen and (min-width: 112.5em) {
+    @media only screen and (min-width: 125em) {
       @content;
     } //1800
   }

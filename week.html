@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Calendar App</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<div class="page-wrapper">
+
+	<nav class="nav">
+
+		<div class="nav__container">
+			<span class="nav__logo">Organized</span>
+			<ul class="nav__list">
+				<li class="nav__item">
+					<a href="week.html" class="nav__link">
+						<img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon">
+						<span class="nav__text">Calendar</span>
+					</a>
+				</li>
+
+				<li class="nav__item">
+					<a href="notes.html" class="nav__link">
+						<img src="assets/icons/svg/notes-colored.svg" alt="Notes icon" class="nav__icon">
+						<span class="nav__text">Notes</span>
+					</a>
+				</li>
+
+				<li class="nav__item">
+					<a href="todo.html" class="nav__link">
+						<img src="assets/icons/svg/checkbox-colored.svg" alt="Todo lists icon" class="nav__icon">
+						<span class="nav__text">Todo list</span>
+					</a>
+				</li>
+			</ul>
+			<!-- NAVIGATION LINKS -->
+
+			<input type="checkbox" class="nav__checkbox" id="nav-hamburger">
+			<label for="nav-hamburger" class="nav__checkmark">&nbsp;</label>
+			<!-- MOBILE MENU HANDLERS -->
+
+			<div class="nav__mobile">
+				<span class="nav__logo">Organized</span>
+
+				<ul class="nav__list">
+					<li class="nav__item">
+						<a href="week.html" class="nav__link">
+							<img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon">
+							<span class="nav__text">Calendar</span>
+						</a>
+					</li>
+
+					<li class="nav__item">
+						<a href="notes.html" class="nav__link">
+							<img src="assets/icons/svg/notes-colored.svg" alt="Notes icon" class="nav__icon">
+							<span class="nav__text">Notes</span>
+						</a>
+					</li>
+
+					<li class="nav__item">
+						<a href="todo.html" class="nav__link">
+							<img src="assets/icons/svg/checkbox-colored.svg" alt="Todo lists icon" class="nav__icon">
+							<span class="nav__text">Todo list</span>
+						</a>
+					</li>
+				</ul>
+				<!-- NAVIGATION LINKS -->
+
+				<div class="categories">
+
+					<h4 class="categories__heading">Calendar</h4>
+
+					<div class="categories__list">
+
+						<div class="categories__item">
+
+							<label class="categories__label checkbox__label" for="work-mobile">
+								<input type="checkbox" id="work-mobile" class="categories__checkbox checkbox" name="category" checked>
+								<span class="categories__checkmark checkbox__checkmark checkbox__checkmark--green">&nbsp;</span>
+								<span class="checkbox__text">Work</span>
+							</label>
+							<span class="categories__progress-bar categories__progress-bar--green">&nbsp;</span>
+						</div>
+
+						<div class="categories__item">
+							<label class="categories__label checkbox__label" for="guitar-mobile">
+								<input type="checkbox" id="guitar-mobile" class="categories__checkbox checkbox" name="category">
+								<span class="categories__checkmark checkbox__checkmark checkbox__checkmark--purple">&nbsp;</span>
+								<span class="checkbox__text">Guitar</span>
+							</label>
+							<span class="categories__progress-bar categories__progress-bar--purple">&nbsp;</span>
+						</div>
+
+						<div class="categories__item">
+							<label class="categories__label checkbox__label" for="home-mobile">
+								<input type="checkbox" id="home-mobile" class="categories__checkbox checkbox" name="category" checked>
+								<span class="categories__checkmark checkbox__checkmark checkbox__checkmark--blue">&nbsp;</span>
+								<span class="checkbox__text">Home</span>
+							</label>
+							<span class="categories__progress-bar categories__progress-bar--blue">&nbsp;</span>
+						</div>
+
+						<button class="categories__button"><span>+</span> Add more</button>
+					</div>
+
+				</div>
+				<!-- CALENDAR CATEGORIES -->
+			</div>
+			<!-- MOBILE NAVIGATION -->
+
+		</div>
+		<!-- NAVIGATION CONTAINER -->
+
+	</nav>
+	<!-- HEADER -->
+
+	<div class="content">
+
+		<div class="calendar calendar--week">
+
+			<div class="calendar__navigation">
+				<h2 class="calendar__header">November 2020</h2>
+				<div class="calendar__controls">
+					<button class="calendar__switch calendar__switch--left">&nbsp;</button>
+					<button class="calendar__switch calendar__switch--right">&nbsp;</button>
+				</div>
+			</div>
+			<!-- CALENDAR NAVIGATION -->
+
+			<div class="calendar__table-box">
+
+				<table class="calendar__labels">
+
+					<tr class="calendar__row">
+						<th>&nbsp;</th>
+						<td class="calendar__label"><span class="calendar__day--name">Mon</span><span class="calendar__day">2</span></td>
+						<td class="calendar__label"><span class="calendar__day--name">Tue</span><span class="calendar__day">3</span></td>
+						<td class="calendar__label"><span class="calendar__day--name">Wed</span><span class="calendar__day">4</span></td>
+						<td class="calendar__label"><span class="calendar__day--name">Thu</span><span class="calendar__day">5</span></td>
+						<td class="calendar__label"><span class="calendar__day--name">Fri</span><span class="calendar__day">6</span></td>
+						<td class="calendar__label"><span class="calendar__day--name">Sat</span><span class="calendar__day calendar__day--active">7</span></td>
+						<td class="calendar__label"><span class="calendar__day--name">Sun</span><span class="calendar__day">8</span></td>
+					</tr>
+
+				</table>
+				<!-- CALENDAR LABELS -->
+
+				<table class="calendar__table calendar__table--week">
+
+					<tr class="calendar__row">
+						<th>1am</th>
+						<td>
+							<div class="event event--purple">
+								<h5 class="event__hours">12:00am - 1:00pm</h5>
+								<h3 class="event__title">Make dinner</h3>
+							</div>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><span class="calendar__pointer">&nbsp;</span></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>2am</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>3am</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>4am</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>5am</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>6am</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>7am</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>8am</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>9am</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>10am</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>11am</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>12am</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>1pm</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>2pm</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>3pm</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>4pm</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>5pm</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>6pm</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>7pm</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>8pm</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>9pm</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>10pm</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>11pm</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="calendar__row">
+						<th>12pm</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+
+				</table>
+				<!-- CALENDAR TABLE -->
+
+			</div>
+			<!-- CALENDAR TABLE BOX-->
+
+		</div>
+		<!-- CALENDAR -->
+
+	</div>
+	<!-- CONTENT -->
+
+
+	<div class="sidebar">
+
+		<div class="profile">
+
+			<h5 class="profile__greeting">Have a nice day!</h5>
+
+			<div class="profile__info">
+				<div class="profile__description">
+					<h5 class="profile__name">Tomas Johnes</h5>
+					<h6 class="profile__name--sub">Organized CEO</h6>
+				</div>
+				<img src="assets/img/profile-picture.jpg" alt="Profile photo" class="profile__image">
+			</div>
+
+		</div>
+		<!-- PROFILE -->
+
+		<div class="side-calendar">
+
+			<div class="side-calendar__modes">
+				<button class="side-calendar__button"><a href="index.html">Today</a></button>
+				<button class="side-calendar__button side-calendar__button--active"><a href="week.html">Week</a></button>
+				<button class="side-calendar__button"><a href="month.html">Month</a></button>
+			</div>
+
+			<div class="side-calendar__header">
+				<h4 class="side-calendar__month">November 2020</h4>
+				<div class="side-calendar__controls">
+					<button class="side-calendar__switch side-calendar__switch--left">&nbsp;</button>
+					<button class="side-calendar__switch side-calendar__switch--right">&nbsp;</button>
+				</div>
+			</div>
+
+			<div class="side-calendar__calendar">
+				<span class="side-calendar__week"></span>
+				<div class="side-calendar__table">
+					<div class="side-calendar__day--name">Mon</div>
+					<div class="side-calendar__day--name">Tue</div>
+					<div class="side-calendar__day--name">Wed</div>
+					<div class="side-calendar__day--name">Thu</div>
+					<div class="side-calendar__day--name">Fri</div>
+					<div class="side-calendar__day--name">Sat</div>
+					<div class="side-calendar__day--name">Sun</div>
+					<div class="side-calendar__day--additional">26</div>
+					<div class="side-calendar__day--additional">27</div>
+					<div class="side-calendar__day--additional">28</div>
+					<div class="side-calendar__day--additional">29</div>
+					<div class="side-calendar__day--additional">30</div>
+					<div class="side-calendar__day--additional">31</div>
+					<div>1</div>
+					<div>2</div>
+					<div>3</div>
+					<div>4</div>
+					<div>5</div>
+					<div>6</div>
+					<div class="side-calendar__day--active">7</div>
+					<div>8</div>
+					<div>9</div>
+					<div>10</div>
+					<div>11</div>
+					<div>12</div>
+					<div>13</div>
+					<div>14</div>
+					<div>15</div>
+					<div>16</div>
+					<div>17</div>
+					<div>18</div>
+					<div>19</div>
+					<div>20</div>
+					<div>21</div>
+					<div>22</div>
+					<div>23</div>
+					<div>24</div>
+					<div>25</div>
+					<div>26</div>
+					<div>27</div>
+					<div>28</div>
+					<div>29</div>
+					<div>30</div>
+					<div class="side-calendar__day--additional">1</div>
+					<div class="side-calendar__day--additional">2</div>
+					<div class="side-calendar__day--additional">3</div>
+					<div class="side-calendar__day--additional">4</div>
+					<div class="side-calendar__day--additional">5</div>
+					<div class="side-calendar__day--additional">6</div>
+				</div>
+			</div>
+
+
+		</div>
+		<!-- SIDEBAR CALENDAR -->
+
+		<div class="categories">
+
+			<h4 class="categories__heading">Calendar</h4>
+
+			<div class="categories__list">
+
+				<div class="categories__item">
+
+					<label class="categories__label checkbox__label" for="work">
+						<input type="checkbox" id="work" class="categories__checkbox checkbox" name="category" checked>
+						<span class="categories__checkmark checkbox__checkmark checkbox__checkmark--green">&nbsp;</span>
+						<span class="checkbox__text">Work</span>
+					</label>
+					<span class="categories__progress-bar categories__progress-bar--green">&nbsp;</span>
+				</div>
+
+				<div class="categories__item">
+					<label class="categories__label checkbox__label" for="guitar">
+						<input type="checkbox" id="guitar" class="categories__checkbox checkbox" name="category">
+						<span class="categories__checkmark checkbox__checkmark checkbox__checkmark--purple">&nbsp;</span>
+						<span class="checkbox__text">Guitar</span>
+					</label>
+					<span class="categories__progress-bar categories__progress-bar--purple">&nbsp;</span>
+				</div>
+
+				<div class="categories__item">
+					<label class="categories__label checkbox__label" for="home">
+						<input type="checkbox" id="home" class="categories__checkbox checkbox" name="category" checked>
+						<span class="categories__checkmark checkbox__checkmark checkbox__checkmark--blue">&nbsp;</span>
+						<span class="checkbox__text">Home</span>
+					</label>
+					<span class="categories__progress-bar categories__progress-bar--blue">&nbsp;</span>
+				</div>
+
+				<button class="categories__button"><span>+</span> Add more</button>
+			</div>
+
+		</div>
+		<!-- CALENDAR CATEGORIES -->
+
+		<div class="recent">
+			<h4 class="recent__heading">Next up</h4>
+
+			<div class="event recent__event">
+				<h5 class="event__hours">12:00am - 1:00pm</h5>
+				<h3 class="event__title">Make dinner</h3>
+				<button class="event__button">Details</button>
+				<span class="event__duration">40 min</span>
+			</div>
+
+		</div>
+		<!-- NEXT UP EVENT -->
+
+	</div>
+	<!-- SIDEBAR -->
+
+</div>
+<!-- PAGE WRAPPER -->
+
+<!--<div class="popup">-->
+
+<!--	<div class="details details&#45;&#45;popup">-->
+
+<!--		<div class="details__header">-->
+<!--			<div class="details__headings">-->
+<!--				<h2 class="details__event">Clean up the house</h2>-->
+<!--				<h4 class="details__date">7 November 2020</h4>-->
+<!--			</div>-->
+<!--			<h5 class="details__time">10:00am - 1:00pm</h5>-->
+<!--			<span class="details__close">&nbsp;</span>-->
+<!--		</div>-->
+
+<!--		<div class="details__description">-->
+<!--			<h4 class="details__title">Lorem ipsum</h4>-->
+<!--			<p class="details__text">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus.</p>-->
+<!--		</div>-->
+
+<!--		<div class="details__todo todo">-->
+<!--			<h4 class="todo__title">To be done</h4>-->
+
+<!--			<div class="todo__item">-->
+<!--				<label class="todo__label checkbox__label" for="todo-1">-->
+<!--					<input type="checkbox" id="todo-1" class="checkbox todo__checkbox" name="todo" checked>-->
+<!--					<span class="checkbox__checkmark checkbox__checkmark&#45;&#45;blue">&nbsp;</span>-->
+<!--					<span class="todo__text checkbox__text">Empty dishwasher</span>-->
+<!--				</label>-->
+<!--			</div>-->
+
+<!--			<div class="todo__item">-->
+<!--				<label class="todo__label checkbox__label" for="todo-2">-->
+<!--					<input type="checkbox" id="todo-2" class="checkbox todo__checkbox" name="todo">-->
+<!--					<span class="checkbox__checkmark checkbox__checkmark&#45;&#45;blue">&nbsp;</span>-->
+<!--					<span class="todo__text checkbox__text">Clean up fridge</span>-->
+<!--				</label>-->
+<!--			</div>-->
+
+<!--			<div class="todo__item todo__item&#45;&#45;indent">-->
+<!--				<label class="todo__label checkbox__label" for="todo-3">-->
+<!--					<input type="checkbox" id="todo-3" class="checkbox todo__checkbox" name="todo" checked>-->
+<!--					<span class="checkbox__checkmark checkbox__checkmark&#45;&#45;blue">&nbsp;</span>-->
+<!--					<span class="todo__text checkbox__text">Put in groceries</span>-->
+<!--				</label>-->
+<!--			</div>-->
+
+<!--			<div class="todo__item">-->
+<!--				<label class="todo__label checkbox__label" for="todo-4">-->
+<!--					<input type="checkbox" id="todo-4" class="checkbox todo__checkbox" name="todo">-->
+<!--					<span class="checkbox__checkmark checkbox__checkmark&#45;&#45;blue">&nbsp;</span>-->
+<!--					<span class="todo__text checkbox__text">Wash clothes</span>-->
+<!--				</label>-->
+<!--			</div>-->
+
+<!--			<div class="todo__item">-->
+<!--				<label class="todo__label checkbox__label" for="todo-5">-->
+<!--					<input type="checkbox" id="todo-5" class="checkbox todo__checkbox" name="todo">-->
+<!--					<span class="checkbox__checkmark checkbox__checkmark&#45;&#45;blue">&nbsp;</span>-->
+<!--					<span class="todo__text checkbox__text">Clean the floors</span>-->
+<!--				</label>-->
+<!--			</div>-->
+
+<!--			<div class="todo__item">-->
+<!--				<label class="todo__label checkbox__label" for="todo-6">-->
+<!--					<input type="checkbox" id="todo-6" class="checkbox todo__checkbox" name="todo">-->
+<!--					<span class="checkbox__checkmark checkbox__checkmark&#45;&#45;blue">&nbsp;</span>-->
+<!--					<span class="todo__text checkbox__text">Vacuum</span>-->
+<!--				</label>-->
+<!--			</div>-->
+
+<!--		</div>-->
+
+<!--		<div class="details__info">-->
+<!--			<div class="details__info&#45;&#45;item">-->
+<!--				<img src="assets/icons/svg/bell.svg" alt="Notification bell" class="details__icon">-->
+<!--				<h4 class="details__icon&#45;&#45;title">30 minutes before</h4>-->
+<!--			</div>-->
+<!--			<div class="details__info&#45;&#45;item">-->
+<!--				<img src="assets/icons/svg/pin.svg" alt="Place pin" class="details__icon">-->
+<!--				<h4 class="details__icon&#45;&#45;title">Warsaw, Poland</h4>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--	</div>-->
+<!--	&lt;!&ndash; DETAILS POPUP&ndash;&gt;-->
+
+<!--</div>-->
+<!--&lt;!&ndash; POPUP &ndash;&gt;-->
+
+<script src="assets/js/app.js" async defer></script>
+</body>
+</html>

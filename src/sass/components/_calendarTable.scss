@@ -22,14 +22,30 @@
     margin: 1.5rem 0;
     
     @include flexBetween;
+  
+    @include respond(tab-land) {
+      height: 5rem;
+    }
+  
+    @include respond(tab-port) {
+      justify-content: center;
+    }
   }
   
   &__header {
     line-height: 1;
+    
+    @include respond(tab-port) {
+      color: $color-primary-light-2;
+    }
   }
   
   &__controls {
     @include flexBetween;
+    
+    @include respond(tab-port) {
+      display: none;
+    }
   }
   
   &__switch {
@@ -98,6 +114,10 @@
   &__day {
     font-size: 3.2rem;
     font-weight: 500;
+  
+    @include respond(tab-land) {
+      font-size: 2.9rem;
+    }
     
     &--active {
       height: 3.8rem;
@@ -117,6 +137,12 @@
       font-size: 2.4rem;
       font-weight: 500;
       line-height: 1;
+  
+      @include respond(tab-land) {
+        height: 2rem;
+        
+        font-size: 2.2rem;
+      }
     }
   }
   
@@ -138,6 +164,10 @@
       font-weight: 700;
       
       transform: translateY(50%);
+  
+      @include respond(phone) {
+        padding-right: 1rem;
+      }
     }
     
     & td {
@@ -197,6 +227,10 @@
 .calendar--day {
   margin-right: 2.5%;
   width: 42.5%;
+  
+  @include respond(tab-port) {
+    width: 100%;
+  }
   
   & th {
     width: 5%;

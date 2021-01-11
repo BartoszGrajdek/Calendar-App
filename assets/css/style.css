@@ -27,20 +27,19 @@ ORDER: Base + typography > general layout + grid > page layout > components
   box-sizing: inherit; }
 
 html {
-  font-size: 62.5%;
-  /*  @include respond(tab-land) {
-    // width < 1200?
-    font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
-  }
-
-  @include respond(tab-port) {
-    // width < 900?
-    font-size: 50%; //1 rem = 8px, 8/16 = 50%
-  }
-
-  @include respond(big-desktop) {
-    font-size: 75%; //1rem = 12, 12/16
-  }*/ }
+  font-size: 62.5%; }
+  @media only screen and (max-width: 100em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 87.5em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (max-width: 37.5em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (min-width: 125em) {
+    html {
+      font-size: 75%; } }
 
 body {
   box-sizing: border-box;
@@ -62,22 +61,57 @@ button {
 .page-wrapper {
   height: 100vh;
   width: 100vw;
-  display: flex; }
-
-.main {
-  width: 77%;
-  height: 100vh;
-  padding: 0 3.5rem; }
+  display: grid;
+  grid-template-columns: 77vw 23vw;
+  grid-template-rows: 9vh 91vh; }
+  @media only screen and (max-width: 75em) {
+    .page-wrapper {
+      grid-template-columns: 100vw;
+      grid-template-rows: 7vh 35vh 55vh; } }
+  @media only screen and (max-width: 56.25em) {
+    .page-wrapper {
+      grid-template-rows: 7vh 30vh 60vh; } }
+  @media only screen and (max-width: 75em) {
+    .page-wrapper--side .sidebar {
+      grid-row: 2 / 4;
+      display: flex;
+      justify-content: space-evenly; }
+    .page-wrapper--side .content {
+      display: none; } }
 
 .content {
-  height: 89vh;
   width: 100%;
+  padding: 0 3.5rem;
+  grid-column: 1 / 2;
   display: flex;
   align-items: flex-start;
   justify-content: space-between; }
+  @media only screen and (max-width: 75em) {
+    .content {
+      grid-row: 3 / 4; } }
+  @media only screen and (max-width: 37.5em) {
+    .content {
+      padding: 0 1rem; } }
   .content--noFlex {
     display: block;
     text-align: left; }
+
+.popup {
+  height: auto;
+  width: 100%;
+  padding: 4% 2.5%;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  background-color: #d5ebf8; }
+  .popup--todo {
+    display: none;
+    background-color: #fff; }
+    @media only screen and (max-width: 75em) {
+      .popup--todo {
+        display: block; } }
 
 body {
   font-family: "Roboto", sans-serif;
@@ -89,13 +123,22 @@ body {
 
 h1 {
   font-size: 6.5rem; }
+  @media only screen and (max-width: 75em) {
+    h1 {
+      font-size: 5.2rem; } }
 
 h2 {
   font-size: 4.5rem;
   line-height: 1.2; }
+  @media only screen and (max-width: 75em) {
+    h2 {
+      font-size: 3.6rem; } }
 
 h3 {
   font-size: 2.6rem; }
+  @media only screen and (max-width: 75em) {
+    h3 {
+      font-size: 2.08rem; } }
 
 h5 {
   font-size: 1.8rem;
@@ -162,12 +205,24 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: space-between; }
+    @media only screen and (max-width: 75em) {
+      .calendar__navigation {
+        height: 5rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .calendar__navigation {
+        justify-content: center; } }
   .calendar__header {
     line-height: 1; }
+    @media only screen and (max-width: 56.25em) {
+      .calendar__header {
+        color: #3282b8; } }
   .calendar__controls {
     display: flex;
     align-items: center;
     justify-content: space-between; }
+    @media only screen and (max-width: 56.25em) {
+      .calendar__controls {
+        display: none; } }
   .calendar__switch {
     height: 4.5rem;
     width: 4.5rem;
@@ -207,6 +262,9 @@ h6 {
   .calendar__day {
     font-size: 3.2rem;
     font-weight: 500; }
+    @media only screen and (max-width: 75em) {
+      .calendar__day {
+        font-size: 2.9rem; } }
     .calendar__day--active {
       height: 3.8rem;
       width: 3.8rem;
@@ -221,6 +279,10 @@ h6 {
       font-size: 2.4rem;
       font-weight: 500;
       line-height: 1; }
+      @media only screen and (max-width: 75em) {
+        .calendar__day--name {
+          height: 2rem;
+          font-size: 2.2rem; } }
   .calendar__table {
     height: 100%;
     width: 100%;
@@ -234,6 +296,9 @@ h6 {
       font-size: 1.2rem;
       font-weight: 700;
       transform: translateY(50%); }
+      @media only screen and (max-width: 37.5em) {
+        .calendar__row th {
+          padding-right: 1rem; } }
     .calendar__row td {
       position: relative; }
     .calendar__row td:not(.calendar__label) {
@@ -267,6 +332,9 @@ h6 {
 .calendar--day {
   margin-right: 2.5%;
   width: 42.5%; }
+  @media only screen and (max-width: 56.25em) {
+    .calendar--day {
+      width: 100%; } }
   .calendar--day th {
     width: 5%; }
   .calendar--day td {
@@ -402,8 +470,39 @@ h6 {
   background-color: #eff8ff;
   border-radius: 1.5rem;
   text-align: left; }
+  @media only screen and (max-width: 75em) {
+    .details {
+      margin-bottom: 1%;
+      height: auto; } }
+  @media only screen and (max-width: 56.25em) {
+    .details {
+      display: none; } }
   .details--note {
     width: 100%; }
+  .details--popup {
+    width: 40%;
+    height: auto;
+    margin: 0;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(-50%, -50%); }
+    @media only screen and (max-width: 75em) {
+      .details--popup {
+        width: 50%; } }
+    @media only screen and (max-width: 56.25em) {
+      .details--popup {
+        width: 60%; } }
+    @media only screen and (max-width: 37.5em) {
+      .details--popup {
+        width: 95%;
+        margin: auto;
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0); } }
   .details__header {
     display: flex;
     align-items: flex-start;
@@ -412,6 +511,32 @@ h6 {
     color: #3282b8; }
   .details__time {
     color: #3282b8; }
+    @media only screen and (max-width: 37.5em) {
+      .details__time {
+        display: none; } }
+  .details__close {
+    display: none; }
+    @media only screen and (max-width: 37.5em) {
+      .details__close {
+        height: 2.7rem;
+        width: 2.65rem;
+        display: block;
+        position: relative; }
+        .details__close::before, .details__close::after {
+          height: .1rem;
+          width: 3.5rem;
+          border-top: 2px solid #b4b4b4;
+          content: "";
+          display: block;
+          position: absolute; }
+        .details__close::before {
+          top: 0;
+          transform-origin: top left;
+          transform: rotate(45deg); }
+        .details__close::after {
+          bottom: 0;
+          transform-origin: bottom left;
+          transform: rotate(-45deg); } }
   .details__description {
     margin-top: 1.5rem; }
   .details__title {
@@ -519,24 +644,43 @@ h6 {
   text-align: left;
   font-size: 1.8rem;
   border-bottom: 1px solid #ebebeb; }
+  @media only screen and (max-width: 75em) {
+    .side-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 2.4rem;
+      text-align: center; } }
   .side-nav__category {
     margin: .5rem 0; }
   .side-nav__heading {
     margin-top: 1rem;
     font-size: 2.4rem;
     color: #0b2f43; }
+    @media only screen and (max-width: 75em) {
+      .side-nav__heading {
+        font-size: 3.2rem; } }
     .side-nav__heading--label {
       font-weight: 700; }
     .side-nav__heading--sub {
       margin-left: 4rem;
       display: none;
       font-weight: 500; }
+      @media only screen and (max-width: 75em) {
+        .side-nav__heading--sub {
+          margin: 0; } }
   .side-nav__label {
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: flex-start; }
     .side-nav__label::selection {
       background-color: transparent; }
+    @media only screen and (max-width: 75em) {
+      .side-nav__label {
+        justify-content: center;
+        position: relative;
+        transform: translateX(-1.5rem); } }
   .side-nav__checkbox {
     display: none; }
     .side-nav__checkbox:checked ~ .side-nav__notes .side-nav__heading--sub {
@@ -569,50 +713,105 @@ h6 {
   .side-nav ~ .categories {
     border: 0; }
 
-.todo {
+.todo-list {
   width: 30%;
-  display: block; }
-  .todo__container {
+  display: block;
+  position: relative; }
+  @media only screen and (max-width: 56.25em) {
+    .todo-list {
+      width: 60%;
+      margin: 1.5rem auto;
+      text-align: center; } }
+  @media only screen and (max-width: 37.5em) {
+    .todo-list {
+      width: 80%; } }
+  .todo-list__close {
+    height: 2.7rem;
+    width: 2.65rem;
+    display: block;
+    position: absolute;
+    top: 3.5%;
+    right: 7%; }
+    .todo-list__close::before, .todo-list__close::after {
+      height: .1rem;
+      width: 3.5rem;
+      border-top: 2px solid #b4b4b4;
+      content: "";
+      display: block;
+      position: absolute; }
+    .todo-list__close::before {
+      top: 0;
+      transform-origin: top left;
+      transform: rotate(45deg); }
+    .todo-list__close::after {
+      bottom: 0;
+      transform-origin: bottom left;
+      transform: rotate(-45deg); }
+  .todo-list__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     align-items: flex-start; }
-  .todo__header {
+    @media only screen and (max-width: 56.25em) {
+      .todo-list__container {
+        flex-direction: column; } }
+  .todo-list__header {
     margin: 1.5rem 0; }
-  .todo__name {
+    @media only screen and (max-width: 56.25em) {
+      .todo-list__header {
+        margin: 1.5rem auto;
+        text-align: center; } }
+  .todo-list__name {
     font-size: 3.2rem;
     color: #0f4c75;
     text-align: center; }
-  .todo__board {
+  .todo-list__board {
     width: 100%;
     padding: 1rem;
-    border-radius: 1rem; }
-    .todo__board--pending {
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .todo-list__board--pending {
       background-color: #d5ebf8; }
-    .todo__board--doing {
+    .todo-list__board--doing {
       background-color: #bbe1fa; }
-    .todo__board--done {
+    .todo-list__board--done {
       background-color: #8baec6; }
 
-.todo__checkbox:checked ~ .todo__text {
-  color: #3282b8;
-  text-decoration: line-through; }
-
-.todo__item {
-  margin-top: .2rem; }
-  .todo__item--indent {
-    width: 90%;
-    margin-left: 2rem; }
-
-.todo__label .checkbox__text {
-  color: #0f4c75;
-  font-weight: 500; }
+.todo {
+  width: 100%; }
+  .todo__checkbox:checked ~ .todo__text {
+    color: #3282b8;
+    text-decoration: line-through; }
+  .todo__item {
+    margin-top: .2rem; }
+    .todo__item--indent {
+      width: 90%;
+      margin-left: 2rem; }
+  .todo__label .checkbox__text {
+    color: #0f4c75;
+    font-weight: 500; }
 
 .nav {
-  height: 9vh;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #ebebeb; }
+  height: 100%;
+  width: 100%;
+  padding: 0 3.5rem; }
+  @media only screen and (max-width: 37.5em) {
+    .nav {
+      padding: 0; } }
+  @media only screen and (max-width: 75em) {
+    .nav {
+      background-color: #eff8ff; } }
+  .nav__container {
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ebebeb; }
+    @media only screen and (max-width: 37.5em) {
+      .nav__container {
+        justify-content: center; } }
   .nav__logo {
     font-size: 3.6rem;
     padding-right: 1rem;
@@ -621,9 +820,15 @@ h6 {
     background: linear-gradient(45deg, #3282b8, #bbe1fa);
     -webkit-background-clip: text;
     transform: translateY(0.5rem); }
+    @media only screen and (max-width: 37.5em) {
+      .nav__logo {
+        transform: translateY(-1%); } }
   .nav__list {
     display: flex;
     list-style: none; }
+    @media only screen and (max-width: 37.5em) {
+      .nav__list {
+        display: none; } }
   .nav__item {
     margin-left: 5.1rem; }
   .nav__link {
@@ -642,12 +847,111 @@ h6 {
     margin-left: 1.1rem;
     font-size: 2rem;
     font-weight: 700; }
+  .nav__checkbox {
+    display: none; }
+    .nav__checkbox:checked ~ .nav__checkmark {
+      border-color: transparent; }
+      .nav__checkbox:checked ~ .nav__checkmark::before {
+        top: -.3rem;
+        transform: rotate(45deg); }
+      .nav__checkbox:checked ~ .nav__checkmark::after {
+        top: -1.1rem;
+        transform: rotate(-45deg); }
+    .nav__checkbox:checked ~ .nav__mobile {
+      transform: translateY(0); }
+  .nav__checkmark {
+    display: none;
+    height: .1rem;
+    width: 3rem;
+    position: absolute;
+    top: 50%;
+    right: 7.5%;
+    z-index: 3;
+    border-top: 2px solid #3282b8;
+    transition: all .3s ease-out;
+    cursor: pointer; }
+    .nav__checkmark::selection {
+      background-color: transparent; }
+    .nav__checkmark::after, .nav__checkmark::before {
+      height: 1.3rem;
+      width: 3rem;
+      content: "";
+      display: block;
+      position: absolute;
+      transition: all .3s ease-out; }
+    .nav__checkmark::before {
+      top: -1.5rem;
+      border-top: 2px solid #3282b8; }
+    .nav__checkmark::after {
+      top: 0;
+      border-bottom: 2px solid #3282b8; }
+    @media only screen and (max-width: 37.5em) {
+      .nav__checkmark {
+        display: block; } }
+
+.nav__mobile {
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: #fff;
+  transform: translateY(-100%);
+  transition: all .3s ease-out; }
+  @media only screen and (max-width: 37.5em) {
+    .nav__mobile {
+      display: flex; } }
+  .nav__mobile .nav__logo {
+    width: 31.5rem;
+    padding: 0;
+    margin-top: 10%;
+    font-size: 5.5rem; }
+  .nav__mobile .nav__list {
+    width: 60%;
+    margin-top: 12%;
+    display: block; }
+  .nav__mobile .nav__item {
+    margin: 0; }
+    .nav__mobile .nav__item:not(:first-child) {
+      margin-top: 3rem; }
+  .nav__mobile .nav__icon {
+    width: 6rem;
+    height: 6rem;
+    margin-right: 2rem; }
+  .nav__mobile .nav__link {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    text-align: center; }
+  .nav__mobile .nav__text {
+    display: block;
+    font-size: 3.2rem; }
+  .nav__mobile .categories {
+    width: 60%;
+    margin: 12% 0 0;
+    display: block; }
 
 .sidebar {
-  width: 23%;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   padding: 0 3.5rem;
-  background-color: #eff8ff; }
+  background-color: #eff8ff;
+  grid-column: 2 / 3;
+  grid-row: 1 / 3; }
+  @media only screen and (max-width: 75em) {
+    .sidebar {
+      grid-row: 2 / 3;
+      grid-column: 1 / 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; } }
+  @media only screen and (max-width: 37.5em) {
+    .sidebar {
+      padding: 0; } }
 
 .profile {
   height: 9vh;
@@ -656,6 +960,9 @@ h6 {
   justify-content: space-between;
   text-align: left;
   border-bottom: 1px solid #ebebeb; }
+  @media only screen and (max-width: 75em) {
+    .profile {
+      display: none; } }
   .profile__greeting {
     width: 8rem;
     font-weight: 500; }
@@ -677,7 +984,16 @@ h6 {
 
 .side-calendar {
   width: 100%;
+  position: relative;
   border-bottom: 1px solid #ebebeb; }
+  @media only screen and (max-width: 75em) {
+    .side-calendar {
+      margin: 0 4%;
+      width: 40%;
+      border: none; } }
+  @media only screen and (max-width: 37.5em) {
+    .side-calendar {
+      width: 100%; } }
   .side-calendar__modes {
     height: 5rem;
     margin: 2rem 0 1.5rem;
@@ -686,6 +1002,15 @@ h6 {
     justify-content: space-between;
     background-color: #d5ebf8;
     border-radius: 1.5rem; }
+    @media only screen and (max-width: 75em) {
+      .side-calendar__modes {
+        height: 4rem;
+        width: 80%;
+        margin: 0 auto 1rem;
+        border-radius: 1.3rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .side-calendar__modes {
+        display: none; } }
   .side-calendar__button {
     height: 5rem;
     width: 33%;
@@ -694,6 +1019,9 @@ h6 {
     font-size: 1.8rem;
     font-weight: 700;
     text-transform: uppercase; }
+    @media only screen and (max-width: 75em) {
+      .side-calendar__button {
+        font-size: 1.6rem; } }
     .side-calendar__button:first-child::after, .side-calendar__button:last-child::after {
       height: 60%;
       width: 2px;
@@ -717,12 +1045,25 @@ h6 {
       z-index: 2;
       background-color: #fff;
       border-radius: 1.4rem; }
+      @media only screen and (max-width: 75em) {
+        .side-calendar__button--active {
+          height: 3.6rem;
+          border-radius: 1.2rem; } }
   .side-calendar__header {
     display: flex;
     align-items: center;
     justify-content: space-between; }
   .side-calendar__month {
     text-align: left; }
+    @media only screen and (max-width: 75em) {
+      .side-calendar__month {
+        margin-left: 4%; } }
+    @media only screen and (max-width: 56.25em) {
+      .side-calendar__month {
+        margin-left: 3%; } }
+    @media only screen and (max-width: 37.5em) {
+      .side-calendar__month {
+        margin-left: 4%; } }
   .side-calendar__controls {
     display: flex;
     align-items: center;
@@ -750,8 +1091,10 @@ h6 {
     .side-calendar__switch--right::after {
       transform: rotate(45deg); }
   .side-calendar__calendar {
+    width: 100%;
     position: relative; }
   .side-calendar__table {
+    width: 100%;
     margin: 1rem 0 1.5rem;
     font-size: 1.6rem;
     font-weight: 700;
@@ -761,6 +1104,12 @@ h6 {
     position: relative;
     z-index: 5;
     overflow: hidden; }
+    @media only screen and (max-width: 75em) {
+      .side-calendar__table {
+        margin: .5rem 0 0; } }
+    @media only screen and (max-width: 37.5em) {
+      .side-calendar__table {
+        z-index: 1; } }
     .side-calendar__table div {
       display: flex;
       align-items: center;
@@ -792,8 +1141,20 @@ h6 {
   padding-bottom: 2rem;
   text-align: left;
   border-bottom: 1px solid #ebebeb; }
+  @media only screen and (max-width: 75em) {
+    .categories {
+      margin: 0 4%;
+      width: 40%;
+      border: none; } }
+  @media only screen and (max-width: 37.5em) {
+    .categories {
+      display: none; } }
   .categories__heading {
     margin: 1rem 0 1rem; }
+    @media only screen and (max-width: 37.5em) {
+      .categories__heading {
+        font-size: 3rem;
+        text-align: center; } }
   .categories__list {
     display: flex;
     flex-direction: column;
@@ -836,7 +1197,7 @@ h6 {
       width: 40%;
       background-color: #323CB8; }
   .categories__button {
-    width: 100%;
+    width: 50%;
     height: 3rem;
     display: flex;
     align-items: center;
@@ -855,7 +1216,11 @@ h6 {
 
 .recent {
   height: 15vh;
-  text-align: left; }
+  text-align: left;
+  position: relative; }
+  @media only screen and (max-width: 75em) {
+    .recent {
+      display: none; } }
   .recent__heading {
     margin: .5rem 0; }
   .recent__event {
@@ -876,6 +1241,10 @@ h6 {
       margin-top: .4rem;
       font-size: 3.5rem;
       line-height: 1; }
+      @media only screen and (max-width: 100em) {
+        .recent__event h3 {
+          margin-top: .8rem;
+          font-size: 3rem; } }
     .recent__event h5, .recent__event h3 {
       margin-left: 0; }
     .recent__event button {
@@ -886,6 +1255,9 @@ h6 {
       font-weight: 700;
       background-color: #0f4c75;
       border-radius: .3rem; }
+      @media only screen and (max-width: 100em) {
+        .recent__event button {
+          font-size: 2.2rem; } }
     .recent__event span {
       padding: 0 .4rem;
       position: absolute;
@@ -894,3 +1266,8 @@ h6 {
       color: #3282b8;
       background-color: #fff;
       border-radius: .3rem; }
+      @media only screen and (max-width: 100em) {
+        .recent__event span {
+          padding: 0 .2rem;
+          top: 1rem;
+          right: 1.5rem; } }

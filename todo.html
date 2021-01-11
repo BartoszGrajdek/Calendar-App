@@ -8,110 +8,199 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-<div class="page-wrapper">
 
-  <div class="main">
+<div class="page-wrapper page-wrapper--side">
 
-    <nav class="nav">
+  <nav class="nav">
 
+    <div class="nav__container">
       <span class="nav__logo">Organized</span>
       <ul class="nav__list">
-        <li class="nav__item"><a href="index.html" class="nav__link"><img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon"><span class="nav__text">Calendar</span></a></li>
-        <li class="nav__item"><a href="notes.html" class="nav__link"><img src="assets/icons/svg/notes-colored.svg" alt="Notes icon" class="nav__icon"><span class="nav__text">Notes</span></a></li>
-        <li
-                class="nav__item"><a href="todo.html"
-                                     class="nav__link"><img src="assets/icons/svg/checkbox-colored.svg" alt="Todo lists icon" class="nav__icon"><span class="nav__text">Todo list</span></a></li>
+        <li class="nav__item">
+          <a href="week.html" class="nav__link">
+            <img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon">
+            <span class="nav__text">Calendar</span>
+          </a>
+        </li>
+
+        <li class="nav__item">
+          <a href="notes.html" class="nav__link">
+            <img src="assets/icons/svg/notes-colored.svg" alt="Notes icon" class="nav__icon">
+            <span class="nav__text">Notes</span>
+          </a>
+        </li>
+
+        <li class="nav__item">
+          <a href="todo.html" class="nav__link">
+            <img src="assets/icons/svg/checkbox-colored.svg" alt="Todo lists icon" class="nav__icon">
+            <span class="nav__text">Todo list</span>
+          </a>
+        </li>
       </ul>
+      <!-- NAVIGATION LINKS -->
 
-    </nav>
-    <!-- HEADER -->
+      <input type="checkbox" class="nav__checkbox" id="nav-hamburger">
+      <label for="nav-hamburger" class="nav__checkmark">&nbsp;</label>
+      <!-- MOBILE MENU HANDLERS -->
 
-    <div class="content content--noFlex">
+      <div class="nav__mobile">
+        <span class="nav__logo">Organized</span>
 
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="week.html" class="nav__link">
+              <img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon">
+              <span class="nav__text">Calendar</span>
+            </a>
+          </li>
 
-      <h2 class="todo__header">Payments</h2>
+          <li class="nav__item">
+            <a href="notes.html" class="nav__link">
+              <img src="assets/icons/svg/notes-colored.svg" alt="Notes icon" class="nav__icon">
+              <span class="nav__text">Notes</span>
+            </a>
+          </li>
 
-      <div class="todo__container">
+          <li class="nav__item">
+            <a href="todo.html" class="nav__link">
+              <img src="assets/icons/svg/checkbox-colored.svg" alt="Todo lists icon" class="nav__icon">
+              <span class="nav__text">Todo list</span>
+            </a>
+          </li>
+        </ul>
+        <!-- NAVIGATION LINKS -->
 
-        <div class="todo">
-          <h3 class="todo__name">Pending</h3>
-          <div class="todo__board todo__board--pending">
-            <div class="event event--month event--todo">
-              <h3 class="event__title">Electricity</h3>
+        <div class="categories">
+
+          <h4 class="categories__heading">Calendar</h4>
+
+          <div class="categories__list">
+
+            <div class="categories__item">
+
+              <label class="categories__label checkbox__label" for="work-mobile">
+                <input type="checkbox" id="work-mobile" class="categories__checkbox checkbox" name="category" checked>
+                <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--green">&nbsp;</span>
+                <span class="checkbox__text">Work</span>
+              </label>
+              <span class="categories__progress-bar categories__progress-bar--green">&nbsp;</span>
             </div>
 
-            <div class="event event--month event--todo">
-              <h3 class="event__title">Water</h3>
+            <div class="categories__item">
+              <label class="categories__label checkbox__label" for="guitar-mobile">
+                <input type="checkbox" id="guitar-mobile" class="categories__checkbox checkbox" name="category">
+                <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--purple">&nbsp;</span>
+                <span class="checkbox__text">Guitar</span>
+              </label>
+              <span class="categories__progress-bar categories__progress-bar--purple">&nbsp;</span>
             </div>
 
-            <div class="event event--month event--todo">
-              <h3 class="event__title">Gas</h3>
-            </div>
-            <button class="categories__button"><span>+</span> Add more</button>
-          </div>
-        </div>
-        <!-- TO-DO BOARD -->
-
-        <div class="todo">
-          <h3 class="todo__name">Doing</h3>
-          <div class="todo__board todo__board--doing">
-            <div class="event event--month event--todo">
-              <h3 class="event__title">New bed</h3>
-            </div>
-
-            <div class="event event--month event--todo">
-              <h3 class="event__title">Computer for Jane</h3>
-            </div>
-
-            <div class="event event--month event--todo">
-              <h3 class="event__title">Bedroom renovation</h3>
-            </div>
-
-            <div class="event event--month event--todo">
-              <h3 class="event__title">Gym subscription</h3>
-            </div>
-
-            <div class="event event--month event--todo">
-              <h3 class="event__title">New furniture for dinning room</h3>
-            </div>
-
-            <button class="categories__button"><span>+</span> Add more</button>
-          </div>
-        </div>
-        <!-- TO-DO BOARD -->
-
-        <div class="todo">
-          <h3 class="todo__name">Done</h3>
-          <div class="todo__board todo__board--done">
-            <div class="event event--month event--todo">
-              <h3 class="event__title">House rent</h3>
-            </div>
-
-            <div class="event event--month event--todo">
-              <h3 class="event__title">Car credit</h3>
-            </div>
-
-            <div class="event event--month event--todo">
-              <h3 class="event__title">Roof fix</h3>
-            </div>
-
-            <div class="event event--month event--todo">
-              <h3 class="event__title">New house heating</h3>
+            <div class="categories__item">
+              <label class="categories__label checkbox__label" for="home-mobile">
+                <input type="checkbox" id="home-mobile" class="categories__checkbox checkbox" name="category" checked>
+                <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--blue">&nbsp;</span>
+                <span class="checkbox__text">Home</span>
+              </label>
+              <span class="categories__progress-bar categories__progress-bar--blue">&nbsp;</span>
             </div>
 
             <button class="categories__button"><span>+</span> Add more</button>
           </div>
-        </div>
-        <!-- TO-DO BOARD -->
 
+        </div>
+        <!-- CALENDAR CATEGORIES -->
       </div>
-      <!-- TO-DO CONTAINER -->
+      <!-- MOBILE NAVIGATION -->
 
     </div>
-    <!-- CONTENT -->
+    <!-- NAVIGATION CONTAINER -->
+
+  </nav>
+  <!-- HEADER -->
+
+  <div class="content content--noFlex">
+
+
+    <h2 class="todo-list__header">Payments</h2>
+
+    <div class="todo-list__container">
+
+      <div class="todo-list">
+        <h3 class="todo-list__name">Pending</h3>
+        <div class="todo-list__board todo-list__board--pending">
+          <div class="event event--month event--todo">
+            <h3 class="event__title">Electricity</h3>
+          </div>
+
+          <div class="event event--month event--todo">
+            <h3 class="event__title">Water</h3>
+          </div>
+
+          <div class="event event--month event--todo">
+            <h3 class="event__title">Gas</h3>
+          </div>
+          <button class="categories__button"><span>+</span> Add more</button>
+        </div>
+      </div>
+      <!-- TO-DO BOARD -->
+
+      <div class="todo-list">
+        <h3 class="todo-list__name">Doing</h3>
+        <div class="todo-list__board todo-list__board--doing">
+          <div class="event event--month event--todo">
+            <h3 class="event__title">New bed</h3>
+          </div>
+
+          <div class="event event--month event--todo">
+            <h3 class="event__title">Computer for Jane</h3>
+          </div>
+
+          <div class="event event--month event--todo">
+            <h3 class="event__title">Bedroom renovation</h3>
+          </div>
+
+          <div class="event event--month event--todo">
+            <h3 class="event__title">Gym subscription</h3>
+          </div>
+
+          <div class="event event--month event--todo">
+            <h3 class="event__title">New furniture for dinning room</h3>
+          </div>
+
+          <button class="categories__button"><span>+</span> Add more</button>
+        </div>
+      </div>
+      <!-- TO-DO BOARD -->
+
+      <div class="todo-list">
+        <h3 class="todo-list__name">Done</h3>
+        <div class="todo-list__board todo-list__board--done">
+          <div class="event event--month event--todo">
+            <h3 class="event__title">House rent</h3>
+          </div>
+
+          <div class="event event--month event--todo">
+            <h3 class="event__title">Car credit</h3>
+          </div>
+
+          <div class="event event--month event--todo">
+            <h3 class="event__title">Roof fix</h3>
+          </div>
+
+          <div class="event event--month event--todo">
+            <h3 class="event__title">New house heating</h3>
+          </div>
+
+          <button class="categories__button"><span>+</span> Add more</button>
+        </div>
+      </div>
+      <!-- TO-DO BOARD -->
+
+    </div>
+    <!-- TO-DO CONTAINER -->
 
   </div>
-  <!-- MAIN CONTAINER -->
+  <!-- CONTENT -->
 
   <div class="sidebar">
 
@@ -228,6 +317,7 @@
       <!-- SIDE NAV NOTES CATEGORY -->
 
     </div>
+    <!-- NOTES / TO-DO NAVIGATION -->
 
     <div class="categories">
 
@@ -274,6 +364,96 @@
 
 </div>
 <!-- PAGE WRAPPER -->
+
+<!--<div class="popup popup&#45;&#45;todo">-->
+
+<!--  <div class="content content&#45;&#45;noFlex">-->
+
+<!--    <span class="todo-list__close">&nbsp;</span>-->
+
+<!--    <h2 class="todo-list__header">Payments</h2>-->
+
+<!--    <div class="todo-list__container">-->
+
+<!--      <div class="todo-list">-->
+<!--        <h3 class="todo-list__name">Pending</h3>-->
+<!--        <div class="todo-list__board todo-list__board&#45;&#45;pending">-->
+<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
+<!--            <h3 class="event__title">Electricity</h3>-->
+<!--          </div>-->
+
+<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
+<!--            <h3 class="event__title">Water</h3>-->
+<!--          </div>-->
+
+<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
+<!--            <h3 class="event__title">Gas</h3>-->
+<!--          </div>-->
+<!--          <button class="categories__button"><span>+</span> Add more</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; TO-DO BOARD &ndash;&gt;-->
+
+<!--      <div class="todo-list">-->
+<!--        <h3 class="todo-list__name">Doing</h3>-->
+<!--        <div class="todo-list__board todo-list__board&#45;&#45;doing">-->
+<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
+<!--            <h3 class="event__title">New bed</h3>-->
+<!--          </div>-->
+
+<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
+<!--            <h3 class="event__title">Computer for Jane</h3>-->
+<!--          </div>-->
+
+<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
+<!--            <h3 class="event__title">Bedroom renovation</h3>-->
+<!--          </div>-->
+
+<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
+<!--            <h3 class="event__title">Gym subscription</h3>-->
+<!--          </div>-->
+
+<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
+<!--            <h3 class="event__title">New furniture for dinning room</h3>-->
+<!--          </div>-->
+
+<!--          <button class="categories__button"><span>+</span> Add more</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; TO-DO BOARD &ndash;&gt;-->
+
+<!--      <div class="todo-list">-->
+<!--        <h3 class="todo-list__name">Done</h3>-->
+<!--        <div class="todo-list__board todo-list__board&#45;&#45;done">-->
+<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
+<!--            <h3 class="event__title">House rent</h3>-->
+<!--          </div>-->
+
+<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
+<!--            <h3 class="event__title">Car credit</h3>-->
+<!--          </div>-->
+
+<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
+<!--            <h3 class="event__title">Roof fix</h3>-->
+<!--          </div>-->
+
+<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
+<!--            <h3 class="event__title">New house heating</h3>-->
+<!--          </div>-->
+
+<!--          <button class="categories__button"><span>+</span> Add more</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; TO-DO BOARD &ndash;&gt;-->
+
+<!--    </div>-->
+<!--    &lt;!&ndash; TO-DO CONTAINER &ndash;&gt;-->
+
+<!--  </div>-->
+<!--  &lt;!&ndash; CONTENT &ndash;&gt;-->
+
+<!--</div>-->
+<!--&lt;!&ndash; POPUP &ndash;&gt;-->
 
 <script src="assets/js/app.js" async defer></script>
 </body>

@@ -7,6 +7,15 @@
   
   @include spacer;
   
+  @include respond(tab-land) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    font-size: 2.4rem;
+    text-align: center;
+  }
+  
   &__category {
     margin: .5rem 0;
   }
@@ -16,6 +25,10 @@
     
     font-size: 2.4rem;
     color: $color-primary;
+  
+    @include respond(tab-land) {
+      font-size: 3.2rem;
+    }
     
     &--label {
       font-weight: 700;
@@ -26,15 +39,27 @@
       display: none;
   
       font-weight: 500;
+  
+      @include respond(tab-land) {
+        margin: 0;
+      }
     }
   }
   
   &__label {
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     
     @include transparentSelection;
+  
+    @include respond(tab-land) {
+      justify-content: center;
+      position: relative;
+      
+      transform: translateX(-1.5rem);
+    }
   }
   
   &__checkbox {
@@ -46,6 +71,10 @@
     
     &:checked ~ .side-nav__label .side-nav__checkmark {
       transform: rotate(90deg);
+    }
+    
+    &:checked ~ .side-nav__label {
+    
     }
   }
   

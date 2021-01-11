@@ -11,20 +11,25 @@
 html {
   // This defines what 1rem is
   font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
-
-/*  @include respond(tab-land) {
-    // width < 1200?
-    font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  
+  @include respond(desktop) {
+    // width < 1600?
+    font-size: 56.25%; //1 rem = 8px, 8/16 = 50%
   }
-
-  @include respond(tab-port) {
-    // width < 900?
+  
+  @include respond(small-desktop) {
+    // width < 1600?
     font-size: 50%; //1 rem = 8px, 8/16 = 50%
   }
-
+  
+  @include respond(phone) {
+    // width < 600?
+    font-size: 56.25%;
+  }
+  
   @include respond(big-desktop) {
     font-size: 75%; //1rem = 12, 12/16
-  }*/
+  }
 }
 
 body {
@@ -55,25 +60,80 @@ button {
   height: 100vh;
   width: 100vw;
   
-  display: flex;
-}
-
-.main {
-  width: 77%;
-  height: 100vh;
-  padding: 0 3.5rem;
+  display: grid;
+  
+  grid-template-columns: 77vw 23vw;
+  grid-template-rows: 9vh 91vh;
+  
+  @include respond(tab-land) {
+    grid-template-columns: 100vw;
+    grid-template-rows: 7vh 35vh 55vh;
+  }
+  
+  @include respond(tab-port) {
+    grid-template-rows: 7vh 30vh 60vh;
+  }
+  
+  &--side {
+    @include respond(tab-land) {
+      .sidebar {
+        grid-row: 2 / 4;
+        
+        display: flex;
+        justify-content: space-evenly;
+      }
+      
+      .content {
+        display: none;
+      }
+    }
+  }
 }
 
 .content {
-  height: 89vh;
   width: 100%;
+  padding: 0 3.5rem;
+  
+  grid-column: 1 / 2;
   
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   
+  @include respond(tab-land) {
+    grid-row: 3 / 4;
+  }
+  
+  @include respond(phone) {
+    padding: 0 1rem;
+  }
+  
   &--noFlex {
     display: block;
     text-align: left;
+  }
+}
+
+.popup {
+  height: auto;
+  width: 100%;
+  padding: 4% 2.5%;
+  min-height: 100%;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  
+  background-color: $color-primary-light-5;
+  
+  &--todo {
+    display: none;
+    
+    background-color: $color-white;
+    
+    @include respond(tab-land) {
+      display: block;
+    }
   }
 }
