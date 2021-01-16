@@ -34,10 +34,10 @@ $color-black: #3b3735;
 
 // FONT
 $font-primary: 'Roboto', sans-serif;
-$font-secondary: Blacksword;
+$font-secondary: Blacksword, sans-serif;
 $default-font-size: 2.4rem;
 
 @font-face {
-  font-family: Blacksword;
+  font-family: Blacksword, sans-serif;
   src: url("/assets/fonts/Blacksword.otf");
 }
