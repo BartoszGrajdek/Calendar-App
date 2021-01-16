@@ -1,0 +1,1310 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+@font-face {
+  font-family: Blacksword, sans-serif;
+  src: url("/assets/fonts/Blacksword.otf"); }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+  @media only screen and (max-width: 100em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 87.5em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (max-width: 37.5em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (min-width: 125em) {
+    html {
+      font-size: 75%; } }
+
+body {
+  box-sizing: border-box;
+  text-align: center; }
+
+a,
+a:active,
+a:visited,
+a:hover {
+  color: inherit;
+  text-decoration: none; }
+
+button {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer; }
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 2.4rem;
+  /*font-size: 16px;*/
+  line-height: 1.7;
+  color: #0b2f43; }
+
+h1 {
+  font-size: 6.5rem; }
+  @media only screen and (max-width: 75em) {
+    h1 {
+      font-size: 5.2rem; } }
+
+h2 {
+  font-size: 4.5rem;
+  line-height: 1.2; }
+  @media only screen and (max-width: 75em) {
+    h2 {
+      font-size: 3.6rem; } }
+
+h3 {
+  font-size: 2.6rem; }
+  @media only screen and (max-width: 75em) {
+    h3 {
+      font-size: 2.08rem; } }
+
+h5 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.4; }
+
+h6 {
+  font-size: 1.5rem;
+  font-weight: 500; }
+
+.nav__checkbox {
+  display: none; }
+  .nav__checkbox:checked ~ .nav__checkmark span {
+    border-color: transparent; }
+    .nav__checkbox:checked ~ .nav__checkmark span::before {
+      width: 3.7rem;
+      transform-origin: left top;
+      transform: rotate(45deg); }
+    .nav__checkbox:checked ~ .nav__checkmark span::after {
+      width: 3.7rem;
+      transform-origin: left bottom;
+      transform: rotate(-45deg); }
+  .nav__checkbox:checked ~ .nav__mobile {
+    transform: translateY(0); }
+
+.nav__checkmark {
+  height: 3rem;
+  width: 3rem;
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  cursor: pointer; }
+  .nav__checkmark::selection {
+    background-color: transparent; }
+  @media only screen and (max-width: 37.5em) {
+    .nav__checkmark {
+      display: block; } }
+  .nav__checkmark span {
+    height: .1rem;
+    width: 3rem;
+    display: block;
+    border-top: 2px solid #3282b8;
+    transform: translate(-50%, -50%);
+    transition: all .3s ease-out;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer; }
+    .nav__checkmark span::selection {
+      background-color: transparent; }
+    .nav__checkmark span::before, .nav__checkmark span::after {
+      height: .1rem;
+      width: 3rem;
+      border-top: 2px solid #3282b8;
+      transition: all .3s ease-out;
+      content: "";
+      display: block;
+      position: absolute; }
+    .nav__checkmark span::before {
+      top: -1.4rem;
+      left: 0; }
+    .nav__checkmark span::after {
+      top: 1.2rem;
+      left: 0; }
+
+.calendar__switch {
+  height: 4.5rem;
+  width: 4.5rem;
+  position: relative;
+  top: -.5rem; }
+  .calendar__switch::before, .calendar__switch::after {
+    height: 2px;
+    width: 3.14rem;
+    border-top: 1px solid black;
+    content: "";
+    display: block;
+    position: absolute;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .calendar__switch--left {
+    margin-right: 3rem; }
+    .calendar__switch--left::before {
+      transform-origin: left bottom;
+      transform: translateX(-50%) rotate(45deg); }
+    .calendar__switch--left::after {
+      transform-origin: left bottom;
+      transform: translateX(-45%) rotate(-45deg); }
+  .calendar__switch--right::before {
+    transform-origin: right bottom;
+    transform: translateX(-50%) rotate(45deg); }
+  .calendar__switch--right::after {
+    transform-origin: right bottom;
+    transform: translateX(-45%) rotate(-45deg); }
+
+.side-calendar__switch {
+  width: 3rem;
+  position: relative; }
+  .side-calendar__switch::before, .side-calendar__switch::after {
+    height: 2px;
+    width: 1.5rem;
+    top: 50%;
+    left: 50%;
+    border-top: 1px solid black;
+    transform: translateX(-50%);
+    content: "";
+    display: block;
+    position: absolute; }
+  .side-calendar__switch--left {
+    margin-right: .5rem; }
+    .side-calendar__switch--left::before {
+      transform-origin: left bottom;
+      transform: translateX(-50%) rotate(45deg); }
+    .side-calendar__switch--left::after {
+      transform-origin: left bottom;
+      transform: translateX(-45%) rotate(-45deg); }
+  .side-calendar__switch--right::before {
+    transform-origin: right bottom;
+    transform: translateX(-50%) rotate(45deg); }
+  .side-calendar__switch--right::after {
+    transform-origin: right bottom;
+    transform: translateX(-45%) rotate(-45deg); }
+
+.side-calendar__button {
+  height: 5rem;
+  width: 33%;
+  position: relative;
+  color: #0b2f43;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+  @media only screen and (max-width: 75em) {
+    .side-calendar__button {
+      font-size: 1.6rem; } }
+  .side-calendar__button:first-child::after, .side-calendar__button:last-child::after {
+    height: 60%;
+    width: 2px;
+    top: 20%;
+    content: "";
+    display: block;
+    position: absolute; }
+  .side-calendar__button--right::after {
+    right: 0;
+    border-right: 2px solid #bbe1fa; }
+  .side-calendar__button--left::after {
+    left: 0;
+    border-left: 2px solid #bbe1fa; }
+  .side-calendar__button--active {
+    height: 4.6rem;
+    width: 32%;
+    margin: 0 .5%;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    color: #3282b8;
+    background-color: #fff;
+    border-radius: 1.4rem; }
+    @media only screen and (max-width: 75em) {
+      .side-calendar__button--active {
+        height: 3.6rem;
+        border-radius: 1.2rem; } }
+
+.calendar {
+  height: 100%;
+  width: 100%;
+  position: relative; }
+  .calendar__table-box {
+    height: 88%;
+    overflow: scroll;
+    -ms-overflow-style: none; }
+    .calendar__table-box::-webkit-scrollbar {
+      display: none; }
+  .calendar__navigation {
+    height: 6rem;
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    @media only screen and (max-width: 75em) {
+      .calendar__navigation {
+        height: 5rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .calendar__navigation {
+        justify-content: center; } }
+  .calendar__header {
+    line-height: 1; }
+    @media only screen and (max-width: 56.25em) {
+      .calendar__header {
+        color: #3282b8; } }
+  .calendar__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    @media only screen and (max-width: 56.25em) {
+      .calendar__controls {
+        display: none; } }
+  .calendar__switch {
+    position: relative;
+    top: -.5rem; }
+  .calendar__labels {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    background-color: #fff; }
+    .calendar__labels tr {
+      height: 6.5rem; }
+    .calendar__labels th {
+      transform: translateY(0); }
+    .calendar__labels span {
+      display: block; }
+  .calendar__day {
+    font-size: 3.2rem;
+    font-weight: 500; }
+    @media only screen and (max-width: 75em) {
+      .calendar__day {
+        font-size: 2.9rem; } }
+    .calendar__day--active {
+      height: 3.8rem;
+      width: 3.8rem;
+      margin: .8rem auto;
+      color: #fff;
+      line-height: 1.3;
+      background-color: #0f4c75;
+      border-radius: .5rem; }
+    .calendar__day--name {
+      height: 2.5rem;
+      color: #3282b8;
+      font-size: 2.4rem;
+      font-weight: 500;
+      line-height: 1; }
+      @media only screen and (max-width: 75em) {
+        .calendar__day--name {
+          height: 2rem;
+          font-size: 2.2rem; } }
+  .calendar__table {
+    height: 100%;
+    width: 100%;
+    border-collapse: collapse; }
+  .calendar__row {
+    height: 5rem; }
+    .calendar__row th {
+      width: 3.4%;
+      z-index: 1;
+      color: #b4b4b4;
+      font-size: 1.2rem;
+      font-weight: 700;
+      transform: translateY(50%); }
+      @media only screen and (max-width: 37.5em) {
+        .calendar__row th {
+          padding-right: 1rem; } }
+    .calendar__row td {
+      position: relative; }
+    .calendar__row td:not(.calendar__label) {
+      border-top: 1px solid #b4b4b4; }
+    .calendar__row:last-child td:not(.calendar__label) {
+      border-bottom: 1px solid #b4b4b4; }
+    .calendar__row td:not(:last-child):not(.calendar__label) {
+      border-right: 1px solid #b4b4b4; }
+  .calendar__pointer {
+    width: 102.5%;
+    height: 3px;
+    display: block;
+    position: absolute;
+    top: 52.5rem;
+    right: -.1rem;
+    border-top: 3px solid #BC1B1B;
+    transform: translateY(-50%); }
+    .calendar__pointer::after, .calendar__pointer::before {
+      height: 3px;
+      width: 1rem;
+      top: 0;
+      left: 0;
+      border-top: 3px solid #BC1B1B;
+      content: "";
+      display: block;
+      position: absolute; }
+    .calendar__pointer::after {
+      transform: translate(-80%, -230%) rotate(45deg); }
+    .calendar__pointer::before {
+      transform: translate(-80%, 0) rotate(-45deg); }
+
+.calendar--day {
+  margin-right: 2.5%;
+  width: 42.5%; }
+  @media only screen and (max-width: 56.25em) {
+    .calendar--day {
+      width: 100%; } }
+  .calendar--day th {
+    width: 5%; }
+  .calendar--day td {
+    width: 95%; }
+
+.calendar--week {
+  width: 100%; }
+  .calendar--week .calendar__table--week {
+    margin-top: 10rem; }
+  .calendar--week th {
+    width: 3.4%; }
+  .calendar--week td {
+    width: 13.8%; }
+
+.calendar--month .calendar__labels {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 5rem; }
+
+.calendar--month .calendar__table {
+  height: 92%;
+  margin-top: 5.5rem;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 1fr;
+  border-bottom: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5; }
+  .calendar--month .calendar__table > div:not(.calendar__table--day) {
+    border-top: 1px solid #e5e5e5;
+    border-left: 1px solid #e5e5e5;
+    font-size: 1.8rem;
+    font-weight: 500; }
+
+.calendar--month .calendar__table--day {
+  color: #3282b8;
+  font-weight: 500; }
+
+.calendar--month .calendar__table--active {
+  position: relative; }
+  .calendar--month .calendar__table--active > span {
+    position: relative;
+    display: block;
+    z-index: 2;
+    color: #fff; }
+  .calendar--month .calendar__table--active::after {
+    height: 2.5rem;
+    width: 2.5rem;
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 4%;
+    left: 50%;
+    background-color: #0f4c75;
+    border-radius: .3rem;
+    transform: translate(-50%, -10%); }
+
+.calendar--month .calendar__table--additional {
+  color: #8baec6; }
+
+.categories {
+  width: 100%;
+  padding-bottom: 2rem;
+  text-align: left;
+  border-bottom: 1px solid #ebebeb; }
+  @media only screen and (max-width: 75em) {
+    .categories {
+      margin: 0 4%;
+      width: 40%;
+      border: none; } }
+  @media only screen and (max-width: 37.5em) {
+    .categories {
+      display: none; } }
+  .categories__heading {
+    margin: 1rem 0 1rem; }
+    @media only screen and (max-width: 37.5em) {
+      .categories__heading {
+        font-size: 3rem;
+        text-align: center; } }
+  .categories__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; }
+  .categories__item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+    .categories__item:not(:last-child) {
+      margin-bottom: 1.5rem; }
+  .categories__checkmark {
+    height: 2.4rem;
+    width: 2.4rem; }
+  .categories__label {
+    width: 40%; }
+  .categories__progress-bar {
+    height: .5rem;
+    width: 80%;
+    display: inline-block;
+    position: relative;
+    background-color: #e5e5e5;
+    border-radius: 100px; }
+    .categories__progress-bar::after {
+      height: .5rem;
+      top: 0;
+      left: 0;
+      border-radius: 100px;
+      content: "";
+      display: block;
+      position: absolute; }
+    .categories__progress-bar--green::after {
+      width: 60%;
+      background-color: #32b860; }
+    .categories__progress-bar--purple::after {
+      width: 90%;
+      background-color: #5B32B8; }
+    .categories__progress-bar--blue::after {
+      width: 40%;
+      background-color: #323CB8; }
+  .categories__button {
+    width: 50%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b4b4b4;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: .5rem; }
+    .categories__button span {
+      margin-right: 1rem;
+      font-size: 2rem;
+      font-weight: 500; }
+
+.checkbox {
+  height: 0;
+  width: 0;
+  position: absolute;
+  cursor: pointer;
+  opacity: 0; }
+  .checkbox__label {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    font-size: 1.8rem;
+    font-weight: 700; }
+  .checkbox__checkmark {
+    border: 1px solid black;
+    border-radius: .3rem; }
+    .checkbox__checkmark::selection {
+      background-color: transparent; }
+    .checkbox__checkmark--green {
+      border-color: #32b860; }
+    .checkbox__checkmark--purple {
+      border-color: #5B32B8; }
+    .checkbox__checkmark--blue {
+      border-color: #323CB8; }
+  .checkbox__text {
+    margin-left: 1.5rem;
+    cursor: pointer; }
+    .checkbox__text::selection {
+      background-color: transparent; }
+  .checkbox:checked ~ .checkbox__checkmark {
+    position: relative; }
+    .checkbox:checked ~ .checkbox__checkmark::after {
+      width: 1px;
+      height: 62.5%;
+      top: 17.5%;
+      left: 58%;
+      border-left: 1px solid #fff;
+      transform: rotate(45deg);
+      content: "";
+      display: block;
+      position: absolute; }
+    .checkbox:checked ~ .checkbox__checkmark::before {
+      width: 1px;
+      height: 31.25%;
+      top: 45.5%;
+      left: 25%;
+      border-left: 1px solid #fff;
+      transform: rotate(-45deg);
+      content: "";
+      display: block;
+      position: absolute; }
+    .checkbox:checked ~ .checkbox__checkmark--green {
+      background-color: #32b860; }
+    .checkbox:checked ~ .checkbox__checkmark--purple {
+      background-color: #5B32B8; }
+    .checkbox:checked ~ .checkbox__checkmark--blue {
+      background-color: #323CB8; }
+  .checkbox__checkmark {
+    height: 2.4rem;
+    width: 2.4rem;
+    border: 1px solid black;
+    border-radius: .3rem;
+    cursor: pointer; }
+    .checkbox__checkmark::selection {
+      background-color: transparent; }
+    .checkbox__checkmark--green {
+      border-color: #32b860; }
+    .checkbox__checkmark--purple {
+      border-color: #5B32B8; }
+    .checkbox__checkmark--blue {
+      border-color: #323CB8; }
+
+.checklist {
+  width: 100%; }
+  .checklist__checkbox:checked ~ .checklist__text {
+    color: #3282b8;
+    text-decoration: line-through; }
+  .checklist__item {
+    margin-top: .2rem; }
+    .checklist__item--indent {
+      width: 90%;
+      margin-left: 2rem; }
+  .checklist__label .checkbox__text {
+    color: #0f4c75;
+    font-weight: 500; }
+
+.details {
+  height: 98%;
+  width: 55%;
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+  background-color: #eff8ff;
+  border-radius: 1.5rem;
+  text-align: left; }
+  @media only screen and (max-width: 75em) {
+    .details {
+      margin-bottom: 1%;
+      height: auto; } }
+  @media only screen and (max-width: 56.25em) {
+    .details {
+      display: none; } }
+  .details--note {
+    width: 100%; }
+  .details--popup {
+    width: 40%;
+    height: auto;
+    margin: 0;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    transform: translate(-50%, -50%); }
+    @media only screen and (max-width: 75em) {
+      .details--popup {
+        width: 50%; } }
+    @media only screen and (max-width: 56.25em) {
+      .details--popup {
+        width: 60%; } }
+    @media only screen and (max-width: 37.5em) {
+      .details--popup {
+        width: 95%;
+        margin: auto;
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0); } }
+  .details__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between; }
+  .details__date {
+    color: #3282b8; }
+  .details__time {
+    color: #3282b8; }
+    @media only screen and (max-width: 37.5em) {
+      .details__time {
+        display: none; } }
+  .details__close {
+    display: none; }
+    @media only screen and (max-width: 37.5em) {
+      .details__close {
+        height: 2.7rem;
+        width: 2.65rem;
+        display: block;
+        position: relative; }
+        .details__close::before, .details__close::after {
+          height: .1rem;
+          width: 3.5rem;
+          border-top: 2px solid #b4b4b4;
+          content: "";
+          display: block;
+          position: absolute; }
+        .details__close::before {
+          top: 0;
+          transform-origin: top left;
+          transform: rotate(45deg); }
+        .details__close::after {
+          bottom: 0;
+          transform-origin: bottom left;
+          transform: rotate(-45deg); } }
+  .details__description {
+    margin-top: 1.5rem; }
+  .details__title {
+    font-weight: 500; }
+  .details__text {
+    color: #0f4c75;
+    font-size: 1.8rem;
+    font-weight: 400; }
+  .details__checklist {
+    margin-top: 1.5rem; }
+  .details__info--item {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: left; }
+  .details__icon {
+    height: 3.5rem;
+    width: 3rem; }
+    .details__icon--title {
+      margin-left: 1rem; }
+
+.event {
+  height: 5.1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  top: -1px;
+  left: 0;
+  text-align: left;
+  border-left: 3px solid black;
+  border-radius: 0 1rem 1rem 0;
+  cursor: pointer; }
+  .event::selection {
+    background-color: transparent; }
+  .event--second {
+    left: 50.25%; }
+  .event h5 {
+    margin-left: .4rem;
+    margin-top: .4rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1; }
+  .event h3 {
+    margin-left: .4rem;
+    margin-top: .6rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1; }
+  .event--green {
+    border-color: #32b860;
+    background-color: #9aeab6; }
+    .event--green h5 {
+      color: #2c7e48; }
+    .event--green h3 {
+      color: #125228; }
+    .event--green button {
+      color: #125228; }
+  .event--purple {
+    border-color: #B299EA;
+    background-color: #d8c7f6; }
+    .event--purple h5 {
+      color: #5B32B8; }
+    .event--purple h3 {
+      color: #442B7C; }
+    .event--purple button {
+      color: #442B7C; }
+  .event--blue {
+    border-color: #85C3E6;
+    background-color: #D5EBF8; }
+    .event--blue h5 {
+      color: #0F4C75; }
+    .event--blue h3 {
+      color: #0B2F43; }
+    .event--blue button {
+      color: #0B2F43; }
+  .event--day {
+    width: 49.5%; }
+  .event--month {
+    height: 3rem;
+    width: 97.5%;
+    margin-top: .5rem;
+    position: relative;
+    border-radius: 0 10rem 10rem 0; }
+    .event--month h3 {
+      font-size: 1.8rem; }
+  .event--todo {
+    height: 4rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 0 1.2rem 1.2rem 0;
+    border-color: #85C3E6;
+    background-color: #fff; }
+    .event--todo h5 {
+      color: #fff; }
+    .event--todo h3 {
+      color: #0f4c75; }
+    .event--todo button {
+      color: #0f4c75; }
+    .event--todo h3 {
+      margin: auto 0 auto .4rem; }
+
+.side-calendar {
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid #ebebeb; }
+  @media only screen and (max-width: 75em) {
+    .side-calendar {
+      margin: 0 4%;
+      width: 40%;
+      border: none; } }
+  @media only screen and (max-width: 37.5em) {
+    .side-calendar {
+      width: 100%; } }
+  .side-calendar__modes {
+    height: 5rem;
+    margin: 2rem 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #d5ebf8;
+    border-radius: 1.5rem; }
+    @media only screen and (max-width: 75em) {
+      .side-calendar__modes {
+        height: 4rem;
+        width: 80%;
+        margin: 0 auto 1rem;
+        border-radius: 1.3rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .side-calendar__modes {
+        display: none; } }
+  .side-calendar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .side-calendar__month {
+    text-align: left; }
+    @media only screen and (max-width: 75em) {
+      .side-calendar__month {
+        margin-left: 4%; } }
+    @media only screen and (max-width: 56.25em) {
+      .side-calendar__month {
+        margin-left: 3%; } }
+    @media only screen and (max-width: 37.5em) {
+      .side-calendar__month {
+        margin-left: 4%; } }
+  .side-calendar__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; }
+  .side-calendar__calendar {
+    width: 100%;
+    position: relative; }
+  .side-calendar__table {
+    width: 100%;
+    margin: 1rem 0 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 3.5rem;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    font-size: 1.6rem;
+    font-weight: 700; }
+    @media only screen and (max-width: 75em) {
+      .side-calendar__table {
+        margin: .5rem 0 0; } }
+    .side-calendar__table div {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+  .side-calendar__day--active {
+    height: 3.5rem;
+    width: 3.5rem;
+    margin: auto;
+    color: #fff;
+    background-color: #0f4c75;
+    border-radius: .5rem; }
+  .side-calendar__day--name {
+    color: #3282b8; }
+  .side-calendar__day--additional {
+    color: #8baec6; }
+  .side-calendar__week {
+    width: 100%;
+    height: 3.5rem;
+    display: block;
+    position: absolute;
+    top: 7rem;
+    left: 0;
+    z-index: 1;
+    background-color: #d5ebf8;
+    border-radius: .5rem; }
+
+.side-nav {
+  padding-bottom: 2rem;
+  color: #0f4c75;
+  text-align: left;
+  font-size: 1.8rem;
+  border-bottom: 1px solid #ebebeb; }
+  @media only screen and (max-width: 75em) {
+    .side-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 2.4rem;
+      text-align: center; } }
+  .side-nav__category {
+    margin: .5rem 0; }
+  .side-nav__heading {
+    margin-top: 1rem;
+    font-size: 2.4rem;
+    color: #0b2f43; }
+    @media only screen and (max-width: 75em) {
+      .side-nav__heading {
+        font-size: 3.2rem; } }
+    .side-nav__heading--label {
+      font-weight: 700;
+      cursor: pointer; }
+      .side-nav__heading--label::selection {
+        background-color: transparent; }
+    .side-nav__heading--sub {
+      margin-left: 4rem;
+      display: none;
+      font-weight: 500;
+      cursor: pointer; }
+      .side-nav__heading--sub::selection {
+        background-color: transparent; }
+      @media only screen and (max-width: 75em) {
+        .side-nav__heading--sub {
+          margin: 0; } }
+  .side-nav__label {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer; }
+    .side-nav__label::selection {
+      background-color: transparent; }
+    .side-nav__label::selection {
+      background-color: transparent; }
+    @media only screen and (max-width: 75em) {
+      .side-nav__label {
+        position: relative;
+        justify-content: center;
+        transform: translateX(-1.5rem); } }
+  .side-nav__checkbox {
+    display: none; }
+    .side-nav__checkbox:checked ~ .side-nav__notes .side-nav__heading--sub {
+      display: block; }
+    .side-nav__checkbox:checked ~ .side-nav__label .side-nav__checkmark {
+      transform: rotate(90deg); }
+  .side-nav__checkmark {
+    height: 2rem;
+    width: 2rem;
+    margin: auto 1rem auto 0;
+    display: inline-block;
+    position: relative; }
+    .side-nav__checkmark::selection {
+      background-color: transparent; }
+    .side-nav__checkmark::after, .side-nav__checkmark::before {
+      height: .1rem;
+      width: 1rem;
+      border-top: 1px solid #0f4c75;
+      content: "";
+      display: block;
+      position: absolute; }
+    .side-nav__checkmark::after {
+      top: .6rem;
+      left: 50%;
+      transform: translate(-50%, 0) rotate(45deg); }
+    .side-nav__checkmark::before {
+      bottom: .6rem;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg); }
+  .side-nav ~ .categories {
+    border: 0; }
+
+.todo-list {
+  width: 33.33%;
+  display: block;
+  position: relative; }
+  @media only screen and (max-width: 56.25em) {
+    .todo-list {
+      width: 60%;
+      margin: 1.5rem auto;
+      text-align: center; } }
+  @media only screen and (max-width: 37.5em) {
+    .todo-list {
+      width: 80%; } }
+  .todo-list__close {
+    height: 2.7rem;
+    width: 2.65rem;
+    display: block;
+    position: absolute;
+    top: 3.5%;
+    right: 7%; }
+    .todo-list__close::before, .todo-list__close::after {
+      height: .1rem;
+      width: 3.5rem;
+      border-top: 2px solid #b4b4b4;
+      content: "";
+      display: block;
+      position: absolute; }
+    .todo-list__close::before {
+      top: 0;
+      transform-origin: top left;
+      transform: rotate(45deg); }
+    .todo-list__close::after {
+      bottom: 0;
+      transform-origin: bottom left;
+      transform: rotate(-45deg); }
+  .todo-list__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; }
+    @media only screen and (max-width: 56.25em) {
+      .todo-list__container {
+        flex-direction: column; } }
+  .todo-list__header {
+    margin: 1.5rem 0; }
+    @media only screen and (max-width: 56.25em) {
+      .todo-list__header {
+        margin: 1.5rem auto;
+        text-align: center; } }
+  .todo-list__name {
+    font-size: 3.2rem;
+    color: #0f4c75;
+    text-align: center; }
+  .todo-list__board {
+    height: 90%;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .todo-list__item {
+    width: 100%;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(15, 76, 117, 0.2);
+    cursor: pointer; }
+    .todo-list__item::selection {
+      background-color: transparent; }
+  .todo-list__title {
+    margin-left: 1rem;
+    color: #3282b8;
+    font-weight: 500; }
+  .todo-list__button {
+    width: 100%;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+    color: #b4b4b4;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(15, 76, 117, 0.2); }
+
+.page-wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 77vw 23vw;
+  grid-template-rows: 9vh 91vh; }
+  @media only screen and (max-width: 75em) {
+    .page-wrapper {
+      grid-template-columns: 100vw;
+      grid-template-rows: 7vh 40vh 60vh; } }
+  @media only screen and (max-width: 56.25em) {
+    .page-wrapper {
+      grid-template-rows: 7vh 40vh 50vh; } }
+  @media only screen and (max-width: 37.5em) {
+    .page-wrapper {
+      grid-template-rows: 9vh 43vh 100vh; } }
+  @media only screen and (max-width: 75em) {
+    .page-wrapper--side .sidebar {
+      grid-row: 2 / 4;
+      display: flex;
+      justify-content: space-evenly; }
+    .page-wrapper--side .content {
+      display: none; } }
+
+.content {
+  width: 100%;
+  padding: 0 3.5rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  grid-column: 1 / 2; }
+  @media only screen and (max-width: 75em) {
+    .content {
+      grid-row: 3 / 4; } }
+  @media only screen and (max-width: 37.5em) {
+    .content {
+      padding: 0 1rem; } }
+  .content--noFlex {
+    display: block;
+    text-align: left; }
+
+.popup {
+  height: auto;
+  width: 100%;
+  padding: 4% 2.5%;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  background-color: #d5ebf8; }
+  .popup--todo {
+    display: none;
+    background-color: #fff; }
+    @media only screen and (max-width: 75em) {
+      .popup--todo {
+        display: block; } }
+
+.nav {
+  height: 100%;
+  width: 100%;
+  padding: 0 3.5rem; }
+  @media only screen and (max-width: 37.5em) {
+    .nav {
+      padding: 0; } }
+  @media only screen and (max-width: 75em) {
+    .nav {
+      background-color: #eff8ff; } }
+  .nav__container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid #ebebeb; }
+    @media only screen and (max-width: 37.5em) {
+      .nav__container {
+        justify-content: center; } }
+  .nav__logo {
+    color: transparent;
+    font-size: 3.6rem;
+    padding-right: 1rem;
+    font-family: Blacksword, sans-serif;
+    background: linear-gradient(45deg, #3282b8, #bbe1fa);
+    -webkit-background-clip: text;
+    transform: translateY(0.5rem);
+    cursor: pointer; }
+    .nav__logo::selection {
+      background-color: transparent; }
+    @media only screen and (max-width: 37.5em) {
+      .nav__logo {
+        transform: translateY(-1%); } }
+  .nav__list {
+    display: flex;
+    list-style: none; }
+    @media only screen and (max-width: 37.5em) {
+      .nav__list {
+        display: none; } }
+  .nav__item {
+    margin-left: 5.1rem; }
+  .nav__link {
+    display: flex;
+    align-items: center;
+    color: transparent;
+    background: linear-gradient(45deg, #0b2f43, #3282b8);
+    -webkit-background-clip: text; }
+    .nav__link:hover {
+      color: transparent; }
+  .nav__icon {
+    height: 3.8rem;
+    width: 3.8rem;
+    fill: #eff8ff;
+    cursor: pointer; }
+    .nav__icon::selection {
+      background-color: transparent; }
+  .nav__text {
+    margin-left: 1.1rem;
+    font-size: 2rem;
+    font-weight: 700;
+    cursor: pointer; }
+    .nav__text::selection {
+      background-color: transparent; }
+
+.nav__mobile {
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: #fff;
+  transform: translateY(-100%);
+  transition: all .3s ease-out; }
+  @media only screen and (max-width: 37.5em) {
+    .nav__mobile {
+      display: flex; } }
+  .nav__mobile .nav__logo {
+    width: 31.5rem;
+    padding: 0;
+    margin-top: 10%;
+    font-size: 5.5rem; }
+  .nav__mobile .nav__list {
+    width: 60%;
+    margin-top: 12%;
+    display: block; }
+  .nav__mobile .nav__item {
+    margin: 0; }
+    .nav__mobile .nav__item:not(:first-child) {
+      margin-top: 3rem; }
+  .nav__mobile .nav__icon {
+    width: 6rem;
+    height: 6rem;
+    margin-right: 2rem; }
+  .nav__mobile .nav__link {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    text-align: center; }
+  .nav__mobile .nav__text {
+    display: block;
+    font-size: 3.2rem; }
+  .nav__mobile .categories {
+    width: 60%;
+    margin: 12% 0 0;
+    display: block; }
+
+.sidebar {
+  width: 100%;
+  height: 100%;
+  padding: 0 3.5rem;
+  background-color: #eff8ff;
+  grid-column: 2 / 3;
+  grid-row: 1 / 3; }
+  @media only screen and (max-width: 75em) {
+    .sidebar {
+      grid-row: 2 / 3;
+      grid-column: 1 / 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; } }
+  @media only screen and (max-width: 37.5em) {
+    .sidebar {
+      padding: 0; } }
+
+.profile {
+  height: 9vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  border-bottom: 1px solid #ebebeb; }
+  @media only screen and (max-width: 75em) {
+    .profile {
+      display: none; } }
+  .profile__greeting {
+    width: 8rem;
+    font-weight: 500; }
+  .profile__info {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .profile__description {
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between; }
+  .profile__name--sub {
+    color: #0f4c75; }
+  .profile__image {
+    height: 5.4rem;
+    border-radius: 100px; }
+
+.recent {
+  height: 15vh;
+  position: relative;
+  text-align: left; }
+  @media only screen and (max-width: 75em) {
+    .recent {
+      display: none; } }
+  .recent__heading {
+    margin: .5rem 0; }
+  .recent__event {
+    height: 100%;
+    padding: 1.2rem 2rem;
+    position: relative;
+    font-weight: 700;
+    font-size: 1.8rem;
+    border-color: #0f4c75;
+    background-color: #bbe1fa; }
+    .recent__event h5 {
+      color: #0f4c75; }
+    .recent__event h3 {
+      color: #0b2f43; }
+    .recent__event button {
+      color: #0b2f43; }
+    .recent__event h3 {
+      margin-top: .4rem;
+      font-size: 3.5rem;
+      line-height: 1; }
+      @media only screen and (max-width: 100em) {
+        .recent__event h3 {
+          margin-top: .8rem;
+          font-size: 3rem; } }
+    .recent__event h5, .recent__event h3 {
+      margin-left: 0; }
+    .recent__event button {
+      padding: .35rem .6rem;
+      margin-top: auto;
+      color: #fff;
+      font-size: 2.4rem;
+      font-weight: 700;
+      background-color: #0f4c75;
+      border-radius: .3rem; }
+      @media only screen and (max-width: 100em) {
+        .recent__event button {
+          font-size: 2.2rem; } }
+    .recent__event span {
+      padding: 0 .4rem;
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      color: #3282b8;
+      background-color: #fff;
+      border-radius: .3rem; }
+      @media only screen and (max-width: 100em) {
+        .recent__event span {
+          padding: 0 .2rem;
+          top: 1rem;
+          right: 1.5rem; } }

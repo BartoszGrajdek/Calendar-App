@@ -1,0 +1,27 @@
+//CHECKLIST FOR DETAILS
+
+.checklist {
+  width: 100%;
+  
+  &__checkbox:checked ~ &__text {
+    color: $color-primary-light-2;
+    text-decoration: line-through;
+  }
+  
+  &__item {
+    margin-top: .2rem;
+    
+    &--indent {
+      width: 90%;
+      
+      margin-left: 2rem;
+    }
+  }
+  
+  &__label {
+    & .checkbox__text {
+      color: $color-primary-light-1;
+      font-weight: 500;
+    }
+  }
+}

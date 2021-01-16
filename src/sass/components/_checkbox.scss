@@ -1,17 +1,21 @@
+//CHECKBOXES FOR TODOS AND CATEGORIES
+
 .checkbox {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
   height: 0;
   width: 0;
   
-  &__label {
-    font-size: 1.8rem;
-    font-weight: 700;
+  position: absolute;
   
+  cursor: pointer;
+  opacity: 0;
+  
+  &__label {
     display: flex;
     align-items: center;
     justify-content: right;
+  
+    font-size: 1.8rem;
+    font-weight: 700;
   }
   
   &__checkmark {
@@ -51,10 +55,11 @@
       top: 17.5%;
       left: 58%;
       
-      @include afterOrBefore;
-      
       border-left: 1px solid $color-white;
+      
       transform: rotate(45deg);
+  
+      @include afterOrBefore;
     }
     
     &::before {
@@ -64,10 +69,11 @@
       top: 45.5%;
       left: 25%;
       
-      @include afterOrBefore;
-      
       border-left: 1px solid $color-white;
+      
       transform: rotate(-45deg);
+  
+      @include afterOrBefore;
     }
     
     &--green {

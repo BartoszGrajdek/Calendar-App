@@ -1,17 +1,15 @@
 //UTILITIES MIXINS
 
-@mixin clearfix {
-  &::after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-}
-
 @mixin afterOrBefore {
   content: "";
   display: block;
   position: absolute;
+}
+
+@mixin flexBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @mixin absoluteCenter {
@@ -21,25 +19,19 @@
   transform: translate(-50%, -50%);
 }
 
-@mixin flexBetween {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 @mixin spacer {
   border-bottom: 1px solid $color-grey-light-3;
-}
-
-@mixin transparentSelection {
-  &::selection {
-    background-color: transparent;
-  }
 }
 
 @mixin pointer {
   cursor: pointer;
   
+  &::selection {
+    background-color: transparent;
+  }
+}
+
+@mixin transparentSelection {
   &::selection {
     background-color: transparent;
   }

@@ -8,8 +8,8 @@
   
   &__table-box {
     height: 88%;
-    overflow: scroll;
     
+    overflow: scroll;
     -ms-overflow-style: none;
     
     &::-webkit-scrollbar {
@@ -49,44 +49,8 @@
   }
   
   &__switch {
-    height: 4.5rem;
-    width: 4.5rem;
     position: relative;
     top: -.5rem;
-    
-    &::before,
-    &::after {
-      height: 2px;
-      width: 3rem;
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-top: 1px solid black;
-    }
-    
-    &--left {
-      margin-right: 3rem;
-      
-      &::before {
-        transform:  translateY(3.1rem) rotate(45deg);
-      }
-      
-      &::after {
-        transform: translateY(1rem) rotate(-45deg);
-      }
-    }
-    
-    &--right {
-      &::before {
-        transform:  translateY(3.1rem) rotate(-45deg);
-      }
-      
-      &::after {
-        transform: translateY(1rem) rotate(45deg);
-      }
-    }
   }
   
   &__labels {
@@ -126,6 +90,7 @@
       
       color: $color-white;
       line-height: 1.3;
+      
       background-color: $color-primary-light-1;
       border-radius: .5rem;
     }
@@ -149,6 +114,7 @@
   &__table {
     height: 100%;
     width: 100%;
+    
     border-collapse: collapse;
   }
   
@@ -190,13 +156,15 @@
   &__pointer {
     width: 102.5%;
     height: 3px;
-    
+  
+    display: block;
+  
     position: absolute;
     top: 52.5rem;
     right: -.1rem;
-    display: block;
     
     border-top: 3px solid #BC1B1B;
+    
     transform: translateY(-50%);
     
     &::after,
@@ -205,10 +173,11 @@
       width: 1rem;
       
       top: 0;
-  
-      @include afterOrBefore;
+      left: 0;
   
       border-top: 3px solid #BC1B1B;
+      
+      @include afterOrBefore;
     }
     
     &::after {

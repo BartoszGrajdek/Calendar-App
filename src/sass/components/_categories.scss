@@ -1,0 +1,131 @@
+//CALENDAR CATEGORIES
+
+.categories {
+  width: 100%;
+  padding-bottom: 2rem;
+  
+  text-align: left;
+  
+  @include spacer;
+  
+  @include respond(tab-land) {
+    margin: 0 4%;
+    width: 40%;
+    
+    border: none;
+  }
+  
+  @include respond(phone) {
+    display: none;
+  }
+  
+  &__heading {
+    margin: 1rem 0 1rem;
+    
+    @include respond(phone) {
+      font-size: 3rem;
+      text-align: center;
+    }
+  }
+  
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  &__item {
+    width: 100%;
+    
+    @include flexBetween;
+    
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  &__checkmark {
+    height: 2.4rem;
+    width: 2.4rem;
+  }
+  
+  &__label {
+    width: 40%;
+  }
+  
+  &__progress-bar {
+    height: .5rem;
+    width: 80%;
+    
+    display: inline-block;
+    
+    position: relative;
+    
+    background-color: $color-grey-light-2;
+    border-radius: 100px;
+    
+    &::after {
+      height: .5rem;
+      
+      top: 0;
+      left: 0;
+  
+      border-radius: 100px;
+  
+      @include afterOrBefore;
+    }
+    
+    &--green {
+      
+      &::after {
+        width: 60%;
+        
+        background-color: $color-secondary-light-2;
+      }
+    }
+    
+    &--purple {
+    
+      &::after {
+        width: 90%;
+        
+        background-color: $color-tertiary-light-2;
+      }
+    }
+    
+    &--blue {
+    
+      &::after {
+        width: 40%;
+        
+        background-color: $color-quaternary-light-2;
+      }
+    }
+  }
+  
+  &__button {
+    width: 50%;
+    height: 3rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    color: $color-grey-light;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    
+    background-color: $color-white;
+    border: 1px solid $color-grey-light-2;
+    border-radius: .5rem;
+    
+    & span {
+      margin-right: 1rem;
+      
+      font-size: 2rem;
+      font-weight: 500;
+    }
+  }
+}

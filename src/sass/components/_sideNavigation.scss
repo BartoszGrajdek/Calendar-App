@@ -1,3 +1,5 @@
+//SIDE NAVIGATION FOR NOTES AND TODOS
+
 .side-nav {
   padding-bottom: 2rem;
   
@@ -38,6 +40,7 @@
     
     &--sub {
       margin-left: 4rem;
+      
       display: none;
   
       font-weight: 500;
@@ -52,6 +55,7 @@
   
   &__label {
     width: auto;
+    
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -61,9 +65,10 @@
     @include pointer;
   
     @include respond(tab-land) {
-      justify-content: center;
       position: relative;
-      
+  
+      justify-content: center;
+  
       transform: translateX(-1.5rem);
     }
   }
@@ -88,6 +93,7 @@
     height: 2rem;
     width: 2rem;
     margin: auto 1rem auto 0;
+    
     display: inline-block;
     
     position: relative;
@@ -98,21 +104,23 @@
     &::before {
       height: .1rem;
       width: 1rem;
-      
-      @include afterOrBefore;
-      
+  
       border-top: 1px solid $color-primary-light-1;
+  
+      @include afterOrBefore;
     }
     
     &::after {
       top: .6rem;
       left: 50%;
+      
       transform: translate(-50%, 0) rotate(45deg);
     }
     
     &::before {
       bottom: .6rem;
       left: 50%;
+      
       transform: translate(-50%, -50%) rotate(-45deg);
     }
   }

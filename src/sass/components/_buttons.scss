@@ -1,34 +1,244 @@
-.button {
-  border: none;
-  outline: none;
+//HAMBURGER MENU BUTTON
 
-  //BUTTONS TO GO FURTHER / BACK IN CALENDAR
-  &__calendar {
-    font-size: 2.8rem;
-    color: $color-secondary;
-
-    transition: all .3s ease-out;
-
-    &--prev {
-      &:active,
-      &:hover {
-        transform: translateX(-.3rem);
+//CHECKED
+.nav__checkbox {
+  display: none;
+  
+  &:checked {
+    & ~ .nav__checkmark span {
+      border-color: transparent;
+      
+      &::before {
+        width: 3.7rem;
+        
+        transform-origin: left top;
+        transform: rotate(45deg);
       }
-
-      &:active {
-        transform: translateX(-.3rem) scale(1.06);
+      
+      &::after {
+        width: 3.7rem;
+        
+        transform-origin: left bottom;
+        transform: rotate(-45deg);
       }
     }
+  }
+  
+  &:checked ~ .nav__mobile {
+    transform: translateY(0);
+  }
+}
 
-    &--next {
-      &:active,
-      &:hover {
-        transform: translateX(.3rem);
-      }
+//UNCHECKED
+.nav__checkmark {
+  height: 3rem;
+  width: 3rem;
+  
+  display: none;
+  
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  z-index: 3;
+  
+  transform: translate(-50%, -50%);
+  
+  @include pointer;
+  
+  @include respond(phone) {
+    display: block;
+  }
+  
+  & span {
+    height: .1rem;
+    width: 3rem;
+    
+    display: block;
+    
+    border-top: 2px solid $color-primary-light-2;
+    
+    transform: translate(-50%, -50%);
+    transition: all .3s ease-out;
+    
+    @include absoluteCenter;
+    
+    @include pointer;
+  
+    &::before,
+    &::after {
+      height: .1rem;
+      width: 3rem;
+  
+      border-top: 2px solid $color-primary-light-2;
+      
+      transition: all .3s ease-out;
+  
+      @include afterOrBefore;
+    }
+    
+    &::before {
+      top: -1.4rem;
+      left: 0;
+    }
+    
+    &::after {
+      top: 1.2rem;
+      left: 0;
+    }
+  }
+}
 
-      &:active {
-        transform: translateX(.3rem) scale(1.06);
-      }
+//MAIN CALENDAR PREVIOUS / NEXT BUTTONS
+.calendar__switch {
+  height: 4.5rem;
+  width: 4.5rem;
+  
+  position: relative;
+  top: -.5rem;
+  
+  &::before,
+  &::after {
+    height: 2px;
+    width: 3.14rem;
+    
+    border-top: 1px solid black;
+    
+    @include afterOrBefore;
+    
+    @include absoluteCenter;
+  }
+  
+  &--left {
+    margin-right: 3rem;
+    
+    &::before {
+      transform-origin: left bottom;
+      transform: translateX(-50%) rotate(45deg);
+    }
+    
+    &::after {
+      transform-origin: left bottom;
+      transform: translateX(-45%) rotate(-45deg);
+    }
+  }
+  
+  &--right {
+    &::before {
+      transform-origin: right bottom;
+      transform: translateX(-50%) rotate(45deg);
+    }
+  
+    &::after {
+      transform-origin: right bottom;
+      transform: translateX(-45%) rotate(-45deg);
+    }
+  }
+}
+
+//SIDE CALENDAR PREVIOUS / NEXT BUTTONS
+.side-calendar__switch {
+  width: 3rem;
+  position: relative;
+  
+  &::before,
+  &::after {
+    height: 2px;
+    width: 1.5rem;
+    
+    top: 50%;
+    left: 50%;
+    
+    border-top: 1px solid black;
+    
+    transform: translateX(-50%);
+    
+    @include afterOrBefore;
+  }
+  
+  &--left {
+    margin-right: .5rem;
+  
+    &::before {
+      transform-origin: left bottom;
+      transform: translateX(-50%) rotate(45deg);
+    }
+  
+    &::after {
+      transform-origin: left bottom;
+      transform: translateX(-45%) rotate(-45deg);
+    }
+  }
+  
+  &--right {
+    &::before {
+      transform-origin: right bottom;
+      transform: translateX(-50%) rotate(45deg);
+    }
+  
+    &::after {
+      transform-origin: right bottom;
+      transform: translateX(-45%) rotate(-45deg);
+    }
+  }
+}
+
+//SIDE CALENDAR BUTTONS FOR DISPLAY MODES
+.side-calendar__button {
+  height: 5rem;
+  width: 33%;
+  
+  position: relative;
+  
+  color: $color-primary;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  
+  @include respond(tab-land) {
+    font-size: 1.6rem;
+  }
+  
+  &:first-child::after,
+  &:last-child::after {
+    height: 60%;
+    width: 2px;
+
+    top: 20%;
+    
+    @include afterOrBefore;
+  }
+  
+  &--right::after {
+    right: 0;
+    
+    border-right: 2px solid $color-primary-light-4;
+  }
+  
+  &--left::after {
+    left: 0;
+    
+    border-left: 2px solid $color-primary-light-4;
+  }
+  
+  &--active {
+    height: 4.6rem;
+    width: 32%;
+    margin: 0 .5%;
+    
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  
+    color: $color-primary-light-2;
+  
+    background-color: $color-white;
+    border-radius: 1.4rem;
+    
+    @include respond(tab-land) {
+      height: 3.6rem;
+      
+      border-radius: 1.2rem;
     }
   }
 }
