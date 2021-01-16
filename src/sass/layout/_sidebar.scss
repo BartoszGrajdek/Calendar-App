@@ -251,15 +251,11 @@
     grid-template-columns: repeat(7, 1fr);
     grid-auto-rows: 3.5rem;
     position: relative;
-    z-index: 5;
+    z-index: 1;
     overflow: hidden;
   
     @include respond(tab-land) {
       margin: .5rem 0 0;
-    }
-    
-    @include respond(phone) {
-      z-index: 1;
     }
     
     & div {

@@ -14,7 +14,12 @@
   <nav class="nav">
 
     <div class="nav__container">
-      <span class="nav__logo">Organized</span>
+
+      <a href="index.html">
+        <span class="nav__logo">Organized</span>
+      </a>
+      <!-- LOGO -->
+
       <ul class="nav__list">
         <li class="nav__item">
           <a href="week.html" class="nav__link">
@@ -44,11 +49,13 @@
       <!-- MOBILE MENU HANDLERS -->
 
       <div class="nav__mobile">
-        <span class="nav__logo">Organized</span>
+
+        <a class="nav__logo" href="index.html">Organized</a>
+        <!-- LOGO -->
 
         <ul class="nav__list">
           <li class="nav__item">
-            <a href="week.html" class="nav__link">
+            <a href="index.html" class="nav__link">
               <img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon">
               <span class="nav__text">Calendar</span>
             </a>
@@ -72,7 +79,7 @@
 
         <div class="categories">
 
-          <h4 class="categories__heading">Calendar</h4>
+          <h4 class="categories__heading">Todo boards</h4>
 
           <div class="categories__list">
 
@@ -127,71 +134,71 @@
 
       <div class="todo-list">
         <h3 class="todo-list__name">Pending</h3>
-        <div class="todo-list__board todo-list__board--pending">
-          <div class="event event--month event--todo">
-            <h3 class="event__title">Electricity</h3>
+        <div class="todo-list__board">
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Electricity</h5>
           </div>
 
-          <div class="event event--month event--todo">
-            <h3 class="event__title">Water</h3>
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Water</h5>
           </div>
 
-          <div class="event event--month event--todo">
-            <h3 class="event__title">Gas</h3>
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Gas</h5>
           </div>
-          <button class="categories__button"><span>+</span> Add more</button>
+          <button class="todo-list__button"><span>+</span> Add more</button>
         </div>
       </div>
       <!-- TO-DO BOARD -->
 
       <div class="todo-list">
         <h3 class="todo-list__name">Doing</h3>
-        <div class="todo-list__board todo-list__board--doing">
-          <div class="event event--month event--todo">
-            <h3 class="event__title">New bed</h3>
+        <div class="todo-list__board">
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">New bed</h5>
           </div>
 
-          <div class="event event--month event--todo">
-            <h3 class="event__title">Computer for Jane</h3>
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Computer for Jane</h5>
           </div>
 
-          <div class="event event--month event--todo">
-            <h3 class="event__title">Bedroom renovation</h3>
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Bedroom renovation</h5>
           </div>
 
-          <div class="event event--month event--todo">
-            <h3 class="event__title">Gym subscription</h3>
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Gym subscription</h5>
           </div>
 
-          <div class="event event--month event--todo">
-            <h3 class="event__title">New furniture for dinning room</h3>
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">New furniture for dinning room</h5>
           </div>
 
-          <button class="categories__button"><span>+</span> Add more</button>
+          <button class="todo-list__button"><span>+</span> Add more</button>
         </div>
       </div>
       <!-- TO-DO BOARD -->
 
       <div class="todo-list">
         <h3 class="todo-list__name">Done</h3>
-        <div class="todo-list__board todo-list__board--done">
-          <div class="event event--month event--todo">
-            <h3 class="event__title">House rent</h3>
+        <div class="todo-list__board">
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">House rent</h5>
           </div>
 
-          <div class="event event--month event--todo">
-            <h3 class="event__title">Car credit</h3>
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Car credit</h5>
           </div>
 
-          <div class="event event--month event--todo">
-            <h3 class="event__title">Roof fix</h3>
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Roof fix</h5>
           </div>
 
-          <div class="event event--month event--todo">
-            <h3 class="event__title">New house heating</h3>
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">New house heating</h5>
           </div>
 
-          <button class="categories__button"><span>+</span> Add more</button>
+          <button class="todo-list__button"><span>+</span> Add more</button>
         </div>
       </div>
       <!-- TO-DO BOARD -->
@@ -365,95 +372,95 @@
 </div>
 <!-- PAGE WRAPPER -->
 
-<!--<div class="popup popup&#45;&#45;todo">-->
+<div class="popup popup--todo">
 
-<!--  <div class="content content&#45;&#45;noFlex">-->
+  <div class="content content--noFlex">
 
-<!--    <span class="todo-list__close">&nbsp;</span>-->
+    <span class="todo-list__close">&nbsp;</span>
 
-<!--    <h2 class="todo-list__header">Payments</h2>-->
+    <h2 class="todo-list__header">Payments</h2>
 
-<!--    <div class="todo-list__container">-->
+    <div class="todo-list__container">
 
-<!--      <div class="todo-list">-->
-<!--        <h3 class="todo-list__name">Pending</h3>-->
-<!--        <div class="todo-list__board todo-list__board&#45;&#45;pending">-->
-<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
-<!--            <h3 class="event__title">Electricity</h3>-->
-<!--          </div>-->
+      <div class="todo-list">
+        <h3 class="todo-list__name">Pending</h3>
+        <div class="todo-list__board">
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Electricity</h5>
+          </div>
 
-<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
-<!--            <h3 class="event__title">Water</h3>-->
-<!--          </div>-->
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Water</h5>
+          </div>
 
-<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
-<!--            <h3 class="event__title">Gas</h3>-->
-<!--          </div>-->
-<!--          <button class="categories__button"><span>+</span> Add more</button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      &lt;!&ndash; TO-DO BOARD &ndash;&gt;-->
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Gas</h5>
+          </div>
+          <button class="todo-list__button"><span>+</span> Add more</button>
+        </div>
+      </div>
+      <!-- TO-DO BOARD -->
 
-<!--      <div class="todo-list">-->
-<!--        <h3 class="todo-list__name">Doing</h3>-->
-<!--        <div class="todo-list__board todo-list__board&#45;&#45;doing">-->
-<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
-<!--            <h3 class="event__title">New bed</h3>-->
-<!--          </div>-->
+      <div class="todo-list">
+        <h3 class="todo-list__name">Doing</h3>
+        <div class="todo-list__board">
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">New bed</h5>
+          </div>
 
-<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
-<!--            <h3 class="event__title">Computer for Jane</h3>-->
-<!--          </div>-->
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Computer for Jane</h5>
+          </div>
 
-<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
-<!--            <h3 class="event__title">Bedroom renovation</h3>-->
-<!--          </div>-->
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Bedroom renovation</h5>
+          </div>
 
-<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
-<!--            <h3 class="event__title">Gym subscription</h3>-->
-<!--          </div>-->
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Gym subscription</h5>
+          </div>
 
-<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
-<!--            <h3 class="event__title">New furniture for dinning room</h3>-->
-<!--          </div>-->
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">New furniture for dinning room</h5>
+          </div>
 
-<!--          <button class="categories__button"><span>+</span> Add more</button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      &lt;!&ndash; TO-DO BOARD &ndash;&gt;-->
+          <button class="todo-list__button"><span>+</span> Add more</button>
+        </div>
+      </div>
+      <!-- TO-DO BOARD -->
 
-<!--      <div class="todo-list">-->
-<!--        <h3 class="todo-list__name">Done</h3>-->
-<!--        <div class="todo-list__board todo-list__board&#45;&#45;done">-->
-<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
-<!--            <h3 class="event__title">House rent</h3>-->
-<!--          </div>-->
+      <div class="todo-list">
+        <h3 class="todo-list__name">Done</h3>
+        <div class="todo-list__board">
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">House rent</h5>
+          </div>
 
-<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
-<!--            <h3 class="event__title">Car credit</h3>-->
-<!--          </div>-->
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Car credit</h5>
+          </div>
 
-<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
-<!--            <h3 class="event__title">Roof fix</h3>-->
-<!--          </div>-->
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">Roof fix</h5>
+          </div>
 
-<!--          <div class="event event&#45;&#45;month event&#45;&#45;todo">-->
-<!--            <h3 class="event__title">New house heating</h3>-->
-<!--          </div>-->
+          <div class="todo-list__item">
+            <h5 class="todo-list__title">New house heating</h5>
+          </div>
 
-<!--          <button class="categories__button"><span>+</span> Add more</button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      &lt;!&ndash; TO-DO BOARD &ndash;&gt;-->
+          <button class="todo-list__button"><span>+</span> Add more</button>
+        </div>
+      </div>
+      <!-- TO-DO BOARD -->
 
-<!--    </div>-->
-<!--    &lt;!&ndash; TO-DO CONTAINER &ndash;&gt;-->
+    </div>
+    <!-- TO-DO CONTAINER -->
 
-<!--  </div>-->
-<!--  &lt;!&ndash; CONTENT &ndash;&gt;-->
+  </div>
+  <!-- CONTENT -->
 
-<!--</div>-->
-<!--&lt;!&ndash; POPUP &ndash;&gt;-->
+</div>
+<!-- POPUP -->
 
 <script src="assets/js/app.js" async defer></script>
 </body>

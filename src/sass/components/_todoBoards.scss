@@ -1,5 +1,5 @@
 .todo-list {
-  width: 30%;
+  width: 33.33%;
   display: block;
   
   position: relative;
@@ -49,9 +49,9 @@
   }
   
   &__container {
-    @include flexBetween;
-    
-    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
     
     @include respond(tab-port) {
       flex-direction: column;
@@ -74,25 +74,45 @@
   }
   
   &__board {
+    height: 90%;
     width: 100%;
     padding: 1rem;
-    
-    border-radius: 1rem;
     
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  
+  &__item {
+    width: 100%;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
     
-    &--pending {
-      background-color: $color-primary-light-5;
-    }
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba($color-primary-light-1, .2);
     
-    &--doing {
-      background-color: $color-primary-light-4;
-    }
+    @include pointer
+  }
+  
+  &__title {
+    margin-left: 1rem;
     
-    &--done {
-      background-color: $color-primary-light-3;
-    }
+    color: $color-primary-light-2;
+    font-weight: 500;
+  }
+  
+  &__button {
+    width: 100%;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+  
+    border-radius: 1rem;
+    
+    color: $color-grey-light;
+    font-weight: 700;
+    text-transform: uppercase;
+    
+  
+    box-shadow: 0 0 1rem rgba($color-primary-light-1, .2);
   }
 }

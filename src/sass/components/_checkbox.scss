@@ -37,6 +37,8 @@
   
   &__text {
     margin-left: 1.5rem;
+    
+    @include pointer;
   }
   
   &:checked ~ &__checkmark {
@@ -88,9 +90,7 @@
     border: 1px solid black;
     border-radius: .3rem;
     
-    &::selection {
-      background-color: transparent;
-    }
+    @include pointer;
     
     &--green {
       border-color: $color-secondary-light-2;

@@ -16,6 +16,8 @@
   border-left: 3px solid black;
   border-radius: 0 1rem 1rem 0;
   
+  @include pointer;
+  
   &--second {
     left: 50.25%;
   }

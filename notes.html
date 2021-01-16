@@ -13,11 +13,49 @@
 
   <nav class="nav">
 
-      <div class="nav__container">
+    <div class="nav__container">
+
+      <a href="index.html">
         <span class="nav__logo">Organized</span>
+      </a>
+      <!-- LOGO -->
+
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a href="week.html" class="nav__link">
+            <img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon">
+            <span class="nav__text">Calendar</span>
+          </a>
+        </li>
+
+        <li class="nav__item">
+          <a href="notes.html" class="nav__link">
+            <img src="assets/icons/svg/notes-colored.svg" alt="Notes icon" class="nav__icon">
+            <span class="nav__text">Notes</span>
+          </a>
+        </li>
+
+        <li class="nav__item">
+          <a href="todo.html" class="nav__link">
+            <img src="assets/icons/svg/checkbox-colored.svg" alt="Todo lists icon" class="nav__icon">
+            <span class="nav__text">Todo list</span>
+          </a>
+        </li>
+      </ul>
+      <!-- NAVIGATION LINKS -->
+
+      <input type="checkbox" class="nav__checkbox" id="nav-hamburger">
+      <label for="nav-hamburger" class="nav__checkmark">&nbsp;</label>
+      <!-- MOBILE MENU HANDLERS -->
+
+      <div class="nav__mobile">
+
+        <a class="nav__logo" href="index.html">Organized</a>
+        <!-- LOGO -->
+
         <ul class="nav__list">
           <li class="nav__item">
-            <a href="week.html" class="nav__link">
+            <a href="index.html" class="nav__link">
               <img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon">
               <span class="nav__text">Calendar</span>
             </a>
@@ -39,83 +77,52 @@
         </ul>
         <!-- NAVIGATION LINKS -->
 
-        <input type="checkbox" class="nav__checkbox" id="nav-hamburger">
-        <label for="nav-hamburger" class="nav__checkmark">&nbsp;</label>
-        <!-- MOBILE MENU HANDLERS -->
+        <div class="categories">
 
-        <div class="nav__mobile">
-          <span class="nav__logo">Organized</span>
+          <h4 class="categories__heading">Notepads</h4>
 
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="week.html" class="nav__link">
-                <img src="assets/icons/svg/calendar-colored.svg" alt="Calendar icon" class="nav__icon">
-                <span class="nav__text">Calendar</span>
-              </a>
-            </li>
+          <div class="categories__list">
 
-            <li class="nav__item">
-              <a href="notes.html" class="nav__link">
-                <img src="assets/icons/svg/notes-colored.svg" alt="Notes icon" class="nav__icon">
-                <span class="nav__text">Notes</span>
-              </a>
-            </li>
+            <div class="categories__item">
 
-            <li class="nav__item">
-              <a href="todo.html" class="nav__link">
-                <img src="assets/icons/svg/checkbox-colored.svg" alt="Todo lists icon" class="nav__icon">
-                <span class="nav__text">Todo list</span>
-              </a>
-            </li>
-          </ul>
-          <!-- NAVIGATION LINKS -->
-
-          <div class="categories">
-
-            <h4 class="categories__heading">Calendar</h4>
-
-            <div class="categories__list">
-
-              <div class="categories__item">
-
-                <label class="categories__label checkbox__label" for="work-mobile">
-                  <input type="checkbox" id="work-mobile" class="categories__checkbox checkbox" name="category" checked>
-                  <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--green">&nbsp;</span>
-                  <span class="checkbox__text">Work</span>
-                </label>
-                <span class="categories__progress-bar categories__progress-bar--green">&nbsp;</span>
-              </div>
-
-              <div class="categories__item">
-                <label class="categories__label checkbox__label" for="guitar-mobile">
-                  <input type="checkbox" id="guitar-mobile" class="categories__checkbox checkbox" name="category">
-                  <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--purple">&nbsp;</span>
-                  <span class="checkbox__text">Guitar</span>
-                </label>
-                <span class="categories__progress-bar categories__progress-bar--purple">&nbsp;</span>
-              </div>
-
-              <div class="categories__item">
-                <label class="categories__label checkbox__label" for="home-mobile">
-                  <input type="checkbox" id="home-mobile" class="categories__checkbox checkbox" name="category" checked>
-                  <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--blue">&nbsp;</span>
-                  <span class="checkbox__text">Home</span>
-                </label>
-                <span class="categories__progress-bar categories__progress-bar--blue">&nbsp;</span>
-              </div>
-
-              <button class="categories__button"><span>+</span> Add more</button>
+              <label class="categories__label checkbox__label" for="work-mobile">
+                <input type="checkbox" id="work-mobile" class="categories__checkbox checkbox" name="category" checked>
+                <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--green">&nbsp;</span>
+                <span class="checkbox__text">Work</span>
+              </label>
+              <span class="categories__progress-bar categories__progress-bar--green">&nbsp;</span>
             </div>
 
+            <div class="categories__item">
+              <label class="categories__label checkbox__label" for="guitar-mobile">
+                <input type="checkbox" id="guitar-mobile" class="categories__checkbox checkbox" name="category">
+                <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--purple">&nbsp;</span>
+                <span class="checkbox__text">Guitar</span>
+              </label>
+              <span class="categories__progress-bar categories__progress-bar--purple">&nbsp;</span>
+            </div>
+
+            <div class="categories__item">
+              <label class="categories__label checkbox__label" for="home-mobile">
+                <input type="checkbox" id="home-mobile" class="categories__checkbox checkbox" name="category" checked>
+                <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--blue">&nbsp;</span>
+                <span class="checkbox__text">Home</span>
+              </label>
+              <span class="categories__progress-bar categories__progress-bar--blue">&nbsp;</span>
+            </div>
+
+            <button class="categories__button"><span>+</span> Add more</button>
           </div>
-          <!-- CALENDAR CATEGORIES -->
+
         </div>
-        <!-- MOBILE NAVIGATION -->
-
+        <!-- CALENDAR CATEGORIES -->
       </div>
-      <!-- NAVIGATION CONTAINER -->
+      <!-- MOBILE NAVIGATION -->
 
-    </nav>
+    </div>
+    <!-- NAVIGATION CONTAINER -->
+
+  </nav>
   <!-- HEADER -->
 
   <div class="content">

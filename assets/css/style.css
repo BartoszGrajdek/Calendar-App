@@ -16,7 +16,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 1em = 16px
 */
 @font-face {
-  font-family: Blacksword;
+  font-family: Blacksword, sans-serif;
   src: url("/assets/fonts/Blacksword.otf"); }
 
 *,
@@ -81,7 +81,7 @@ button {
 
 .content {
   width: 100%;
-  padding: 0 3.5rem;
+  padding: 0 3.5rem 1.5rem;
   grid-column: 1 / 2;
   display: flex;
   align-items: flex-start;
@@ -104,7 +104,7 @@ button {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 9;
+  z-index: 4;
   background-color: #d5ebf8; }
   .popup--todo {
     display: none;
@@ -419,7 +419,10 @@ h6 {
     .checkbox__checkmark--blue {
       border-color: #323CB8; }
   .checkbox__text {
-    margin-left: 1.5rem; }
+    margin-left: 1.5rem;
+    cursor: pointer; }
+    .checkbox__text::selection {
+      background-color: transparent; }
   .checkbox:checked ~ .checkbox__checkmark {
     position: relative; }
     .checkbox:checked ~ .checkbox__checkmark::after {
@@ -452,7 +455,8 @@ h6 {
     height: 2.4rem;
     width: 2.4rem;
     border: 1px solid black;
-    border-radius: .3rem; }
+    border-radius: .3rem;
+    cursor: pointer; }
     .checkbox__checkmark::selection {
       background-color: transparent; }
     .checkbox__checkmark--green {
@@ -487,7 +491,7 @@ h6 {
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 10;
+    z-index: 5;
     transform: translate(-50%, -50%); }
     @media only screen and (max-width: 75em) {
       .details--popup {
@@ -570,7 +574,10 @@ h6 {
   justify-content: flex-start;
   text-align: left;
   border-left: 3px solid black;
-  border-radius: 0 1rem 1rem 0; }
+  border-radius: 0 1rem 1rem 0;
+  cursor: pointer; }
+  .event::selection {
+    background-color: transparent; }
   .event--second {
     left: 50.25%; }
   .event h5 {
@@ -661,11 +668,17 @@ h6 {
       .side-nav__heading {
         font-size: 3.2rem; } }
     .side-nav__heading--label {
-      font-weight: 700; }
+      font-weight: 700;
+      cursor: pointer; }
+      .side-nav__heading--label::selection {
+        background-color: transparent; }
     .side-nav__heading--sub {
       margin-left: 4rem;
       display: none;
-      font-weight: 500; }
+      font-weight: 500;
+      cursor: pointer; }
+      .side-nav__heading--sub::selection {
+        background-color: transparent; }
       @media only screen and (max-width: 75em) {
         .side-nav__heading--sub {
           margin: 0; } }
@@ -673,7 +686,10 @@ h6 {
     width: auto;
     display: flex;
     align-items: center;
-    justify-content: flex-start; }
+    justify-content: flex-start;
+    cursor: pointer; }
+    .side-nav__label::selection {
+      background-color: transparent; }
     .side-nav__label::selection {
       background-color: transparent; }
     @media only screen and (max-width: 75em) {
@@ -714,7 +730,7 @@ h6 {
     border: 0; }
 
 .todo-list {
-  width: 30%;
+  width: 33.33%;
   display: block;
   position: relative; }
   @media only screen and (max-width: 56.25em) {
@@ -749,9 +765,8 @@ h6 {
       transform: rotate(-45deg); }
   .todo-list__container {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    align-items: flex-start; }
+    align-items: stretch; }
     @media only screen and (max-width: 56.25em) {
       .todo-list__container {
         flex-direction: column; } }
@@ -766,18 +781,34 @@ h6 {
     color: #0f4c75;
     text-align: center; }
   .todo-list__board {
+    height: 90%;
     width: 100%;
     padding: 1rem;
-    border-radius: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center; }
-    .todo-list__board--pending {
-      background-color: #d5ebf8; }
-    .todo-list__board--doing {
-      background-color: #bbe1fa; }
-    .todo-list__board--done {
-      background-color: #8baec6; }
+  .todo-list__item {
+    width: 100%;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(15, 76, 117, 0.2);
+    cursor: pointer; }
+    .todo-list__item::selection {
+      background-color: transparent; }
+  .todo-list__title {
+    margin-left: 1rem;
+    color: #3282b8;
+    font-weight: 500; }
+  .todo-list__button {
+    width: 100%;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    color: #b4b4b4;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 0 1rem rgba(15, 76, 117, 0.2); }
 
 .todo {
   width: 100%; }
@@ -815,11 +846,14 @@ h6 {
   .nav__logo {
     font-size: 3.6rem;
     padding-right: 1rem;
-    font-family: Blacksword;
+    font-family: Blacksword, sans-serif;
     color: transparent;
     background: linear-gradient(45deg, #3282b8, #bbe1fa);
     -webkit-background-clip: text;
-    transform: translateY(0.5rem); }
+    transform: translateY(0.5rem);
+    cursor: pointer; }
+    .nav__logo::selection {
+      background-color: transparent; }
     @media only screen and (max-width: 37.5em) {
       .nav__logo {
         transform: translateY(-1%); } }
@@ -842,11 +876,17 @@ h6 {
   .nav__icon {
     height: 3.8rem;
     width: 3.8rem;
-    fill: #eff8ff; }
+    fill: #eff8ff;
+    cursor: pointer; }
+    .nav__icon::selection {
+      background-color: transparent; }
   .nav__text {
     margin-left: 1.1rem;
     font-size: 2rem;
-    font-weight: 700; }
+    font-weight: 700;
+    cursor: pointer; }
+    .nav__text::selection {
+      background-color: transparent; }
   .nav__checkbox {
     display: none; }
     .nav__checkbox:checked ~ .nav__checkmark {
@@ -1102,14 +1142,11 @@ h6 {
     grid-template-columns: repeat(7, 1fr);
     grid-auto-rows: 3.5rem;
     position: relative;
-    z-index: 5;
+    z-index: 1;
     overflow: hidden; }
     @media only screen and (max-width: 75em) {
       .side-calendar__table {
         margin: .5rem 0 0; } }
-    @media only screen and (max-width: 37.5em) {
-      .side-calendar__table {
-        z-index: 1; } }
     .side-calendar__table div {
       display: flex;
       align-items: center;
