@@ -1,4 +1,4 @@
-export class weekDisplay {
+export class WeekDisplay {
   render(date) {
     console.log('Rendered week!');
   }

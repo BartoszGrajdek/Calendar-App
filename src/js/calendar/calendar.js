@@ -1,11 +1,11 @@
-import {dayDisplay} from "./day";
-import {weekDisplay} from "./week";
-import {monthDisplay} from "./month";
-import {DateHandler} from "../helpers/dateHandler";
+import {DayDisplay} from "./day";
+import {WeekDisplay} from "./week";
+import {MonthDisplay} from "./month";
+import {CalendarHandler} from "../helpers/calendarHandler";
 
-export class Calendar {
+export class Calendar extends CalendarHandler {
   constructor() {
-    this.date = new DateHandler;
+    super();
     this.mode = "day";
     this.init();
   }
@@ -17,14 +17,30 @@ export class Calendar {
     const buttonMonth = buttonWeek.nextElementSibling;
 
     buttonToday.addEventListener('click', () => {
+      buttonToday.classList.remove("side-calendar__button--right");
+      buttonToday.classList.add("side-calendar__button--active");
+      buttonWeek.classList.remove("side-calendar__button--active");
+      buttonMonth.classList.remove("side-calendar__button--active");
+      buttonMonth.classList.add("side-calendar__button--left");
+
       this.mode = "day";
       this.render(this.mode, this.date);
     });
     buttonWeek.addEventListener('click', () => {
+      buttonToday.classList.remove("side-calendar__button--right", "side-calendar__button--active");
+      buttonWeek.classList.add("side-calendar__button--active");
+      buttonMonth.classList.remove("side-calendar__button--active", "side-calendar__button--left");
+
       this.mode = "week";
       this.render(this.mode, this.date);
     });
     buttonMonth.addEventListener('click', () => {
+      buttonToday.classList.remove("side-calendar__button--active");
+      buttonToday.classList.add("side-calendar__button--right");
+      buttonWeek.classList.remove("side-calendar__button--active");
+      buttonMonth.classList.remove("side-calendar__button--left");
+      buttonMonth.classList.add("side-calendar__button--active");
+
       this.mode = "month";
       this.render(this.mode, this.date);
     });
@@ -32,18 +48,16 @@ export class Calendar {
     //SETUP ARROW BUTTONS + CHANGE MAIN CALENDAR HEADER DATE
     const leftArrow = document.querySelector("button.calendar__switch--left");
     const rightArrow = leftArrow.nextElementSibling;
+    const calendarHeader = document.querySelector(".calendar__header");
 
     leftArrow.addEventListener('click', () => {
-      this.date.editChosenDate(-86400000);
-      this.changeDate();
+      this.changeDate(-1, true, calendarHeader);
     });
-
     rightArrow.addEventListener('click', () => {
-      this.date.editChosenDate(86400000);
-      this.changeDate();
+      this.changeDate(1, true, calendarHeader);
     });
 
-    this.changeDate();
+    this.changeDate(0, false, calendarHeader);
   }
 
   render(calendarMode, date) {
@@ -51,21 +65,16 @@ export class Calendar {
     let display;
 
     if (calendarMode === "day") {
-      display = new dayDisplay;
+      display = new DayDisplay;
     } else if (calendarMode === "week") {
-      display = new weekDisplay();
+      display = new WeekDisplay();
     } else if (calendarMode === "month") {
-      display = new monthDisplay();
+      display = new MonthDisplay();
     } else {
       console.log("Wrong calendar mode!");
       return;
     }
 
-    display.render(date);
-  }
-
-  changeDate() {
-    const calendarHeader = document.querySelector(".calendar__header");
-    calendarHeader.innerHTML = this.date.getDateString(this.date.chosenDate);
+    display.render(date.chosenDate);
   }
 }
