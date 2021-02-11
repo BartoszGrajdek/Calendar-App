@@ -14,10 +14,10 @@ export class SideCalendar extends CalendarHandler {
     const calendarHeaderSidebar = document.querySelector(".side-calendar__month");
 
     leftArrowSidebar.addEventListener('click', () => {
-      this.changeDate(1, true, calendarHeaderSidebar, true);
+      this.changeDate(-1, true, calendarHeaderSidebar, true);
     });
     rightArrowSidebar.addEventListener('click', () => {
-      this.changeDate(-1, true, calendarHeaderSidebar, true);
+      this.changeDate(1, true, calendarHeaderSidebar, true);
     });
 
     this.changeDate(0, false, calendarHeaderSidebar, true);

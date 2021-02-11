@@ -20,9 +20,9 @@ export class CalendarHandler {
     } else if (this.mode === "month") {
       //DETERMINE IF YOU WANT TO GO A MONTH BACK OR FORWARD
       if (difference === -1) {
-        this.date.chosenDate.setMonth(this.date.chosenDate.getMonth()+1);
-      } else if (difference === 1) {
         this.date.chosenDate.setMonth(this.date.chosenDate.getMonth()-1);
+      } else if (difference === 1) {
+        this.date.chosenDate.setMonth(this.date.chosenDate.getMonth()+1);
       }
     }
 
