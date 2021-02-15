@@ -4,12 +4,12 @@ export class CalendarHandler {
   constructor() {
     this.mode = "day";
     this.date = new DateHandler;
-    this.render = () => {};
+    this.init();
   }
 
-  changeDate(direction, render, el, side) {
+  changeDate(dateDirection, render, headerElement, side) {
     //CALCULATE DIFFERENCE (0 IF THERE'S NO CHANGE)
-    let difference = direction;
+    let difference = dateDirection;
 
     if (this.mode === "day") {
       difference *= (1000*60*60*24);
@@ -27,8 +27,6 @@ export class CalendarHandler {
     }
 
     //RENDERING NEW DATES
-    el.innerHTML = this.date.getDateString((side ? {year: "numeric", month: "long"} : { year: "numeric", month: "long", day: "numeric"}));
-
-    if (render) this.render(this.mode, this.date);
+    headerElement.innerHTML = this.date.getDateString((side ? {year: "numeric", month: "long"} : { year: "numeric", month: "long", day: "numeric"}));
   }
 }

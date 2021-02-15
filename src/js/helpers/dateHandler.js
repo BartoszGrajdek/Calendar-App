@@ -1,7 +1,7 @@
 export class DateHandler {
   constructor() {
     this.todayDate = new Date();
-    this.chosenDate = this.todayDate;
+    this.chosenDate = new Date(this.todayDate);
   }
 
   getDateString(options) {

@@ -7,7 +7,6 @@ class App {
     calendar.render(calendar.mode, calendar.date);
 
     const sideCalendar = new SideCalendar;
-    sideCalendar.render();
   }
 }
 

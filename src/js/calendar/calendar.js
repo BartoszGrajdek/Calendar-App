@@ -15,6 +15,7 @@ export class Calendar extends CalendarHandler {
     const buttonToday = document.querySelector(".side-calendar__button");
     const buttonWeek = buttonToday.nextElementSibling;
     const buttonMonth = buttonWeek.nextElementSibling;
+    const weekPointer = document.querySelector('.side-calendar__week');
 
     buttonToday.addEventListener('click', () => {
       buttonToday.classList.remove("side-calendar__button--right");
@@ -25,6 +26,8 @@ export class Calendar extends CalendarHandler {
 
       this.mode = "day";
       this.render(this.mode, this.date);
+
+      weekPointer.style.display = "none";
     });
     buttonWeek.addEventListener('click', () => {
       buttonToday.classList.remove("side-calendar__button--right", "side-calendar__button--active");
@@ -33,6 +36,8 @@ export class Calendar extends CalendarHandler {
 
       this.mode = "week";
       this.render(this.mode, this.date);
+
+      weekPointer.style.display = "block";
     });
     buttonMonth.addEventListener('click', () => {
       buttonToday.classList.remove("side-calendar__button--active");
@@ -43,6 +48,8 @@ export class Calendar extends CalendarHandler {
 
       this.mode = "month";
       this.render(this.mode, this.date);
+
+      weekPointer.style.display = "block";
     });
 
     //SETUP ARROW BUTTONS + CHANGE MAIN CALENDAR HEADER DATE
