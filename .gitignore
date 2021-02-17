@@ -2,3 +2,5 @@
 /node_modules
 /.idea
 .eslintrc.json
+.week.html
+.month.html

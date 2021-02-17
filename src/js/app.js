@@ -3,10 +3,53 @@ import { SideCalendar } from './calendar/sideCalendar';
 
 class App {
   static init() {
-    const calendar = new Calendar;
-    calendar.render(calendar.mode, calendar.date);
+    this.app = { mode: "day" };
 
-    const sideCalendar = new SideCalendar;
+    const calendar = new Calendar(this.app);
+    calendar.render(calendar.app.mode, calendar.date);
+
+    const sideCalendar = new SideCalendar(this.app);
+
+    this.render(calendar, sideCalendar);
+  }
+
+  static render(calendar, sideCalendar) {
+    //SETUP SIDE-CALENDAR BUTTONS
+    const buttonToday = document.querySelector(".side-calendar__button");
+    const buttonWeek = buttonToday.nextElementSibling;
+    const buttonMonth = buttonWeek.nextElementSibling;
+
+    buttonToday.addEventListener('click', () => {
+      buttonToday.classList.remove("side-calendar__button--right");
+      buttonToday.classList.add("side-calendar__button--active");
+      buttonWeek.classList.remove("side-calendar__button--active");
+      buttonMonth.classList.remove("side-calendar__button--active");
+      buttonMonth.classList.add("side-calendar__button--left");
+
+      this.app.mode = "day";
+      calendar.render(this.app.mode);
+      sideCalendar.render();
+    });
+    buttonWeek.addEventListener('click', () => {
+      buttonToday.classList.remove("side-calendar__button--right", "side-calendar__button--active");
+      buttonWeek.classList.add("side-calendar__button--active");
+      buttonMonth.classList.remove("side-calendar__button--active", "side-calendar__button--left");
+
+      this.app.mode = "week";
+      calendar.render(this.app.mode);
+      sideCalendar.render();
+    });
+    buttonMonth.addEventListener('click', () => {
+      buttonToday.classList.remove("side-calendar__button--active");
+      buttonToday.classList.add("side-calendar__button--right");
+      buttonWeek.classList.remove("side-calendar__button--active");
+      buttonMonth.classList.remove("side-calendar__button--left");
+      buttonMonth.classList.add("side-calendar__button--active");
+
+      this.app.mode = "month";
+      calendar.render(this.app.mode);
+      sideCalendar.render();
+    });
   }
 }
 

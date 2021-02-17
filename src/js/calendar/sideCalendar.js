@@ -1,14 +1,13 @@
 import {CalendarHandler} from "../helpers/calendarHandler";
 
 export class SideCalendar extends CalendarHandler {
-  constructor() {
-    super();
-    this.mode = "month";
+  constructor(mode) {
+    super(mode);
     this.init();
   }
 
   init() {
-    //SETUP ARROW BUTTONS + CHANGE MAIN CALENDAR HEADER DATE
+    //SETUP ARROW BUTTONS + CHANGE SIDE CALENDAR HEADER DATE
     const leftArrowSidebar = document.querySelector("button.side-calendar__switch--left");
     const rightArrowSidebar = leftArrowSidebar.nextElementSibling;
     const calendarHeaderSidebar = document.querySelector(".side-calendar__month");
@@ -30,32 +29,18 @@ export class SideCalendar extends CalendarHandler {
     //CHECK WHICH DISPLAY MODE IS ENABLED, AND RENDER
     const calendarTable = document.querySelector('.side-calendar__table');
     const weekPointer = document.querySelector('.side-calendar__week');
+
+    //DEFINE DATES
     const date = this.date.chosenDate;
-    const today = this.date.todayDate;
+    const today = this.date.todayDate
 
-    const lastDay = new Date(
-      date.getFullYear(),
-      date.getMonth() + 1,
-      0
-    ).getDate();
-
-    const prevLastDay = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      0
-    ).getDate();
-
-    const firstDayIndex = date.getDay();
-
-    const lastDayIndex = new Date(
-      date.getFullYear(),
-      date.getMonth() + 1,
-      0
-    ).getDay();
-
-    const nextDays = 7 - lastDayIndex - 1;
-
-    const week = Math.floor((nextDays + date.getDate()) / 7);
+    //VARIABLES NEEDED TO RENDER CALENDAR
+    const month = this.date.monthHandler(today, date);
+    const lastDay = month.lastD;
+    const prevLastDay = month.prevLastD;
+    const firstDayIndex = month.firstDIndex;
+    const nextDays = month.nextD;
+    const week = month.w;
 
     let contentHTML =
       "<div class=\"side-calendar__day--name\">Mon</div>\n" +
@@ -83,12 +68,12 @@ export class SideCalendar extends CalendarHandler {
     }
 
     calendarTable.innerHTML = contentHTML;
-    weekPointer.style.display = "none";
 
-    if ((this.mode === "week" || this.mode === "month") && date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear()) {
-      console.log(this.mode, true);
+    if ((this.app.mode === "week" || this.app.mode === "month") && date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear()) {
       weekPointer.style.display = "block";
       weekPointer.style.top = `${((week) * 3.5)}rem`;
+    } else {
+      weekPointer.style.display = "none";
     }
   };
 }
