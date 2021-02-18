@@ -8,7 +8,38 @@ export class DateHandler {
     return this.chosenDate.toLocaleDateString(undefined, options);
   }
 
+  weekHandler(date, today) {
+    let days = [];
+    const lastDay = new Date(
+      date.getFullYear(),
+      date.getMonth() + 1,
+      0
+    ).getDate();
+
+    for (let i = date.getDate(); i <= lastDay && days.length < 7; i++) {
+      days.push(i);
+    }
+
+    for (let i = 1; days.length < 7; i++) {
+      days.push(i);
+    }
+
+    if (
+      date.getFullYear() === today.getFullYear() &&
+      date.getMonth() === today.getMonth() &&
+      (today.getDate() - date.getDate()) < 7 &&
+      (today.getDate() - date.getDate()) >= 0
+    ) {
+      days.push(today.getDay());
+    } else {
+      days.push(-1);
+    }
+
+    return days;
+  }
+
   monthHandler(today, date) {
+    //MAKE DATA FOR RENDERING MONTH CALENDARS
     const lastDay = new Date(
       date.getFullYear(),
       date.getMonth() + 1,

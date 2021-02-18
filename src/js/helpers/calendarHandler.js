@@ -26,6 +26,6 @@ export class CalendarHandler {
     }
 
     //RENDERING NEW DATES
-    headerElement.innerHTML = this.date.getDateString((side ? {year: "numeric", month: "long"} : { year: "numeric", month: "long", day: "numeric"}));
+    headerElement.innerHTML = this.date.getDateString((this.app.mode === "day" && !side ? { year: "numeric", month: "long", day: "numeric"} : {year: "numeric", month: "long"}));
   }
 }

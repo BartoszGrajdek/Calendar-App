@@ -17,29 +17,33 @@ export class Calendar extends CalendarHandler {
 
     leftArrow.addEventListener('click', () => {
       this.changeDate(-1, true, calendarHeader);
+      this.render();
     });
     rightArrow.addEventListener('click', () => {
       this.changeDate(1, true, calendarHeader);
+      this.render();
     });
 
     this.changeDate(0, false, calendarHeader);
   }
 
-  render(calendarMode, date) {
+  render() {
     //CHECK WHICH DISPLAY MODE IS ENABLED, AND RENDER
     let display;
 
-    if (calendarMode === "day") {
-      display = new DayDisplay;
-    } else if (calendarMode === "week") {
-      display = new WeekDisplay();
-    } else if (calendarMode === "month") {
-      display = new MonthDisplay();
+    if (this.app.mode === "day") {
+      display = new DayDisplay(this.app);
+    } else if (this.app.mode === "week") {
+      display = new WeekDisplay(this.app);
+    } else if (this.app.mode === "month") {
+      display = new MonthDisplay(this.app);
     } else {
       console.log("Wrong calendar mode!");
       return;
     }
 
-    display.render(this.date.chosenDate);
+    //SET NEW DATE FORMAT ON CALENDAR HEADER AND RENDER CALENDAR
+    this.changeDate(0, true, document.querySelector(".calendar__header"))
+    display.render(this.date);
   }
 }

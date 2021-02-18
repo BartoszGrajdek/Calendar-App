@@ -14,7 +14,7 @@ class App {
   }
 
   static render(calendar, sideCalendar) {
-    //SETUP SIDE-CALENDAR BUTTONS
+    //SETUP SIDE-CALENDAR BUTTONS AND HEADER
     const buttonToday = document.querySelector(".side-calendar__button");
     const buttonWeek = buttonToday.nextElementSibling;
     const buttonMonth = buttonWeek.nextElementSibling;
@@ -36,6 +36,12 @@ class App {
       buttonMonth.classList.remove("side-calendar__button--active", "side-calendar__button--left");
 
       this.app.mode = "week";
+      calendar.date.chosenDate = new Date(
+        calendar.date.chosenDate.getFullYear(),
+        calendar.date.chosenDate.getMonth(),
+        (calendar.date.chosenDate.getDate() - calendar.date.chosenDate.getDay() + 1)
+      );
+
       calendar.render(this.app.mode);
       sideCalendar.render();
     });

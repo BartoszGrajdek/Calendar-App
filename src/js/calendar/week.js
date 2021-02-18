@@ -1,5 +1,11 @@
-export class WeekDisplay {
+import {RenderHandler} from "../helpers/renderHandler";
+
+export class WeekDisplay extends RenderHandler {
+  constructor(mode) {
+    super(mode);
+  }
+
   render(date) {
-    console.log('Rendered week!');
+    this.calendarRender(date);
   }
 }

@@ -1,5 +1,11 @@
-export class DayDisplay {
+import {RenderHandler} from "../helpers/renderHandler";
+
+export class DayDisplay extends RenderHandler {
+  constructor(mode) {
+    super(mode);
+  }
+
   render(date) {
-    console.log('Rendered day!');
+    this.calendarRender(date);
   }
 }
