@@ -1,6 +1,27 @@
 import { Calendar } from './calendar/calendar';
 import { SideCalendar } from './calendar/sideCalendar';
 
+export let eventListJSON = [
+  [1, "Work", [
+    {date: new Date(), time: {from: "12:30am", to: "1:00pm"}, title: "Send mail"},
+    {date: new Date(), time: {from: "2:00pm", to: "3:00pm"}, title: "Send mail"},
+    {date: new Date(), time: {from: "4:25pm", to: "5:10pm"}, title: "Send mail"},
+    {date: new Date(), time: {from: "5:30pm", to: "6:00pm"}, title: "Send mail"}
+  ], true],
+  [2, "Guitar", [
+    {date: new Date(), time: {from: "12:30am", to: "1:00pm"}, title: "Guitar"},
+    {date: new Date(), time: {from: "2:00pm", to: "3:00pm"}, title: "Guitar"},
+    {date: new Date(), time: {from: "4:25pm", to: "5:10pm"}, title: "Guitar"},
+    {date: new Date(), time: {from: "5:30pm", to: "6:00pm"}, title: "Guitar"}
+  ], true],
+  [3, "Home", [
+    {date: new Date(), time: {from: "12:30am", to: "1:00pm"}, title: "Clean up"},
+    {date: new Date(), time: {from: "2:00pm", to: "3:00pm"}, title: "Clean up"},
+    {date: new Date(), time: {from: "4:25pm", to: "5:10pm"}, title: "Clean up"},
+    {date: new Date(), time: {from: "5:30pm", to: "6:00pm"}, title: "Clean up"}
+  ], true]
+];
+
 class App {
   static init() {
     this.app = { mode: "day" };
@@ -60,3 +81,4 @@ class App {
 }
 
 App.init();
+

@@ -8,7 +8,7 @@ export class DateHandler {
     return this.chosenDate.toLocaleDateString(undefined, options);
   }
 
-  weekHandler(date, today) {
+  weekHandler(today, date) {
     let days = [];
     const lastDay = new Date(
       date.getFullYear(),

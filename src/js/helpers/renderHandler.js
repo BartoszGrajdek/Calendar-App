@@ -9,8 +9,9 @@ export class RenderHandler {
     this.initRender(this.app);
   }
 
+  //WHEN ANYTHING CHANGES MODE, THIS INIT FUNCTION RUNS
   initRender() {
-    //BASIC CHANGES TO HTML CLASSES WHEN SWITCHING MODES
+    //BASIC CHANGES TO HTML CLASSES
     function changeMode(el, className, mode) {
       el.classList.remove(`${className}--day`, `${className}--week`, `${className}--month`);
       el.classList.add(`${className}--${mode}`);
@@ -20,12 +21,12 @@ export class RenderHandler {
     changeMode(this.calendarTable, 'calendar__table', this.app.mode);
   }
 
+  //RENDER CALENDAR TABLE HTML
   calendarRender(data) {
     //RESET CURRENT CONTENT
     let contentHTML = "";
     this.calendarTableBox.innerHTML = '';
     this.calendarTable.innerHTML = '';
-
 
     if (this.app.mode === "day") {
       contentHTML += "<table class=\"calendar__table calendar__table--day\">";
@@ -43,11 +44,9 @@ export class RenderHandler {
 
       contentHTML += "</table>" +
         "<!-- CALENDAR TABLE -->";
-
     } else if (this.app.mode === "week") {
-
       //ADD LABELS TO WEEK TABLE HEADER
-      let week = data.weekHandler(data.chosenDate, data.todayDate);
+      let week = data.weekHandler(data.todayDate, data.chosenDate);
       let weekNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
       contentHTML += "<table class=\"calendar__labels\">" +
@@ -82,11 +81,47 @@ export class RenderHandler {
         `;
       }
 
-      contentHTML += "</table>\n" +
+      contentHTML += "</table>" +
         "<!-- CALENDAR TABLE -->";
-
     } else if (this.app.mode === "month") {
+      //ADD LABELS TO WEEK TABLE HEADER
+      let month = data.monthHandler(data.todayDate, data.chosenDate);
 
+      const lastDay = month.lastD;
+      const prevLastDay = month.prevLastD;
+      const firstDayIndex = month.firstDIndex;
+      const nextDays = month.nextD;
+
+      contentHTML = "<div class=\"calendar__labels\">" +
+        "<div class=\"calendar__table--day\">Mon</div>" +
+        "<div class=\"calendar__table--day\">Tue</div>" +
+        "<div class=\"calendar__table--day\">Wed</div>" +
+        "<div class=\"calendar__table--day\">Thu</div>" +
+        "<div class=\"calendar__table--day\">Fri</div>" +
+        "<div class=\"calendar__table--day\">Sat</div>" +
+        "<div class=\"calendar__table--day\">Sun</div>" +
+        "</div>" +
+        "<!-- CALENDAR LABELS -->" +
+        "<div class=\"calendar__table\">";
+
+      for (let i = firstDayIndex; i > 0; i--) {
+        contentHTML += `<div class="calendar__table--additional">${prevLastDay - i + 1}</div>`;
+      }
+
+      for (let i = 1; i <= lastDay; i++) {
+        if (i === data.todayDate.getDate() && data.chosenDate.getMonth() === data.todayDate.getMonth()) {
+          contentHTML += `<div class="calendar__table--active"><span>${i}</span></div>`;
+        } else {
+          contentHTML += `<div>${i}</div>`;
+        }
+      }
+
+      for (let i = 1; i <= nextDays; i++) {
+        contentHTML += `<div class="calendar__table--additional">${i}</div>`;
+      }
+
+      contentHTML += "</div>\n" +
+        "<!-- CALENDAR TABLE -->";
     }
 
     this.calendarTableBox.innerHTML = contentHTML;
