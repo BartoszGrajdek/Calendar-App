@@ -1,4 +1,4 @@
-import {DateHandler} from "./dateHandler";
+import { DateHandler } from "./dateHandler";
 
 export class CalendarHandler {
   constructor(mode) {

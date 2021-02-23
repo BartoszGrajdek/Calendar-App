@@ -1,4 +1,4 @@
-import {RenderHandler} from "../helpers/renderHandler";
+import { RenderHandler } from "../helpers/renderHandler";
 
 export class WeekDisplay extends RenderHandler {
   constructor(mode) {
@@ -6,6 +6,7 @@ export class WeekDisplay extends RenderHandler {
   }
 
   render(date) {
+    //RENDER CALENDAR FOR WEEK DISPLAY
     this.calendarRender(date);
   }
 }

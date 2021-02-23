@@ -1,4 +1,4 @@
-import {RenderHandler} from "../helpers/renderHandler";
+import { RenderHandler } from "../helpers/renderHandler";
 
 export class MonthDisplay extends RenderHandler {
   constructor(mode) {
@@ -6,6 +6,7 @@ export class MonthDisplay extends RenderHandler {
   }
 
   render(date) {
+    //RENDER CALENDAR FOR MONTH DISPLAY
     this.calendarRender(date);
   }
 }

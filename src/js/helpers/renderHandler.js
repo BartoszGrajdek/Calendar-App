@@ -25,11 +25,12 @@ export class RenderHandler {
   calendarRender(data) {
     //RESET CURRENT CONTENT
     let contentHTML = "";
-    this.calendarTableBox.innerHTML = '';
-    this.calendarTable.innerHTML = '';
+    this.calendarTableBox.innerHTML = "";
+    this.calendarTable.innerHTML = "";
 
     if (this.app.mode === "day") {
-      contentHTML += "<table class=\"calendar__table calendar__table--day\">";
+      //RENDER CONTENT FOR DAY MODE CALENDAR
+      contentHTML += `<table class=\"calendar__table calendar__table--day\">`;
 
       //ADD ROWS TO DAY TABLE
       for (let i = 1; i < 25; i++) {
@@ -42,29 +43,41 @@ export class RenderHandler {
         `;
       }
 
-      contentHTML += "</table>" +
-        "<!-- CALENDAR TABLE -->";
+      //HTML FOR CLOSING CALENDAR TABLE
+      contentHTML += `
+        </table>
+        <!-- CALENDAR TABLE -->
+      `;
     } else if (this.app.mode === "week") {
-      //ADD LABELS TO WEEK TABLE HEADER
+      //RENDER CONTENT FOR WEEK CALENDAR
+
+      //GET WEEK DATA FOR CHOSEN WEEK AND DAY NAMES
       let week = data.weekHandler(data.todayDate, data.chosenDate);
       let weekNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-      contentHTML += "<table class=\"calendar__labels\">" +
-        "<tr class=\"calendar__row\">" +
-        "<th>&nbsp;</th>";
+      //HTML FOR LABEL'S CONTAINERS
+      contentHTML += `
+        <table class=\"calendar__labels\">
+        <tr class=\"calendar__row\">
+        <th>&nbsp;</th>
+      `;
 
+      //RENDER HTML FOR EACH DAY
       for (let i = 0; i < 7; i++) {
         contentHTML += `
           <td class="calendar__label"><span class="calendar__day--name">${weekNames[i]}</span><span class="calendar__day ${i === week[7] - 1 ? 'calendar__day--active' : ''}">${week[i]}</span></td>
         `;
       }
 
-      contentHTML += "</tr>" +
-        "</table>" +
-        "<!-- CALENDAR LABELS -->" +
-        "<table class=\"calendar__table calendar__table--week\">";
+      //HTML FOR LABEL'S CONTAINERS AND CALENDAR TABLE'S CONTAINER
+      contentHTML += `
+          </tr>
+        </table>
+        <!-- CALENDAR LABELS -->
+        <table class=\"calendar__table calendar__table--week\">
+      `;
 
-      //ADD ROWS TO WEEK TABLE
+      //ADD ROWS TO WEEK TABLE FOR EACH HOUR
       for (let i = 1; i < 25; i++) {
         let hour = i <= 12 ? i + "am" : (i - 12) + "pm";
         contentHTML += `
@@ -81,10 +94,15 @@ export class RenderHandler {
         `;
       }
 
-      contentHTML += "</table>" +
-        "<!-- CALENDAR TABLE -->";
+      //HTML FOR CLOSING CALENDAR TABLE
+      contentHTML += `
+        </table>
+        <!-- CALENDAR TABLE -->
+      `;
     } else if (this.app.mode === "month") {
-      //ADD LABELS TO WEEK TABLE HEADER
+      //RENDER CALENDAR FOR MONTH DISPLAY
+
+      //GET MONTH DATA FOR CHOSEN MONTH
       let month = data.monthHandler(data.todayDate, data.chosenDate);
 
       const lastDay = month.lastD;
@@ -92,23 +110,30 @@ export class RenderHandler {
       const firstDayIndex = month.firstDIndex;
       const nextDays = month.nextD;
 
-      contentHTML = "<div class=\"calendar__labels\">" +
-        "<div class=\"calendar__table--day\">Mon</div>" +
-        "<div class=\"calendar__table--day\">Tue</div>" +
-        "<div class=\"calendar__table--day\">Wed</div>" +
-        "<div class=\"calendar__table--day\">Thu</div>" +
-        "<div class=\"calendar__table--day\">Fri</div>" +
-        "<div class=\"calendar__table--day\">Sat</div>" +
-        "<div class=\"calendar__table--day\">Sun</div>" +
-        "</div>" +
-        "<!-- CALENDAR LABELS -->" +
-        "<div class=\"calendar__table\">";
+      //ADD HTML FOR CALENDAR'S LABELS
+      contentHTML = `
+        <div class=\"calendar__labels\">
+          <div class=\"calendar__table--day\">Mon</div>
+          <div class=\"calendar__table--day\">Tue</div>
+          <div class=\"calendar__table--day\">Wed</div>
+          <div class=\"calendar__table--day\">Thu</div>
+          <div class=\"calendar__table--day\">Fri</div>
+          <div class=\"calendar__table--day\">Sat</div>
+          <div class=\"calendar__table--day\">Sun</div>
+        </div>
+        <!-- CALENDAR LABELS -->
+        
+        <div class=\"calendar__table\">
+      `;
 
+      //RENDER HTML FOR PREVIOUS MONTH'S DAYS
       for (let i = firstDayIndex; i > 0; i--) {
         contentHTML += `<div class="calendar__table--additional">${prevLastDay - i + 1}</div>`;
       }
 
+      //RENDER HTML FOR CURRENT MONTH'S DAYS
       for (let i = 1; i <= lastDay; i++) {
+        //CHECK IF IT'S TODAY'S DAY
         if (i === data.todayDate.getDate() && data.chosenDate.getMonth() === data.todayDate.getMonth()) {
           contentHTML += `<div class="calendar__table--active"><span>${i}</span></div>`;
         } else {
@@ -116,12 +141,16 @@ export class RenderHandler {
         }
       }
 
+      //RENDER HTML FOR NEXT MONTH'S DAYS
       for (let i = 1; i <= nextDays; i++) {
         contentHTML += `<div class="calendar__table--additional">${i}</div>`;
       }
 
-      contentHTML += "</div>\n" +
-        "<!-- CALENDAR TABLE -->";
+      //HTML FOR CLOSING CALENDAR TABLE
+      contentHTML += `
+        </div>
+        <!-- CALENDAR TABLE -->
+      `;
     }
 
     this.calendarTableBox.innerHTML = contentHTML;

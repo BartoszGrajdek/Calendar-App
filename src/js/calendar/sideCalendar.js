@@ -1,4 +1,4 @@
-import {CalendarHandler} from "../helpers/calendarHandler";
+import { CalendarHandler } from "../helpers/calendarHandler";
 
 export class SideCalendar extends CalendarHandler {
   constructor(mode) {
@@ -42,6 +42,7 @@ export class SideCalendar extends CalendarHandler {
     const nextDays = month.nextD;
     const week = month.w;
 
+    //LABELS FOR CALENDAR
     let contentHTML =
       "<div class=\"side-calendar__day--name\">Mon</div>\n" +
       "<div class=\"side-calendar__day--name\">Tue</div>\n" +
@@ -51,10 +52,12 @@ export class SideCalendar extends CalendarHandler {
       "<div class=\"side-calendar__day--name\">Sat</div>\n" +
       "<div class=\"side-calendar__day--name\">Sun</div>";
 
+    //RENDER HTML FOR PREVIOUS MONTH DAYS
     for (let i = firstDayIndex; i > 0; i--) {
       contentHTML += `<div class="side-calendar__day--additional">${prevLastDay - i + 1}</div>`;
     }
 
+    //RENDER HTML FOR CURRENT MONTH DAYS
     for (let i = 1; i <= lastDay; i++) {
       if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
         contentHTML += `<div class="side-calendar__day--active">${i}</div>`;
@@ -63,12 +66,15 @@ export class SideCalendar extends CalendarHandler {
       }
     }
 
+    //RENDER HTML FOR NEXT MONTH DAYS
     for (let i = 1; i <= nextDays; i++) {
       contentHTML += `<div class="side-calendar__day--additional">${i}</div>`;
     }
 
+    //LOAD HTML INTO DOM
     calendarTable.innerHTML = contentHTML;
 
+    //CHECK IF IT'S WEEK/MONTH DISPLAY AND DISPLAY WEEK POINTER IF NEEDED
     if ((this.app.mode === "week" || this.app.mode === "month") && date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear()) {
       weekPointer.style.display = "block";
       weekPointer.style.top = `${((week) * 3.5)}rem`;

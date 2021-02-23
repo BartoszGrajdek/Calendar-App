@@ -1,34 +1,46 @@
 import { Calendar } from './calendar/calendar';
 import { SideCalendar } from './calendar/sideCalendar';
 
+//DEMO CONTENT FOR EVENT LISTS
 export let eventListJSON = [
-  [1, "Work", [
-    {date: new Date(), time: {from: "12:30am", to: "1:00pm"}, title: "Send mail"},
-    {date: new Date(), time: {from: "2:00pm", to: "3:00pm"}, title: "Send mail"},
-    {date: new Date(), time: {from: "4:25pm", to: "5:10pm"}, title: "Send mail"},
-    {date: new Date(), time: {from: "5:30pm", to: "6:00pm"}, title: "Send mail"}
-  ], true],
-  [2, "Guitar", [
-    {date: new Date(), time: {from: "12:30am", to: "1:00pm"}, title: "Guitar"},
-    {date: new Date(), time: {from: "2:00pm", to: "3:00pm"}, title: "Guitar"},
-    {date: new Date(), time: {from: "4:25pm", to: "5:10pm"}, title: "Guitar"},
-    {date: new Date(), time: {from: "5:30pm", to: "6:00pm"}, title: "Guitar"}
-  ], true],
-  [3, "Home", [
-    {date: new Date(), time: {from: "12:30am", to: "1:00pm"}, title: "Clean up"},
-    {date: new Date(), time: {from: "2:00pm", to: "3:00pm"}, title: "Clean up"},
-    {date: new Date(), time: {from: "4:25pm", to: "5:10pm"}, title: "Clean up"},
-    {date: new Date(), time: {from: "5:30pm", to: "6:00pm"}, title: "Clean up"}
-  ], true]
+  { id: 1,
+    name: "Work",
+    events: [
+        {date: new Date(), time: {from: "12:30am", to: "1:00pm"}, title: "Send mail"},
+        {date: new Date(), time: {from: "2:00pm", to: "3:00pm"}, title: "Send mail"},
+        {date: new Date(), time: {from: "4:25pm", to: "5:10pm"}, title: "Send mail"},
+        {date: new Date(), time: {from: "5:30pm", to: "6:00pm"}, title: "Send mail"}
+      ],
+    isEnabled: true},
+  { id: 2,
+    name: "Guitar",
+    events: [
+      {date: new Date(), time: {from: "12:30am", to: "1:00pm"}, title: "Learn new chords"},
+      {date: new Date(), time: {from: "2:00pm", to: "3:00pm"}, title: "Learn new chords"},
+      {date: new Date(), time: {from: "4:25pm", to: "5:10pm"}, title: "Learn new chords"},
+      {date: new Date(), time: {from: "5:30pm", to: "6:00pm"}, title: "Learn new chords"}
+    ],
+    isEnabled: true},
+  { id: 3,
+    name: "Home",
+    events: [
+      {date: new Date(), time: {from: "12:30am", to: "1:00pm"}, title: "Clean up"},
+      {date: new Date(), time: {from: "2:00pm", to: "3:00pm"}, title: "Clean up"},
+      {date: new Date(), time: {from: "4:25pm", to: "5:10pm"}, title: "Clean up"},
+      {date: new Date(), time: {from: "5:30pm", to: "6:00pm"}, title: "Clean up"}
+    ],
+    isEnabled: true}
 ];
 
 class App {
   static init() {
     this.app = { mode: "day" };
 
+    //INITIALIZE MAIN CALENDAR AND RENDER IT
     const calendar = new Calendar(this.app);
     calendar.render(calendar.app.mode, calendar.date);
 
+    //INITIALIZE SIDE CALENDAR
     const sideCalendar = new SideCalendar(this.app);
 
     this.render(calendar, sideCalendar);
@@ -80,5 +92,5 @@ class App {
   }
 }
 
+//RUN WHOLE APP
 App.init();
-
