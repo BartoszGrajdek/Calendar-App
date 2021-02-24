@@ -3,34 +3,83 @@ import { SideCalendar } from './calendar/sideCalendar';
 
 //DEMO CONTENT FOR EVENT LISTS
 export let eventListJSON = [
-  { id: 1,
+  {
+    id: 1,
     name: "Work",
     events: [
-        {date: new Date(), time: {from: "12:30am", to: "1:00pm"}, title: "Send mail"},
-        {date: new Date(), time: {from: "2:00pm", to: "3:00pm"}, title: "Send mail"},
-        {date: new Date(), time: {from: "4:25pm", to: "5:10pm"}, title: "Send mail"},
-        {date: new Date(), time: {from: "5:30pm", to: "6:00pm"}, title: "Send mail"}
+        {
+          start: new Date(2021, new Date().getMonth(), new Date().getDate(), 1, 0),
+          end: new Date(2021, new Date().getMonth(), new Date().getDate(), 2, 0),
+          title: "Send mail"
+        },
+        {
+          start: new Date(2021, new Date().getMonth(), new Date().getDate(), 7, 0),
+          end: new Date(2021, new Date().getMonth(), new Date().getDate(), 9, 20),
+          title: "Send mail"
+        },
+        {
+          start: new Date(2021, new Date().getMonth(), new Date().getDate(), 18, 0),
+          end: new Date(2021, new Date().getMonth(), new Date().getDate(), 18, 40),
+          title: "Send mail",
+          isSecond: true
+        },
+        {
+          start: new Date(2021, new Date().getMonth(), new Date().getDate(), 20, 0),
+          end: new Date(2021, new Date().getMonth(), new Date().getDate(), 21, 30),
+          title: "Send mail",
+          isSecond: true
+        }
       ],
-    isEnabled: true},
-  { id: 2,
+    isEnabled: true
+  },
+  {
+    id: 2,
     name: "Guitar",
     events: [
-      {date: new Date(), time: {from: "12:30am", to: "1:00pm"}, title: "Learn new chords"},
-      {date: new Date(), time: {from: "2:00pm", to: "3:00pm"}, title: "Learn new chords"},
-      {date: new Date(), time: {from: "4:25pm", to: "5:10pm"}, title: "Learn new chords"},
-      {date: new Date(), time: {from: "5:30pm", to: "6:00pm"}, title: "Learn new chords"}
+      {
+        start: new Date(2021, new Date().getMonth(), new Date().getDate(), 10, 0),
+        end: new Date(2021, new Date().getMonth(), new Date().getDate(), 11, 50),
+        title: "Learn new chords"
+      },
+      {
+        start: new Date(2021, new Date().getMonth(), new Date().getDate(), 14, 0),
+        end: new Date(2021, new Date().getMonth(), new Date().getDate(), 18, 15),
+        title: "Learn new chords"
+      },
+      {
+        start: new Date(2021, new Date().getMonth(), new Date().getDate(), 20, 0),
+        end: new Date(2021, new Date().getMonth(), new Date().getDate(), 21, 50),
+        title: "Learn new chords"
+      }
     ],
-    isEnabled: true},
-  { id: 3,
+    isEnabled: true
+  },
+  {
+    id: 3,
     name: "Home",
     events: [
-      {date: new Date(), time: {from: "12:30am", to: "1:00pm"}, title: "Clean up"},
-      {date: new Date(), time: {from: "2:00pm", to: "3:00pm"}, title: "Clean up"},
-      {date: new Date(), time: {from: "4:25pm", to: "5:10pm"}, title: "Clean up"},
-      {date: new Date(), time: {from: "5:30pm", to: "6:00pm"}, title: "Clean up"}
+      {
+        start: new Date(2021, new Date().getMonth(), new Date().getDate(), 9, 0),
+        end: new Date(2021, new Date().getMonth(), new Date().getDate(), 12, 30),
+        title: "Clean up",
+        isSecond: true
+      },
+      {
+        start: new Date(2021, new Date().getMonth(), new Date().getDate(), 15, 0),
+        end: new Date(2021, new Date().getMonth(), new Date().getDate(), 16, 20),
+        title: "Clean up",
+        isSecond: true
+      },
+      {
+        start: new Date(2021, new Date().getMonth(), new Date().getDate(), 22, 0),
+        end: new Date(2021, new Date().getMonth(), new Date().getDate(), 23, 0),
+        title: "Clean up"
+      }
     ],
-    isEnabled: true}
+    isEnabled: true
+  }
 ];
+
 
 class App {
   static init() {

@@ -28,7 +28,7 @@ export class EventHandler {
 
     //ADDING HTML FOR EACH EVENTS LIST
     for (let eventList of eventListJSON) {
-      this.eventLists.push(new EventList(eventList.id, eventList.name, eventList.events, eventList.isEnabled));
+      this.eventLists.push(new EventList(eventList, colors[eventList.id-1]));
       const checked = eventList.isEnabled ? "checked" : "";
 
       contentHTML += `<div class="categories__item">
@@ -59,6 +59,10 @@ export class EventHandler {
   }
 
   render(date = this.date, mode = this.mode) {
+    for (const td of document.querySelectorAll(".calendar__table .calendar__row td")) {
+      td.innerHTML = "";
+    }
+
     //LOOP THROUGH ALL THE EVENT LISTS AND IF ENABLED RENDER THEM
     for (const eventHandler of this.eventLists) {
       if (eventHandler.isEnabled) {
