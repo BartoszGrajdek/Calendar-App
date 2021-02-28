@@ -32,7 +32,7 @@ export class DateHandler {
       (today.getDate() - date.getDate()) < 7 &&
       (today.getDate() - date.getDate()) >= 0
     ) {
-      days.push(today.getDay());
+      days.push(today.getDay() === 0 ? 7 : today.getDay() - 1);
     } else {
       days.push(-1);
     }
@@ -76,7 +76,7 @@ export class DateHandler {
     if (nextDays === 7) nextDays = 0;
 
     //CALCULATE WHICH WEEK IS IT CURRENTLY
-    const week = Math.ceil((firstDayIndex + 1 + date.getDate()) / 7);
+    const week = Math.ceil((firstDayIndex + date.getDate()) / 7);
 
     return {
       lastD: lastDay,

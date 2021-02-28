@@ -59,8 +59,8 @@ export let eventListJSON = [
     name: "Home",
     events: [
       {
-        start: new Date(2021, new Date().getMonth(), new Date().getDate(), 9, 0),
-        end: new Date(2021, new Date().getMonth(), new Date().getDate(), 12, 30),
+        start: new Date(2021, new Date().getMonth(), new Date().getDate()-1, 9, 0),
+        end: new Date(2021, new Date().getMonth(), new Date().getDate()-1, 12, 30),
         title: "Clean up",
         isSecond: true
       },
