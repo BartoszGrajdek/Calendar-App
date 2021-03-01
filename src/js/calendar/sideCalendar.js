@@ -35,7 +35,7 @@ export class SideCalendar extends CalendarHandler {
     const today = this.date.todayDate
 
     //VARIABLES NEEDED TO RENDER CALENDAR
-    const month = this.date.monthHandler(today, date);
+    const month = this.date.monthHandler(date);
     const lastDay = month.lastD;
     const prevLastDay = month.prevLastD;
     const firstDayIndex = month.firstDIndex;

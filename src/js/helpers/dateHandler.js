@@ -40,7 +40,7 @@ export class DateHandler {
     return days;
   }
 
-  monthHandler(today, date) {
+  monthHandler(date) {
     //MAKE DATA FOR RENDERING MONTH CALENDARS
 
     //LAST DAY OF CURRENT MONTH

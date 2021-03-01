@@ -65,7 +65,7 @@ export class RenderHandler {
       //RENDER HTML FOR EACH DAY
       for (let i = 0; i < 7; i++) {
         contentHTML += `
-          <td class="calendar__label"><span class="calendar__day--name">${weekNames[i]}</span><span class="calendar__day ${i === week[7] - 1 ? 'calendar__day--active' : ''}">${week[i]}</span></td>
+          <td class="calendar__label"><span class="calendar__day--name">${weekNames[i]}</span><span class="calendar__day ${i === week[7] ? 'calendar__day--active' : ''}">${week[i]}</span></td>
         `;
       }
 

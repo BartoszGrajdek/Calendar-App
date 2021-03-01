@@ -79,7 +79,7 @@
     &--green {
       
       &::after {
-        width: 60%;
+        width: 0;
         
         background-color: $color-secondary-light-2;
       }
@@ -88,7 +88,7 @@
     &--purple {
     
       &::after {
-        width: 90%;
+        width: 0;
         
         background-color: $color-tertiary-light-2;
       }
@@ -97,7 +97,7 @@
     &--blue {
     
       &::after {
-        width: 40%;
+        width: 0;
         
         background-color: $color-quaternary-light-2;
       }

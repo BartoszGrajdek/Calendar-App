@@ -1,4 +1,5 @@
 import { Event } from "./event";
+import { DateHandler } from "../helpers/dateHandler";
 
 export class EventList {
   constructor(eventList, color) {
@@ -27,7 +28,7 @@ export class EventList {
     const chosenDay = chosenDate.getDate();
 
     if (mode === "day") {
-      console.log("It's day mode!");
+      // console.log("It's day mode!");
 
       for (const event of this.events) {
         if (event.start.getFullYear() === chosenYear && event.start.getMonth() === chosenMonth && event.start.getDate() === chosenDay) {
@@ -37,7 +38,6 @@ export class EventList {
 
       const rows = calendarTable.querySelectorAll(".calendar__row");
       const height = rows[0].offsetHeight;
-      let i = 0;
 
       for (const event of chosenEvents) {
         const eventDurationString =
@@ -65,24 +65,37 @@ export class EventList {
             <h3 class="event__title">${event.title}</h3>
           </div>
         `;
-
-        i++;
       }
     } else if (mode === "week") {
-      console.log("It's week mode!");
+      // console.log("It's week mode!");
+
+      const data = date.weekHandler(date.todayDate, chosenDate);
+      data.pop();
+
+      const prevMonthDays = [data[0]];
+      const nextMonthDays = [];
+
+      for (let i = 1; i <= data.length; i++) {
+        if (prevMonthDays[i-1] < data[i] && nextMonthDays.length === 0) {
+          prevMonthDays.push(data[i])
+        } else {
+          nextMonthDays.push(data[i]);
+        }
+      }
 
       const weekFirstDay = chosenDay;
       const weekLastDay = chosenDay + 7;
 
       for (const event of this.events) {
-        if (event.start.getFullYear() === chosenYear && event.start.getMonth() === chosenMonth && event.start.getDate() >= weekFirstDay && event.start.getDate() <= weekLastDay) {
+        if (event.start.getFullYear() === chosenYear && event.start.getMonth() === chosenMonth && prevMonthDays.includes(event.start.getDate())) {
+          chosenEvents.push(event);
+        } else if (event.start.getFullYear() === chosenYear && event.start.getMonth() === chosenMonth + 1 && nextMonthDays.includes(event.start.getDate())) {
           chosenEvents.push(event);
         }
       }
 
       const rows = calendarTable.querySelectorAll(".calendar__row");
       const height = rows[0].offsetHeight;
-      let i = 0;
 
       for (const event of chosenEvents) {
         const eventDurationString =
@@ -109,11 +122,32 @@ export class EventList {
             <h3 class="event__title">${event.title}</h3>
           </div>
         `;
-
-        i++;
       }
     } else if (mode === "month") {
-      console.log("It's month mode!");
+      // console.log("It's month mode!");
+
+      for (const event of this.events) {
+        if (event.start.getFullYear() === chosenYear && event.start.getMonth() === chosenMonth) {
+          chosenEvents.push(event);
+        }
+      }
+
+      const cells = calendarTable.querySelectorAll(".calendar__table div:not(.event)");
+      const firstDayIndex = new Date(
+        chosenDate.getFullYear(),
+        chosenDate.getMonth(),
+        0
+      ).getDay();
+
+      for (const event of chosenEvents) {
+
+        cells[event.start.getDate()+firstDayIndex-1].innerHTML += `
+          <div class="event event--month event--${this.color}">
+            <h3 class="event__title">${event.title}</h3>
+          </div>
+        `;
+
+      }
     }
   }
 }
