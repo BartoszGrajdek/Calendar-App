@@ -1,11 +1,13 @@
 import { Event } from "./event";
-import { DateHandler } from "../helpers/dateHandler";
+import { noteListJSON } from "../app";
+import {Note} from "../notes/note";
 
 export class EventList {
   constructor(eventList, color) {
     this.id = eventList.id;
     this.name = eventList.name;
     this.isEnabled = eventList.isEnabled;
+    this.noteListId = eventList.noteListId;
     this.color = color;
     this.events = [];
 
@@ -15,7 +17,7 @@ export class EventList {
   init(eventList) {
     //LOAD ALL THE EVENTS INTO EVENTS LIST
     for (const event of eventList.events) {
-      this.events.push(new Event(event))
+      this.events.push(new Event(event, this.noteListId))
     }
   }
 
@@ -60,7 +62,7 @@ export class EventList {
         }
 
         rows[event.start.getHours()].querySelector("td").innerHTML += `
-          <div class="event event--day event--${this.color} ${secondaryClass}" style="top: ${elTop}; height: ${elHeight}">
+          <div class="event event--day event--${this.color} ${secondaryClass}" style="top: ${elTop}; height: ${elHeight}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
             ${hoursHTML}
             <h3 class="event__title">${event.title}</h3>
           </div>
@@ -117,7 +119,7 @@ export class EventList {
         const row = rows[event.start.getHours()].querySelectorAll("td");
 
         row[event.start.getDay() === 0 ? 6 : event.start.getDay() - 1].innerHTML += `
-          <div class="event event--week event--${this.color}" style="top: ${elTop}; height: ${elHeight}">
+          <div class="event event--week event--${this.color}" style="top: ${elTop}; height: ${elHeight}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
             ${hoursHTML}
             <h3 class="event__title">${event.title}</h3>
           </div>
@@ -140,14 +142,20 @@ export class EventList {
       ).getDay();
 
       for (const event of chosenEvents) {
-
         cells[event.start.getDate()+firstDayIndex-1].innerHTML += `
-          <div class="event event--month event--${this.color}">
+          <div class="event event--month event--${this.color}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
             <h3 class="event__title">${event.title}</h3>
           </div>
         `;
-
       }
+    }
+
+    for (const eventEl of document.querySelectorAll(".event")) {
+      eventEl.addEventListener("click", e => {
+        const noteObj = noteListJSON.find(element => element.id === parseInt(eventEl.dataset.noteListId)).notes.find(element => element.id === parseInt(eventEl.dataset.noteId));
+        const note = new Note(noteObj, eventEl.dataset.color);
+        console.log(note);
+      });
     }
   }
 }

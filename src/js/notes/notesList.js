@@ -14,7 +14,7 @@ export class NotesList {
 
   init(noteList) {
     for (const note of noteList.notes) {
-      this.notes.push(new Note(note, this.id));
+      this.notes.push(new Note(note));
     }
   }
 

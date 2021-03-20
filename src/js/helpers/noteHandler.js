@@ -1,9 +1,9 @@
-import {noteListJSON} from "../app";
-import {NotesList} from "../notes/notesList";
+import { noteListJSON } from "../app";
+import { NotesList } from "../notes/notesList";
 
 export class NoteHandler {
   constructor() {
-    this.noteLists = [];
+    this.noteListsListing = [];
     this.init();
   }
 
@@ -30,13 +30,16 @@ export class NoteHandler {
 
     //ADDING HTML FOR EACH EVENTS LIST
     for (let noteList of noteListJSON) {
-      this.noteLists.push(new NotesList(noteList, colors[noteList.id-1]));
+      if (noteList.mode === "event") return;
+      this.noteListsListing.push(new NotesList(noteList, colors[noteList.id-1]));
+
       const checked = noteList.isEnabled ? "checked" : "";
       const notesRatio = noteList.notes.length / totalNotes;
       const width = Math.ceil(notesRatio * 100) + "%";
       const color = `categories__progress-bar--${colors[noteList.id-1]}`;
 
-      contentHTML += `<div class="categories__item">
+      contentHTML += `
+        <div class="categories__item">
           <label class="categories__label checkbox__label" for="${noteList.id}">
             <input type="checkbox" id="${noteList.id}" class="categories__checkbox checkbox" name="category" ${checked}>
             <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--${colors[noteList.id-1]}">&nbsp;</span>
@@ -48,7 +51,8 @@ export class NoteHandler {
               width: ${width};
             }
           </style>
-        </div>`;
+        </div>
+      `;
     }
 
     //ADD RENDERED CONTENT
@@ -62,7 +66,7 @@ export class NoteHandler {
       checkbox.addEventListener('change', e => {
         const id = e.target.id;
 
-        this.noteLists[id-1].isEnabled = !this.noteLists[id-1].isEnabled;
+        this.noteListsListing[id-1].isEnabled = !this.noteListsListing[id-1].isEnabled;
         this.render();
       });
     });
@@ -72,19 +76,17 @@ export class NoteHandler {
     document.querySelector(".side-nav").innerHTML = "";
 
     //LOOP THROUGH ALL THE EVENT LISTS AND IF ENABLED RENDER THEM
-    for (const noteHandler of this.noteLists) {
+    for (const noteHandler of this.noteListsListing) {
       if (noteHandler.isEnabled) {
         noteHandler.render();
       }
     }
 
     const notesEl = document.querySelectorAll(".side-nav__heading--sub");
-    const detailsEl = document.querySelector(".details");
 
     for (const el of notesEl) {
       el.addEventListener("click", () => {
-        console.log(el.dataset);
-        this.noteLists[el.dataset.listId-1].notes[el.dataset.noteId-1].render(detailsEl);
+        this.noteListsListing[el.dataset.listId-1].notes[el.dataset.noteId-1].render();
       });
     }
   }

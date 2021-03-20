@@ -1,10 +1,12 @@
 export class Event {
-  constructor(event) {
+  constructor(event, noteListId) {
     //ASSIGN EVENT PROPERTIES
     this.start = event.start;
     this.end = event.end;
     this.title = event.title;
     this.isSecond = event.isSecond;
+    this.noteListId = noteListId;
+    this.noteId = event.noteId;
   }
 
   getDifference() {
