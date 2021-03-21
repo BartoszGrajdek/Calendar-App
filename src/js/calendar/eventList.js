@@ -21,16 +21,15 @@ export class EventList {
     }
   }
 
-  render(date, mode) {
+  render(date, app) {
     const calendarTable = document.querySelector(".calendar__table");
     const chosenDate = date.chosenDate;
     let chosenEvents = [];
     const chosenYear = chosenDate.getFullYear();
     const chosenMonth = chosenDate.getMonth();
     const chosenDay = chosenDate.getDate();
-
-    if (mode === "day") {
-      // console.log("It's day mode!");
+    if (app.mode === "day") {
+      // console.log("It's day app.mode!");
 
       for (const event of this.events) {
         if (event.start.getFullYear() === chosenYear && event.start.getMonth() === chosenMonth && event.start.getDate() === chosenDay) {
@@ -68,8 +67,8 @@ export class EventList {
           </div>
         `;
       }
-    } else if (mode === "week") {
-      // console.log("It's week mode!");
+    } else if (app.mode === "week") {
+      // console.log("It's week app.mode!");
 
       const data = date.weekHandler(date.todayDate, chosenDate);
       data.pop();
@@ -125,8 +124,8 @@ export class EventList {
           </div>
         `;
       }
-    } else if (mode === "month") {
-      // console.log("It's month mode!");
+    } else if (app.mode === "month") {
+      // console.log("It's month app.mode!");
 
       for (const event of this.events) {
         if (event.start.getFullYear() === chosenYear && event.start.getMonth() === chosenMonth) {
@@ -154,6 +153,7 @@ export class EventList {
       eventEl.addEventListener("click", e => {
         const noteObj = noteListJSON.find(element => element.id === parseInt(eventEl.dataset.noteListId)).notes.find(element => element.id === parseInt(eventEl.dataset.noteId));
         const note = new Note(noteObj, eventEl.dataset.color);
+        note.render(app.mode);
         console.log(note);
       });
     }

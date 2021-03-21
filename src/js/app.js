@@ -440,6 +440,7 @@ class App {
           </div>
       `;
       document.querySelector(".content").append(content);
+      if (document.querySelector(".popup") !== null) document.querySelector(".popup").remove();
 
       this.app.mode = "day";
       calendar.render(this.app.mode);
@@ -450,8 +451,31 @@ class App {
       buttonWeek.classList.add("side-calendar__button--active");
       buttonMonth.classList.remove("side-calendar__button--active", "side-calendar__button--left");
 
-
       document.querySelector(".details").remove();
+      if (document.querySelector(".popup") !== null) document.querySelector(".popup").remove();
+
+      let popup = document.createElement("div");
+      popup.classList.add("popup");
+      popup.innerHTML = `
+          <div class="details details--popup">
+            <div class="details__header">
+              <div class="details__headings">
+                <h2 class="details__event"></h2>
+              </div>
+              <span class="details__close">&nbsp;</span>
+            </div>
+            <div class="details__description">
+              <h4 class="details__title"></h4>
+              <p class="details__text"></p>
+            </div>
+            <div class="details__checklist checklist">
+            </div>
+          </div>
+          <!-- DETAILS POPUP-->
+        `;
+      document.querySelector(".content").append(popup);
+      document.querySelector(".popup").style.display = "none";
+
       this.app.mode = "week";
       calendar.date.chosenDate = new Date(
         calendar.date.chosenDate.getFullYear(),
@@ -470,6 +494,30 @@ class App {
       buttonMonth.classList.add("side-calendar__button--active");
 
       document.querySelector(".details").remove();
+      if (document.querySelector(".popup") !== null) document.querySelector(".popup").remove();
+
+      let popup = document.createElement("div");
+      popup.classList.add("popup");
+      popup.innerHTML = `
+          <div class="details details--popup">
+            <div class="details__header">
+              <div class="details__headings">
+                <h2 class="details__event"></h2>
+              </div>
+              <span class="details__close">&nbsp;</span>
+            </div>
+            <div class="details__description">
+              <h4 class="details__title"></h4>
+              <p class="details__text"></p>
+            </div>
+            <div class="details__checklist checklist">
+            </div>
+          </div>
+          <!-- DETAILS POPUP-->
+        `;
+      document.querySelector(".content").append(popup);
+      document.querySelector(".popup").style.display = "none";
+
       this.app.mode = "month";
       calendar.render(this.app.mode);
       sideCalendar.render();

@@ -8,7 +8,7 @@ export class Calendar extends CalendarHandler {
   constructor(mode) {
     super(mode);
     this.init();
-    this.eventHandler = new EventHandler(this.date, this.app.mode);
+    this.eventHandler = new EventHandler(this.date, this.app);
   }
 
   init() {
@@ -49,6 +49,6 @@ export class Calendar extends CalendarHandler {
     display.render(this.date);
 
     //RENDER EVENTS
-    this.eventHandler.render(this.date, this.app.mode);
+    this.eventHandler.render(this.date, this.app);
   }
 }

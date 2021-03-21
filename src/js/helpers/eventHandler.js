@@ -4,9 +4,8 @@ import { eventListJSON } from "../app";
 export class EventHandler {
   constructor(date, mode) {
     this.date = date;
-    this.mode = mode;
+    this.app = mode;
     this.eventLists = [];
-
     this.init();
   }
 
@@ -71,7 +70,7 @@ export class EventHandler {
     });
   }
 
-  render(date = this.date, mode = this.mode) {
+  render(date = this.date, mode = this.app) {
     for (const td of document.querySelectorAll(".calendar__table .calendar__row td")) {
       td.innerHTML = "";
     }
