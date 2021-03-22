@@ -1,6 +1,7 @@
 export class Event {
   constructor(event, noteListId) {
     //ASSIGN EVENT PROPERTIES
+    this.id = event.id;
     this.start = event.start;
     this.end = event.end;
     this.title = event.title;

@@ -2,11 +2,11 @@ import { Note } from "./note";
 import { categoriesListJSON } from "../app";
 
 export class NotesList {
-  constructor(noteList, color) {
+  constructor(noteList) {
     this.id = noteList.id;
     this.name = noteList.name;
     this.isEnabled = noteList.isEnabled;
-    this.color = color;
+    this.color = noteList.color;
     this.notes = [];
 
     this.init(noteList);
@@ -14,7 +14,7 @@ export class NotesList {
 
   init(noteList) {
     for (const note of noteList.notes) {
-      this.notes.push(new Note(note));
+      this.notes.push(new Note(note, this.id));
     }
   }
 

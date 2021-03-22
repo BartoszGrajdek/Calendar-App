@@ -8,20 +8,24 @@ export let eventListJSON = [
     id: 1,
     noteListId: 4,
     name: "Work",
+    color: "green",
     events: [
         {
+          id: 1,
           start: new Date(2021, new Date().getMonth(), new Date().getDate()-5, 1, 0),
           end: new Date(2021, new Date().getMonth(), new Date().getDate()-5, 2, 0),
           title: "Send mail",
           noteId: 1
         },
         {
+          id: 2,
           start: new Date(2021, new Date().getMonth()+1, new Date().getDate(), 7, 0),
           end: new Date(2021, new Date().getMonth()+1, new Date().getDate(), 9, 20),
           title: "Send mail",
           noteId: 2
         },
         {
+          id: 3,
           start: new Date(2021, new Date().getMonth(), new Date().getDate()+3, 18, 0),
           end: new Date(2021, new Date().getMonth(), new Date().getDate()+3, 18, 40),
           title: "Send mail",
@@ -29,6 +33,7 @@ export let eventListJSON = [
           noteId: 3
         },
         {
+          id: 4,
           start: new Date(2021, new Date().getMonth(), new Date().getDate(), 20, 0),
           end: new Date(2021, new Date().getMonth(), new Date().getDate(), 21, 30),
           title: "Send mail",
@@ -42,20 +47,24 @@ export let eventListJSON = [
     id: 2,
     noteListId: 5,
     name: "Guitar",
+    color: "purple",
     events: [
       {
+        id: 1,
         start: new Date(2021, new Date().getMonth(), new Date().getDate(), 10, 0),
         end: new Date(2021, new Date().getMonth(), new Date().getDate(), 11, 50),
         title: "Learn new chords",
         noteId: 1
       },
       {
+        id: 2,
         start: new Date(2021, new Date().getMonth(), new Date().getDate()+14, 14, 0),
         end: new Date(2021, new Date().getMonth(), new Date().getDate()+14, 18, 15),
         title: "Learn new chords",
         noteId: 2
       },
       {
+        id: 3,
         start: new Date(2021, new Date().getMonth(), new Date().getDate()+30, 20, 0),
         end: new Date(2021, new Date().getMonth(), new Date().getDate()+30, 21, 50),
         title: "Learn new chords",
@@ -68,8 +77,10 @@ export let eventListJSON = [
     id: 3,
     noteListId: 6,
     name: "Home",
+    color: "blue",
     events: [
       {
+        id: 1,
         start: new Date(2021, new Date().getMonth(), new Date().getDate()-1, 9, 0),
         end: new Date(2021, new Date().getMonth(), new Date().getDate()-1, 12, 30),
         title: "Clean up",
@@ -77,6 +88,7 @@ export let eventListJSON = [
         noteId: 1
       },
       {
+        id: 2,
         start: new Date(2021, new Date().getMonth(), new Date().getDate(), 15, 0),
         end: new Date(2021, new Date().getMonth(), new Date().getDate(), 16, 20),
         title: "Clean up",
@@ -84,6 +96,7 @@ export let eventListJSON = [
         noteId: 2
       },
       {
+        id: 3,
         start: new Date(2021, new Date().getMonth(), new Date().getDate(), 22, 0),
         end: new Date(2021, new Date().getMonth(), new Date().getDate(), 23, 0),
         title: "Clean up",
@@ -131,13 +144,14 @@ export let noteListJSON = [
   {
     id: 1,
     name: "Work",
+    color: "green",
     notes: [
       {
         id: 1,
         categoryId: 1,
         name: "Mailing list",
         textTitle: "Lorem ipsum",
-        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus.",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
         toDoList: [
           {
             taskId: 1,
@@ -180,17 +194,137 @@ export let noteListJSON = [
       {
         id: 2,
         categoryId: 1,
-        name: "Appointments"
+        name: "Appointments",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 3,
         categoryId: 1,
-        name: "Our products"
+        name: "Our products",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 4,
         categoryId: 2,
-        name: "Meals plan"
+        name: "Meals plan",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       }
     ],
     isEnabled: true,
@@ -199,31 +333,232 @@ export let noteListJSON = [
   {
     id: 2,
     name: "Guitar",
+    color: "purple",
     notes: [
       {
         id: 1,
         categoryId: 2,
-        name: "House work"
+        name: "House work",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 2,
         categoryId: 2,
-        name: "Things to work on"
+        name: "Things to work on",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 3,
         categoryId: 3,
-        name: "Dentist"
+        name: "Dentist",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 4,
         categoryId: 4,
-        name: "Monthly bills"
+        name: "Monthly bills",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 5,
         categoryId: 4,
-        name: "Subscriptions"
+        name: "Subscriptions",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       }
     ],
     isEnabled: true,
@@ -232,32 +567,233 @@ export let noteListJSON = [
   {
     id: 3,
     name: "Home",
+    color: "blue",
     categories: ["Work", "Home", "Reminders"],
     notes: [
       {
         id: 1,
         categoryId: 4,
-        name: "Furniture"
+        name: "Furniture",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 2,
         categoryId: 4,
-        name: "Computers"
+        name: "Computers",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 3,
         categoryId: 5,
-        name: "Places to go to"
+        name: "Places to go to",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 4,
         categoryId: 5,
-        name: "Hotels"
+        name: "Hotels",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 5,
         categoryId: 6,
-        name: "Dr Appointments"
+        name: "Dr Appointments",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       }
     ],
     isEnabled: true,
@@ -268,23 +804,223 @@ export let noteListJSON = [
     notes: [
       {
         id: 1,
-        name: "House work"
+        name: "House work",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 2,
-        name: "Things to work on"
+        name: "Things to work on",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 3,
-        name: "Dentist"
+        name: "Dentist",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 4,
-        name: "Monthly bills"
+        name: "Monthly bills",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 5,
-        name: "Subscriptions"
+        name: "Subscriptions",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       }
     ],
     mode: "event"
@@ -294,23 +1030,223 @@ export let noteListJSON = [
     notes: [
       {
         id: 1,
-        name: "House work"
+        name: "House work",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 2,
-        name: "Things to work on"
+        name: "Things to work on",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 3,
-        name: "Dentist"
+        name: "Dentist",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 4,
-        name: "Monthly bills"
+        name: "Monthly bills",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 5,
-        name: "Subscriptions"
+        name: "Subscriptions",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       }
     ],
     mode: "event"
@@ -320,23 +1256,223 @@ export let noteListJSON = [
     notes: [
       {
         id: 1,
-        name: "House work"
+        name: "House work",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 2,
-        name: "Things to work on"
+        name: "Things to work on",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 3,
-        name: "Dentist"
+        name: "Dentist",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 4,
-        name: "Monthly bills"
+        name: "Monthly bills",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       },
       {
         id: 5,
-        name: "Subscriptions"
+        name: "Subscriptions",
+        textTitle: "Lorem ipsum",
+        text: "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. ",
+        toDoList: [
+          {
+            taskId: 1,
+            name: "Empty dishwasher",
+            isDone: true,
+            isIndented: false
+          },
+          {
+            taskId: 2,
+            name: "Clean up fridge",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 3,
+            name: "Put in groceries",
+            isDone: true,
+            isIndented: true
+          },
+          {
+            taskId: 4,
+            name: "Wash clothes",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 5,
+            name: "Clean the floors",
+            isDone: false,
+            isIndented: false
+          },
+          {
+            taskId: 6,
+            name: "Vacuum",
+            isDone: false,
+            isIndented: false
+          },
+        ]
       }
     ],
     mode: "event"
@@ -367,26 +1503,26 @@ class App {
         content.remove();
 
         //ADD POPUP TO APP
-        document.querySelector("body").innerHTML += `
-          <div class="popup">
-            <div class="details details--popup">
-              <div class="details__header">
-                <div class="details__headings">
-                  <h2 class="details__event"></h2>
-                </div>
-                <span class="details__close">&nbsp;</span>
+        let popup = document.createElement("div");
+        popup.classList.add("popup");
+        popup.innerHTML += `
+          <div class="details details--popup">
+            <div class="details__header">
+              <div class="details__headings">
+                <h2 class="details__event"></h2>
               </div>
-              <div class="details__description">
-                <h4 class="details__title"></h4>
-                <p class="details__text"></p>
-              </div>
-              <div class="details__checklist checklist">
-              </div>
+              <span class="details__close">&nbsp;</span>
             </div>
-            <!-- DETAILS POPUP-->
+            <div class="details__description">
+              <h4 class="details__title"></h4>
+              <p class="details__text"></p>
+            </div>
+            <div class="details__checklist checklist">
+            </div>
           </div>
-          <!-- POPUP -->
+          <!-- DETAILS POPUP-->
         `;
+        document.querySelector("body").append(popup);
         document.querySelector(".popup").style.display = "none";
       }
       const notepad = new Notepad();
@@ -421,7 +1557,7 @@ class App {
     
           <div class="details__description">
             <h4 class="details__title">Lorem ipsum</h4>
-            <p class="details__text">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus.</p>
+            <p class="details__text">Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi. </p>
           </div>
     
           <div class="details__checklist checklist">
@@ -457,22 +1593,40 @@ class App {
       let popup = document.createElement("div");
       popup.classList.add("popup");
       popup.innerHTML = `
-          <div class="details details--popup">
-            <div class="details__header">
-              <div class="details__headings">
-                <h2 class="details__event"></h2>
-              </div>
-              <span class="details__close">&nbsp;</span>
+        <div class="details details--popup">
+      
+          <div class="details__header">
+            <div class="details__headings">
+              <h2 class="details__event"></h2>
+              <h4 class="details__date"></h4>
             </div>
-            <div class="details__description">
-              <h4 class="details__title"></h4>
-              <p class="details__text"></p>
+            <h5 class="details__time"></h5>
+            <span class="details__close">&nbsp;</span>
+          </div>
+      
+          <div class="details__description">
+            <h4 class="details__title"></h4>
+            <p class="details__text"></p>
+          </div>
+      
+          <div class="details__checklist checklist">
+      
+          </div>
+      
+          <div class="details__info">
+            <div class="details__info--item">
+              <img src="assets/icons/svg/bell.svg" alt="Notification bell" class="details__icon">
+              <h4 class="details__icon--title">30 minutes before</h4>
             </div>
-            <div class="details__checklist checklist">
+            <div class="details__info--item">
+              <img src="assets/icons/svg/pin.svg" alt="Place pin" class="details__icon">
+              <h4 class="details__icon--title">Warsaw, Poland</h4>
             </div>
           </div>
-          <!-- DETAILS POPUP-->
-        `;
+      
+        </div>
+        <!-- DETAILS POPUP-->
+      `;
       document.querySelector(".content").append(popup);
       document.querySelector(".popup").style.display = "none";
 
@@ -499,22 +1653,40 @@ class App {
       let popup = document.createElement("div");
       popup.classList.add("popup");
       popup.innerHTML = `
-          <div class="details details--popup">
-            <div class="details__header">
-              <div class="details__headings">
-                <h2 class="details__event"></h2>
-              </div>
-              <span class="details__close">&nbsp;</span>
+        <div class="details details--popup">
+      
+          <div class="details__header">
+            <div class="details__headings">
+              <h2 class="details__event"></h2>
+              <h4 class="details__date"></h4>
             </div>
-            <div class="details__description">
-              <h4 class="details__title"></h4>
-              <p class="details__text"></p>
+            <h5 class="details__time"></h5>
+            <span class="details__close">&nbsp;</span>
+          </div>
+      
+          <div class="details__description">
+            <h4 class="details__title"></h4>
+            <p class="details__text"></p>
+          </div>
+      
+          <div class="details__checklist checklist">
+      
+          </div>
+      
+          <div class="details__info">
+            <div class="details__info--item">
+              <img src="assets/icons/svg/bell.svg" alt="Notification bell" class="details__icon">
+              <h4 class="details__icon--title">30 minutes before</h4>
             </div>
-            <div class="details__checklist checklist">
+            <div class="details__info--item">
+              <img src="assets/icons/svg/pin.svg" alt="Place pin" class="details__icon">
+              <h4 class="details__icon--title">Warsaw, Poland</h4>
             </div>
           </div>
-          <!-- DETAILS POPUP-->
-        `;
+      
+        </div>
+        <!-- DETAILS POPUP-->
+      `;
       document.querySelector(".content").append(popup);
       document.querySelector(".popup").style.display = "none";
 

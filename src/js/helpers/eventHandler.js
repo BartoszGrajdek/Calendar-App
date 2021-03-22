@@ -21,7 +21,6 @@ export class EventHandler {
     }
 
     //RENDER CHECKBOXES FOR ALL CATEGORIES
-    const colors = ["green", "purple", "blue", "yellow"]
     let contentHTML = "";
     const categoriesList = categories.querySelector(".categories__list");
     let totalEvents = 0;
@@ -32,21 +31,21 @@ export class EventHandler {
 
     //ADDING HTML FOR EACH EVENTS LIST
     for (let eventList of eventListJSON) {
-      this.eventLists.push(new EventList(eventList, colors[eventList.id-1]));
+      this.eventLists.push(new EventList(eventList));
       const checked = eventList.isEnabled ? "checked" : "";
       const eventsRatio = eventList.events.length / totalEvents;
       const width = Math.ceil(eventsRatio * 100) + "%";
-      const color = `categories__progress-bar--${colors[eventList.id-1]}`;
+      const color = `categories__progress-bar--${eventList.color}`;
 
       contentHTML += `<div class="categories__item">
           <label class="categories__label checkbox__label" for="${eventList.id}">
             <input type="checkbox" id="${eventList.id}" class="categories__checkbox checkbox" name="category" ${checked}>
-            <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--${colors[eventList.id-1]}">&nbsp;</span>
+            <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--${eventList.color}">&nbsp;</span>
             <span class="checkbox__text">${eventList.name}</span>
           </label>
-          <span class="categories__progress-bar categories__progress-bar--${colors[eventList.id-1]}" id="${color}">&nbsp;</span>
+          <span class="categories__progress-bar categories__progress-bar--${eventList.color}" id="${color}">&nbsp;</span>
           <style>
-            .categories__progress-bar--${colors[eventList.id-1]}::after {
+            .categories__progress-bar--${eventList.color}::after {
               width: ${width};
             }
           </style>
