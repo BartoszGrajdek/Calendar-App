@@ -1,5 +1,5 @@
 export class Note {
-  constructor(note, listId, listColor = "") {
+  constructor(note, listColor = "", listId) {
     this.id = note.id;
     this.categoryId = note.categoryId;
     this.name = note.name;
@@ -13,7 +13,7 @@ export class Note {
 
   }
 
-  render(mode = "", event) {
+  render(mode = "", event, popup = true) {
     const detailsEl = document.querySelector(".details");
     const titleEl = detailsEl.querySelector(".details__event");
     const textTitleEl = detailsEl.querySelector(".details__title");
@@ -63,13 +63,16 @@ export class Note {
     const width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
     const isMobile = width <= 1200;
     if (isMobile || mode === "week" || mode === "month") {
-      document.querySelector(".popup").style.display = "block";
+      if (popup) {
+        document.querySelector(".popup").style.display = "block";
+      }
       document.querySelector(".details__close").addEventListener("click", () => {
         document.querySelector(".popup").style.display = "none";
       });
-      document.querySelector(".popup").addEventListener("click", () => {
+      document.querySelector(".popup").addEventListener("click", e => {
         document.querySelector(".popup").style.display = "none";
       });
+      document.querySelector(".popup > .details").addEventListener("click", e => e.stopPropagation());
     }
   }
 }

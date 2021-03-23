@@ -61,7 +61,7 @@ export class EventList {
         }
 
         rows[event.start.getHours()].querySelector("td").innerHTML += `
-          <div class="event event--day event--${this.color} ${secondaryClass}" style="top: ${elTop}; height: ${elHeight}" data-event-id="${event.id}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
+          <div class="event event--day event--${this.color} ${secondaryClass}" style="top: ${elTop}; height: ${elHeight}" data-event-list-id="${this.id}" data-event-id="${event.id}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
             ${hoursHTML}
             <h3 class="event__title">${event.title}</h3>
           </div>
@@ -118,7 +118,7 @@ export class EventList {
         const row = rows[event.start.getHours()].querySelectorAll("td");
 
         row[event.start.getDay() === 0 ? 6 : event.start.getDay() - 1].innerHTML += `
-          <div class="event event--week event--${this.color}" style="top: ${elTop}; height: ${elHeight}" data-event-id="${event.id}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
+          <div class="event event--week event--${this.color}" style="top: ${elTop}; height: ${elHeight}" data-event-list-id="${this.id}" data-event-id="${event.id}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
             ${hoursHTML}
             <h3 class="event__title">${event.title}</h3>
           </div>
@@ -142,7 +142,7 @@ export class EventList {
 
       for (const event of chosenEvents) {
         cells[event.start.getDate()+firstDayIndex-1].innerHTML += `
-          <div class="event event--month event--${this.color}" data-event-id="${event.id}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
+          <div class="event event--month event--${this.color}" data-event-list-id="${this.id}" data-event-id="${event.id}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
             <h3 class="event__title">${event.title}</h3>
           </div>
         `;
@@ -156,9 +156,6 @@ export class EventList {
           .notes.find(element => element.id === parseInt(eventEl.dataset.noteId));
         const note = new Note(noteObj, eventEl.dataset.color);
         note.render(app.mode, chosenEvents.find(element => element.id === parseInt(eventEl.dataset.eventId)));
-
-        e.preventDefault();
-        e.stopPropagation();
       });
     }
   }

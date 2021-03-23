@@ -14,7 +14,7 @@ export class NotesList {
 
   init(noteList) {
     for (const note of noteList.notes) {
-      this.notes.push(new Note(note, this.id));
+      this.notes.push(new Note(note, this.color, this.id));
     }
   }
 
@@ -47,7 +47,7 @@ export class NotesList {
       }
 
       navigation.querySelector(`div[data-category-id="${note.categoryId}"] .side-nav__notes`).innerHTML += `
-        <span class="side-nav__heading--sub" data-list-id="${note.listId}" data-note-id="${note.id}">${note.name}</span>
+        <span class="side-nav__heading--sub" data-color="${this.color}" data-list-id="${note.listId}" data-note-id="${note.id}">${note.name}</span>
       `;
     }
   }

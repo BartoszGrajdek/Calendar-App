@@ -1491,7 +1491,7 @@ class App {
       calendar.render(calendar.app.mode, calendar.date);
 
       //INITIALIZE SIDE CALENDAR
-      const sideCalendar = new SideCalendar(this.app);
+      const sideCalendar = new SideCalendar(this.app, calendar);
 
       this.renderCalendar(calendar, sideCalendar);
     } else if (window.location.pathname === "/notes.html") {
@@ -1637,7 +1637,7 @@ class App {
         (calendar.date.chosenDate.getDate() - calendar.date.chosenDate.getDay() + 1)
       );
 
-      calendar.render(this.app.mode);
+      calendar.render();
       sideCalendar.render();
     });
     buttonMonth.addEventListener('click', () => {
@@ -1691,7 +1691,7 @@ class App {
       document.querySelector(".popup").style.display = "none";
 
       this.app.mode = "month";
-      calendar.render(this.app.mode);
+      calendar.render();
       sideCalendar.render();
     });
   }

@@ -1,8 +1,10 @@
 import { CalendarHandler } from "../helpers/calendarHandler";
 
 export class SideCalendar extends CalendarHandler {
-  constructor(mode) {
+  constructor(mode, calendar) {
     super(mode);
+
+    this.calendar = calendar;
     this.init();
   }
 
@@ -54,21 +56,33 @@ export class SideCalendar extends CalendarHandler {
 
     //RENDER HTML FOR PREVIOUS MONTH DAYS
     for (let i = firstDayIndex; i > 0; i--) {
-      contentHTML += `<div class="side-calendar__day--additional">${prevLastDay - i + 1}</div>`;
+      contentHTML += `<div class="side-calendar__day--additional side-calendar__day--listener" 
+        data-day="${prevLastDay - i + 1}" 
+        data-month="${new Date(date.getFullYear(), date.getMonth() - 1).getMonth()}" 
+        data-year="${new Date(date.getFullYear(), date.getMonth() - 1).getFullYear()}">${prevLastDay - i + 1}</div>`;
     }
 
     //RENDER HTML FOR CURRENT MONTH DAYS
     for (let i = 1; i <= lastDay; i++) {
       if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
-        contentHTML += `<div class="side-calendar__day--active">${i}</div>`;
+        contentHTML += `<div class="side-calendar__day--active side-calendar__day--listener" 
+          data-day="${i}" 
+          data-month="${date.getMonth()}" 
+          data-year="${date.getFullYear()}">${i}</div>`;
       } else {
-        contentHTML += `<div>${i}</div>`;
+        contentHTML += `<div class="side-calendar__day--listener"
+          data-day="${i}" 
+          data-month="${date.getMonth()}" 
+          data-year="${date.getFullYear()}">${i}</div>`;
       }
     }
 
     //RENDER HTML FOR NEXT MONTH DAYS
     for (let i = 1; i <= nextDays; i++) {
-      contentHTML += `<div class="side-calendar__day--additional">${i}</div>`;
+      contentHTML += `<div class="side-calendar__day--additional side-calendar__day--listener" 
+        data-day="${i}" 
+        data-month="${new Date(date.getFullYear(), date.getMonth() + 1).getMonth()}" 
+        data-year="${new Date(date.getFullYear(), date.getMonth() + 1).getFullYear()}">${i}</div>`;
     }
 
     //LOAD HTML INTO DOM
@@ -80,6 +94,20 @@ export class SideCalendar extends CalendarHandler {
       weekPointer.style.top = `${((week) * 3.5)}rem`;
     } else {
       weekPointer.style.display = "none";
+    }
+
+    for (const day of document.querySelectorAll(".side-calendar__day--listener")) {
+      day.addEventListener("click", () => {
+        let chosenDate = new Date(day.dataset.year, day.dataset.month, day.dataset.day);
+        if (this.app.mode === "week") {
+          console.log(chosenDate.getDay());
+          chosenDate = new Date(day.dataset.year, day.dataset.month, day.dataset.day - (chosenDate.getDay() - 1));
+        } else if (this.app.mode === "month") {
+          chosenDate = new Date(day.dataset.year, day.dataset.month, 1);
+        }
+        this.calendar.date.chosenDate = chosenDate;
+        this.calendar.render();
+      });
     }
   };
 }

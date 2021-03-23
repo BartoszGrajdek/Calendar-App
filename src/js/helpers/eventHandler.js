@@ -1,5 +1,6 @@
 import { EventList} from "../calendar/eventList";
-import { eventListJSON } from "../app";
+import {eventListJSON, noteListJSON} from "../app";
+import {Note} from "../notes/note";
 
 export class EventHandler {
   constructor(date, mode) {
@@ -79,6 +80,16 @@ export class EventHandler {
       if (eventHandler.isEnabled) {
         eventHandler.render(date, mode);
       }
+    }
+
+    if (document.querySelector(".event:not(.recent__event)") !== null) {
+      const eventEl = document.querySelector(".event");
+      const noteObj =
+        noteListJSON.find(element => element.id === parseInt(eventEl.dataset.noteListId))
+          .notes.find(element => element.id === parseInt(eventEl.dataset.noteId));
+      const note = new Note(noteObj, eventEl.dataset.color);
+      const event = this.eventLists.find(element => element.id === parseInt(eventEl.dataset.eventListId)).events.find(element => element.id === parseInt(eventEl.dataset.eventId));
+      note.render(this.app.mode, event, false);
     }
   }
 }

@@ -1,5 +1,6 @@
 import { NotesList } from "../notes/notesList";
 import { noteListJSON } from "../app";
+import {Note} from "../notes/note";
 
 export class NoteHandler {
   constructor() {
@@ -90,5 +91,12 @@ export class NoteHandler {
             .notes.find(element => element.id === parseInt(el.dataset.noteId)).render();
       });
     }
+
+    const noteEl = document.querySelector(".side-nav__heading--sub");
+    const noteObj =
+      noteListJSON.find(element => element.id === parseInt(noteEl.dataset.listId))
+        .notes.find(element => element.id === parseInt(noteEl.dataset.noteId));
+    const note = new Note(noteObj, noteEl.dataset.color);
+    note.render();
   }
 }
