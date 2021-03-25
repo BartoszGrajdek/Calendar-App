@@ -12,11 +12,11 @@ module.exports = {
         path: path.resolve(__dirname, 'assets', 'js'),
         publicPath: 'assets/js/'
     },
-    devtool: 'cheap-source-map',
+    // devtool: 'cheap-source-map',
     devServer: {
       contentBase: './'
     },
-    plugins: [
+/*    plugins: [
         new CleanPlugin.CleanWebpackPlugin()
-    ]
+    ]*/
 };
