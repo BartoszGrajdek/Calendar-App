@@ -3,14 +3,16 @@ export class Note {
     this.id = note.id;
     this.categoryId = note.categoryId;
     this.name = note.name;
+
     this.listId = listId;
     this.listColor = listColor;
+
     this.textTitle = note.textTitle;
     this.text = note.text;
     this.toDoList = note.toDoList;
+
     this.notification = (note.notification !== undefined) ? note.notification : "TBD";
     this.navigation = (note.navigation !== undefined) ? note.navigation : "TBD";
-
   }
 
   render(mode = "", event, popup = true) {
@@ -47,10 +49,8 @@ export class Note {
       const timeEl = detailsEl.querySelector(".details__time");
       const [notificationEl, navigationEl] = detailsEl.querySelectorAll(".details__icon--title");
 
-      const eventDurationString =
-        event.start.toLocaleTimeString(undefined, {hourCycle: "h12", hour: "numeric", minute: "2-digit"}) + " - " +
+      timeEl.innerHTML = event.start.toLocaleTimeString(undefined, {hourCycle: "h12", hour: "numeric", minute: "2-digit"}) + " - " +
         event.end.toLocaleTimeString(undefined, {hourCycle: "h12", hour: "numeric", minute: "2-digit"});
-      timeEl.innerHTML = eventDurationString;
 
       dateEl.innerHTML = event.start.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric"});
       notificationEl.innerHTML = this.notification;
@@ -69,7 +69,7 @@ export class Note {
       document.querySelector(".details__close").addEventListener("click", () => {
         document.querySelector(".popup").style.display = "none";
       });
-      document.querySelector(".popup").addEventListener("click", e => {
+      document.querySelector(".popup").addEventListener("click", () => {
         document.querySelector(".popup").style.display = "none";
       });
       document.querySelector(".popup > .details").addEventListener("click", e => e.stopPropagation());

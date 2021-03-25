@@ -1,6 +1,6 @@
-import { NotesList } from "../notes/notesList";
+import { Note } from "./note";
+import { NotesList } from "./notesList";
 import { noteListJSON } from "../app";
-import {Note} from "../notes/note";
 
 export class NoteHandler {
   constructor() {

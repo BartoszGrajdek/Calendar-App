@@ -1,4 +1,4 @@
-import { EventList} from "../calendar/eventList";
+import { EventList} from "./eventList";
 import {eventListJSON, noteListJSON} from "../app";
 import {Note} from "../notes/note";
 
@@ -72,6 +72,17 @@ export class EventHandler {
 
   render(date = this.date, mode = this.app) {
     for (const td of document.querySelectorAll(".calendar__table .calendar__row td")) {
+      if (td.querySelector(".calendar__pointer") !== null) {
+        if (this.app.mode === "day" && !(date.todayDate.getDate() === date.chosenDate.getDate() && date.todayDate.getMonth() === date.chosenDate.getMonth() && date.todayDate.getFullYear() === date.chosenDate.getFullYear())) {
+          td.innerHTML = "";
+          continue;
+        }
+
+        td.innerHTML = `
+          <span class="calendar__pointer">&nbsp;</span>
+        `;
+        continue;
+      }
       td.innerHTML = "";
     }
 

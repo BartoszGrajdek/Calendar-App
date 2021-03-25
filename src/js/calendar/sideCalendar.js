@@ -14,11 +14,11 @@ export class SideCalendar extends CalendarHandler {
     const rightArrowSidebar = leftArrowSidebar.nextElementSibling;
     const calendarHeaderSidebar = document.querySelector(".side-calendar__month");
 
-    leftArrowSidebar.addEventListener('click', () => {
+    leftArrowSidebar.addEventListener("click", () => {
       this.changeDate(-1, true, calendarHeaderSidebar, true);
       this.render();
     });
-    rightArrowSidebar.addEventListener('click', () => {
+    rightArrowSidebar.addEventListener("click", () => {
       this.changeDate(1, true, calendarHeaderSidebar, true);
       this.render();
     });
@@ -29,8 +29,8 @@ export class SideCalendar extends CalendarHandler {
 
   render() {
     //CHECK WHICH DISPLAY MODE IS ENABLED, AND RENDER
-    const calendarTable = document.querySelector('.side-calendar__table');
-    const weekPointer = document.querySelector('.side-calendar__week');
+    const calendarTable = document.querySelector(".side-calendar__table");
+    const weekPointer = document.querySelector(".side-calendar__week");
 
     //DEFINE DATES
     const date = this.date.chosenDate;

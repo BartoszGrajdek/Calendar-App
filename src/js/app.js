@@ -1,6 +1,6 @@
 import { Calendar } from './calendar/calendar';
 import { SideCalendar } from './calendar/sideCalendar';
-import { Notepad } from "./notes/notepad";
+import { Notepad } from "./calendar/notepad";
 
 //DEMO CONTENT FOR EVENT LISTS
 export let eventListJSON = [
@@ -1489,6 +1489,7 @@ class App {
       //INITIALIZE MAIN CALENDAR AND RENDER IT
       const calendar = new Calendar(this.app);
       calendar.render(calendar.app.mode, calendar.date);
+      calendar.scroll();
 
       //INITIALIZE SIDE CALENDAR
       const sideCalendar = new SideCalendar(this.app, calendar);
@@ -1544,9 +1545,10 @@ class App {
       buttonMonth.classList.remove("side-calendar__button--active");
       buttonMonth.classList.add("side-calendar__button--left");
 
-      let content = document.createElement("div");
-      content.classList.add("details");
-      content.innerHTML = `
+      if (document.querySelector(".content > .details") === null) {
+        let content = document.createElement("div");
+        content.classList.add("details");
+        content.innerHTML = `
         <div class="details__header">
             <div class="details__headings">
               <h2 class="details__event">Clean up the house</h2>
@@ -1575,11 +1577,13 @@ class App {
             </div>
           </div>
       `;
-      document.querySelector(".content").append(content);
+        document.querySelector(".content").append(content);
+      }
       if (document.querySelector(".popup") !== null) document.querySelector(".popup").remove();
 
       this.app.mode = "day";
       calendar.render(this.app.mode);
+      calendar.scroll();
       sideCalendar.render();
     });
     buttonWeek.addEventListener('click', () => {
@@ -1590,9 +1594,10 @@ class App {
       document.querySelector(".details").remove();
       if (document.querySelector(".popup") !== null) document.querySelector(".popup").remove();
 
-      let popup = document.createElement("div");
-      popup.classList.add("popup");
-      popup.innerHTML = `
+      if (document.querySelector(".popup") === null) {
+        let popup = document.createElement("div");
+        popup.classList.add("popup");
+        popup.innerHTML = `
         <div class="details details--popup">
       
           <div class="details__header">
@@ -1627,7 +1632,8 @@ class App {
         </div>
         <!-- DETAILS POPUP-->
       `;
-      document.querySelector(".content").append(popup);
+        document.querySelector(".content").append(popup);
+      }
       document.querySelector(".popup").style.display = "none";
 
       this.app.mode = "week";
@@ -1638,6 +1644,7 @@ class App {
       );
 
       calendar.render();
+      calendar.scroll();
       sideCalendar.render();
     });
     buttonMonth.addEventListener('click', () => {
@@ -1650,9 +1657,10 @@ class App {
       document.querySelector(".details").remove();
       if (document.querySelector(".popup") !== null) document.querySelector(".popup").remove();
 
-      let popup = document.createElement("div");
-      popup.classList.add("popup");
-      popup.innerHTML = `
+      if (document.querySelector(".popup") === null) {
+        let popup = document.createElement("div");
+        popup.classList.add("popup");
+        popup.innerHTML = `
         <div class="details details--popup">
       
           <div class="details__header">
@@ -1687,7 +1695,8 @@ class App {
         </div>
         <!-- DETAILS POPUP-->
       `;
-      document.querySelector(".content").append(popup);
+        document.querySelector(".content").append(popup);
+      }
       document.querySelector(".popup").style.display = "none";
 
       this.app.mode = "month";

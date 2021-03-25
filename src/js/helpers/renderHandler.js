@@ -34,11 +34,19 @@ export class RenderHandler {
 
       //ADD ROWS TO DAY TABLE
       for (let i = 1; i < 25; i++) {
+        function todaySetup() {
+          if (i === 1 && data.todayDate.getDate() === data.todayDate.getDate() && data.todayDate.getMonth() === data.chosenDate.getMonth() && data.todayDate.getFullYear() === data.chosenDate.getFullYear()) {
+            return `
+              <span class="calendar__pointer">&nbsp;</span>
+            `;
+          }
+        }
+
         let hour = i <= 12 ? i + "am" : (i - 12) + "pm";
         contentHTML += `
         <tr class="calendar__row">
           <th>${hour}</th>
-          <td></td>
+          <td>${todaySetup()}</td>
         </tr>
         `;
       }
@@ -81,16 +89,16 @@ export class RenderHandler {
       for (let i = 1; i < 25; i++) {
         let hour = i <= 12 ? i + "am" : (i - 12) + "pm";
         contentHTML += `
-        <tr class="calendar__row">
-          <th>${hour}</th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+          <tr class="calendar__row">
+            <th>${hour}</th>
+        `;
+
+        for (let j = 0; j < 7; j++) {
+          contentHTML += j === week[7] && i === 1 ? `<td><span class="calendar__pointer">&nbsp;</span></td>` : '<td></td>'
+        }
+
+        contentHTML += `
+          </tr>
         `;
       }
 

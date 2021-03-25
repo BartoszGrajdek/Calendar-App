@@ -1,4 +1,4 @@
-import { NoteHandler } from "../helpers/noteHandler";
+import { NoteHandler } from "../notes/noteHandler";
 
 export class Notepad {
   constructor() {

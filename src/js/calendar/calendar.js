@@ -1,14 +1,13 @@
-import { DayDisplay } from "./day";
-import { WeekDisplay } from "./week";
-import { MonthDisplay } from "./month";
 import { CalendarHandler } from "../helpers/calendarHandler";
-import { EventHandler } from "../helpers/eventHandler";
+import { EventHandler } from "../event/eventHandler";
+import {RenderHandler} from "../helpers/renderHandler";
 
 export class Calendar extends CalendarHandler {
   constructor(mode) {
     super(mode);
-    this.init();
+
     this.eventHandler = new EventHandler(this.date, this.app);
+    this.init();
   }
 
   init() {
@@ -17,36 +16,36 @@ export class Calendar extends CalendarHandler {
     const rightArrow = leftArrow.nextElementSibling;
     const calendarHeader = document.querySelector(".calendar__header");
 
-    leftArrow.addEventListener('click', () => {
+    leftArrow.addEventListener("click", () => {
       this.changeDate(-1, true, calendarHeader);
       this.render();
+      this.scroll();
     });
-    rightArrow.addEventListener('click', () => {
+    rightArrow.addEventListener("click", () => {
       this.changeDate(1, true, calendarHeader);
       this.render();
+      this.scroll();
     });
 
     this.changeDate(0, false, calendarHeader);
   }
 
+  scroll() {
+    const calendarTable = document.querySelector(".calendar__table-box");
+    const pointer = document.querySelector(".calendar__pointer");
+    if (pointer !== null) { pointer.style.top = (this.date.todayDate.getHours() * 5 + (this.date.todayDate.getMinutes() / 60 * 5)) + "rem"; }
+
+    const calendarTableHeight = calendarTable.scrollHeight;
+    calendarTable.scrollTop = ((this.date.todayDate.getHours() / 25 * calendarTableHeight) - (calendarTable.offsetHeight / 2));
+  }
+
   render() {
     //CHECK WHICH DISPLAY MODE IS ENABLED, AND RENDER
-    let display;
-
-    if (this.app.mode === "day") {
-      display = new DayDisplay(this.app);
-    } else if (this.app.mode === "week") {
-      display = new WeekDisplay(this.app);
-    } else if (this.app.mode === "month") {
-      display = new MonthDisplay(this.app);
-    } else {
-      console.log("Wrong calendar mode!");
-      return;
-    }
+    let renderHandler = new RenderHandler(this.app);
 
     //SET NEW DATE FORMAT ON CALENDAR HEADER AND RENDER CALENDAR
     this.changeDate(0, true, document.querySelector(".calendar__header"))
-    display.render(this.date);
+    renderHandler.calendarRender(this.date);
 
     //RENDER EVENTS
     this.eventHandler.render(this.date, this.app);
