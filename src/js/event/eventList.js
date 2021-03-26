@@ -1,5 +1,5 @@
 import { Event } from "./event";
-import { Note } from "../notes/note";
+import { Note } from "../note/note";
 import { noteListJSON } from "../app";
 
 export class EventList {

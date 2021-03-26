@@ -8,6 +8,9 @@ export class Calendar extends CalendarHandler {
 
     this.eventHandler = new EventHandler(this.date, this.app);
     this.init();
+
+    this.render(this.app.mode, this.date);
+    this.scroll();
   }
 
   init() {

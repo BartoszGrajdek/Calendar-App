@@ -1,5 +1,5 @@
 import { Note } from "./note";
-import { categoriesListJSON } from "../app";
+import { noteCategoriesListJSON } from "../app";
 
 export class NotesList {
   constructor(noteList) {
@@ -20,7 +20,7 @@ export class NotesList {
 
   render() {
     const navigation = document.querySelector(".side-nav");
-    const categoriesList = categoriesListJSON;
+    const categoriesList = noteCategoriesListJSON;
 
     for (const note of this.notes) {
       //CHECK IF THERE'S CATEGORY ITEM FOR THIS NOTE

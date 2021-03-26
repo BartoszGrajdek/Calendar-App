@@ -1,6 +1,6 @@
 import { EventList} from "./eventList";
 import {eventListJSON, noteListJSON} from "../app";
-import {Note} from "../notes/note";
+import {Note} from "../note/note";
 
 export class EventHandler {
   constructor(date, mode) {

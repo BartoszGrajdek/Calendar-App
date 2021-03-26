@@ -1,6 +1,7 @@
 import { Calendar } from './calendar/calendar';
 import { SideCalendar } from './calendar/sideCalendar';
 import { Notepad } from "./calendar/notepad";
+import { TaskBoard } from "./calendar/taskBoard";
 
 //DEMO CONTENT FOR EVENT LISTS
 export let eventListJSON = [
@@ -104,39 +105,6 @@ export let eventListJSON = [
       }
     ],
     isEnabled: true
-  }
-];
-
-export let categoriesListJSON = [
-  {
-    categoryId: 1,
-    name: "Work",
-    isEnabled: true
-  },
-  {
-    categoryId: 2,
-    name: "Home",
-    isEnabled: true
-  },
-  {
-    categoryId: 3,
-    name: "Reminders",
-    isEnabled: false
-  },
-  {
-    categoryId: 4,
-    name: "Payments",
-    isEnabled: false
-  },
-  {
-    categoryId: 5,
-    name: "Vacation",
-    isEnabled: true
-  },
-  {
-    categoryId: 6,
-    name: "Healthcare",
-    isEnabled: false
   }
 ];
 
@@ -1479,6 +1447,422 @@ export let noteListJSON = [
   }
 ];
 
+export let noteCategoriesListJSON = [
+  {
+    categoryId: 1,
+    name: "Work",
+    isEnabled: true
+  },
+  {
+    categoryId: 2,
+    name: "Home",
+    isEnabled: true
+  },
+  {
+    categoryId: 3,
+    name: "Reminders",
+    isEnabled: false
+  },
+  {
+    categoryId: 4,
+    name: "Payments",
+    isEnabled: false
+  },
+  {
+    categoryId: 5,
+    name: "Vacation",
+    isEnabled: true
+  },
+  {
+    categoryId: 6,
+    name: "Healthcare",
+    isEnabled: false
+  }
+];
+
+export let taskListJSON = [
+  {
+    id: 1,
+    name: "Work",
+    color: "green",
+    tasks: [
+      {
+        id: 1,
+        categoryId: 1,
+        name: "Mailing list",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      },
+      {
+        id: 2,
+        categoryId: 1,
+        name: "Appointments",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      },
+      {
+        id: 3,
+        categoryId: 1,
+        name: "Our products",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      },
+      {
+        id: 4,
+        categoryId: 2,
+        name: "Meals plan",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      }
+    ],
+    isEnabled: true
+  },
+  {
+    id: 2,
+    name: "Guitar",
+    color: "purple",
+    tasks: [
+      {
+        id: 1,
+        categoryId: 2,
+        name: "House work",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      },
+      {
+        id: 2,
+        categoryId: 2,
+        name: "Things to work on",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      },
+      {
+        id: 3,
+        categoryId: 3,
+        name: "Dentist",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      },
+      {
+        id: 4,
+        categoryId: 4,
+        name: "Monthly bills",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      },
+      {
+        id: 5,
+        categoryId: 4,
+        name: "Subscriptions",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      }
+    ],
+    isEnabled: true
+  },
+  {
+    id: 3,
+    name: "Home",
+    color: "blue",
+    categories: ["Work", "Home", "Reminders"],
+    tasks: [
+      {
+        id: 1,
+        categoryId: 4,
+        name: "Furniture",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      },
+      {
+        id: 2,
+        categoryId: 4,
+        name: "Computers",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      },
+      {
+        id: 3,
+        categoryId: 5,
+        name: "Places to go to",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      },
+      {
+        id: 4,
+        categoryId: 5,
+        name: "Hotels",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      },
+      {
+        id: 5,
+        categoryId: 6,
+        name: "Dr Appointments",
+        pending: [
+          "Electricity",
+          "Water",
+          "Gas"
+        ],
+        doing: [
+          "New bed",
+          "Computer for Jane",
+          "Bedroom renovation",
+          "Gym subscription",
+          "New furniture for dining room"
+        ],
+        done: [
+          "House rent",
+          "Car debt",
+          "Roof repair",
+          "New house heating"
+        ]
+      }
+    ],
+    isEnabled: true
+  }
+];
+
+export let taskCategoriesListJSON = [
+  {
+    categoryId: 1,
+    name: "Work",
+    isEnabled: true
+  },
+  {
+    categoryId: 2,
+    name: "Home",
+    isEnabled: true
+  },
+  {
+    categoryId: 3,
+    name: "Reminders",
+    isEnabled: false
+  },
+  {
+    categoryId: 4,
+    name: "Payments",
+    isEnabled: false
+  },
+  {
+    categoryId: 5,
+    name: "Vacation",
+    isEnabled: true
+  },
+  {
+    categoryId: 6,
+    name: "Healthcare",
+    isEnabled: false
+  }
+];
+
 class App {
   static init() {
     //DEPENDING ON PAGE USER'S ON LOAD ACCORDING JS TO IT
@@ -1486,49 +1870,17 @@ class App {
       //SET DEFAULT DISPLAY MODE FOR CALENDAR
       this.app = { mode: "day" };
 
-      //INITIALIZE MAIN CALENDAR AND RENDER IT
+      //INITIALIZE MAIN CALENDAR
       const calendar = new Calendar(this.app);
-      calendar.render(calendar.app.mode, calendar.date);
-      calendar.scroll();
 
       //INITIALIZE SIDE CALENDAR
       const sideCalendar = new SideCalendar(this.app, calendar);
 
       this.renderCalendar(calendar, sideCalendar);
     } else if (window.location.pathname === "/notes.html") {
-      //CHECK IF IT'S MOBILE AND DELETE DETAILS PC HTML
-      const width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-      const isMobile = width <= 1200;
-      if (isMobile) {
-        const content = document.querySelector(".content");
-        content.remove();
-
-        //ADD POPUP TO APP
-        let popup = document.createElement("div");
-        popup.classList.add("popup");
-        popup.innerHTML += `
-          <div class="details details--popup">
-            <div class="details__header">
-              <div class="details__headings">
-                <h2 class="details__event"></h2>
-              </div>
-              <span class="details__close">&nbsp;</span>
-            </div>
-            <div class="details__description">
-              <h4 class="details__title"></h4>
-              <p class="details__text"></p>
-            </div>
-            <div class="details__checklist checklist">
-            </div>
-          </div>
-          <!-- DETAILS POPUP-->
-        `;
-        document.querySelector("body").append(popup);
-        document.querySelector(".popup").style.display = "none";
-      }
       const notepad = new Notepad();
-    } else if (window.location.pathname === "/todo.html") {
-
+    } else if (window.location.pathname === "/tasks.html") {
+      const taskBoard = new TaskBoard();
     }
   }
 
@@ -1589,7 +1941,7 @@ class App {
     buttonWeek.addEventListener('click', () => {
       buttonToday.classList.remove("side-calendar__button--right", "side-calendar__button--active");
       buttonWeek.classList.add("side-calendar__button--active");
-      buttonMonth.classList.remove("side-calendar__button--active", "side-calendar__button--left");
+      buttonMonth.classList.remove("side-calendar__button--left", "side-calendar__button--active");
 
       document.querySelector(".details").remove();
       if (document.querySelector(".popup") !== null) document.querySelector(".popup").remove();
