@@ -100,6 +100,6 @@ export class TaskHandler {
       taskListJSON.find(element => element.id === parseInt(taskEl.dataset.listId))
         .tasks.find(element => element.id === parseInt(taskEl.dataset.taskId));
     const task = new Task(taskObj, taskEl.dataset.color);
-    task.render();
+    task.render(undefined, true);
   }
 }

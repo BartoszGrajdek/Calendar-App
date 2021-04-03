@@ -12,7 +12,7 @@ export class Task {
     this.done = task.done;
   }
 
-  render(mode = "", event, popup = true) {
+  render(popup = true, firstRender = false) {
     const content = document.querySelector(".content");
     const header = content.querySelector(".todo-list__header");
     const [pendingEl, doingEl, doneEl] = content.querySelectorAll(".todo-list__board");
@@ -59,7 +59,7 @@ export class Task {
     //CHECK IF IT'S MOBILE AND ADD POPUP FUNCTIONALITY
     const width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
     const isMobile = width <= 1200;
-    if (isMobile || mode === "week" || mode === "month") {
+    if (isMobile) {
       if (popup) {
         document.querySelector(".popup").style.display = "block";
       }
@@ -74,44 +74,67 @@ export class Task {
 
     for (const taskItemEl of document.querySelectorAll(".todo-list__item")) {
       taskItemEl.addEventListener("dragstart", event => {
-        event.dataTransfer.setData("text/plain", taskItemEl.dataset.taskId)
+        event.dataTransfer.setData("text/plain", taskItemEl.dataset.taskId);
+        event.dataTransfer.effectAllowed = "move";
       });
     }
 
-    for (const taskListEl of document.querySelectorAll(".todo-list__board")) {
-      taskListEl.addEventListener("dragenter", event => {
-        event.preventDefault();
-      });
+    if (firstRender) {
+      for (const taskListEl of document.querySelectorAll(".todo-list__board")) {
+        taskListEl.addEventListener("dragenter", event => {
+          if (event.dataTransfer.types[0] === "text/plain") {
+            event.preventDefault();
+            if (taskListEl.querySelector(".todo-list__pointer") === null) {
+              taskListEl.innerHTML += `
+              <span class="todo-list__pointer" style="display: block; width: 100%; height: 1px; border-top: 1px solid blue; position: absolute; left: 0; top: 0;">&nbsp;</span>
+            `;
+              taskListEl.style.position = "relative";
+            }
+          }
+        });
 
-      taskListEl.addEventListener("dragover", event => {
-        event.preventDefault();
-        taskListEl.style.backgroundColor = "red";
-      });
+        taskListEl.addEventListener("dragover", event => {
+          if (event.dataTransfer.types[0] === "text/plain") {
+            event.preventDefault();
+          }
 
-      taskListEl.addEventListener("dragleave", event => {
-        event.preventDefault();
-        taskListEl.style.backgroundColor = "transparent";
-      });
+          if (taskListEl.querySelector(".todo-list__pointer") !== null) {
+            const pointer = taskListEl.querySelector(".todo-list__pointer");
+            const taskEl = document.querySelector(".todo-list__item");
+            const taskElHeight = taskEl.offsetHeight;
+            const taskElMarginHeight = taskEl.nextElementSibling.offsetTop - (taskEl.offsetTop + taskElHeight);
+            const cursorOffset = event.clientY;
+            const selectedTask = (cursorOffset - taskEl.clientTop) / (taskElHeight + taskElMarginHeight);
+            console.log(taskEl);
 
-      taskListEl.addEventListener("drop", event => {
-        console.log(event.dataTransfer.getData("text/plain"));
-        taskListEl.style.backgroundColor = "transparent";
+            let top = 0;
 
-        const taskElList = document.querySelectorAll(".todo-list__item");
-        const taskEl = Array.from(taskElList).find(element => event.dataTransfer.getData("text/plain") === element.dataset.taskId);
+            pointer.style.top = `${top}px`;
+          }
+        });
 
-        const sourceList = taskEl.parentElement.dataset.sourceList;
-        const sourceIndex = taskEl.dataset.taskIndex;
-        const targetList = taskListEl.dataset.sourceList;
+        taskListEl.addEventListener("dragleave", event => {
+          if (event.dataTransfer.types[0] === "text/plain") {
+            event.preventDefault();
+            if (taskListEl.querySelector(".todo-list__pointer") !== null) { taskListEl.querySelector(".todo-list__pointer").remove(); }
+          }
+        });
 
+        taskListEl.addEventListener("drop", event => {
+          const taskElList = document.querySelectorAll(".todo-list__item");
+          const taskEl = Array.from(taskElList).find(element => event.dataTransfer.getData("text/plain") === element.dataset.taskId);
 
-        this.moveTask(eval(`this.${sourceList}`), parseInt(sourceIndex), eval(`this.${targetList}`));
-      });
+          const sourceList = taskEl.parentElement.dataset.sourceList;
+          const sourceIndex = taskEl.dataset.taskIndex;
+          const targetList = taskListEl.dataset.sourceList;
+
+          this.moveTask(eval(`this.${sourceList}`), parseInt(sourceIndex), eval(`this.${targetList}`));
+        });
+      }
     }
   }
 
   moveTask(sourceList, sourceIndex, targetList, targetIndex) {
-    console.log("HI");
     console.log(sourceList[sourceIndex]);
     targetList.push(sourceList[sourceIndex]);
     sourceList.splice(sourceIndex, 1);
