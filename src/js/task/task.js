@@ -81,6 +81,12 @@ export class Task {
 
     if (firstRender) {
       for (const taskListEl of document.querySelectorAll(".todo-list__board")) {
+        const rect = taskListEl.getBoundingClientRect();
+        const leftOffset = rect.left;
+        const rightOffset = rect.right;
+        const topOffset = rect.top;
+        const bottomOffset = rect.bottom;
+
         taskListEl.addEventListener("dragenter", event => {
           if (event.dataTransfer.types[0] === "text/plain") {
             event.preventDefault();
@@ -91,30 +97,34 @@ export class Task {
               taskListEl.style.position = "relative";
             }
           }
+
+          if (taskListEl.querySelector(".todo-list__pointer") !== null) {
+            const pointer = taskListEl.querySelector(".todo-list__pointer");
+            const cursorOffset = event.clientY;
+
+            const taskEl = document.querySelector(".todo-list__item");
+            const taskElHeight = taskEl.offsetHeight;
+            const taskElMarginHeight = parseFloat(window.getComputedStyle(taskEl).marginBottom);
+
+            let selectedTask = Math.round((cursorOffset - taskEl.getBoundingClientRect().top) / (taskElHeight + taskElMarginHeight) + .2);
+            if (selectedTask > taskListEl.querySelectorAll(".todo-list__item").length) { selectedTask = taskListEl.querySelectorAll(".todo-list__item").length; }
+
+            const top = Math.floor(selectedTask) * (taskElHeight + taskElMarginHeight);
+            pointer.style.top = `${top}px`;
+          }
         });
 
         taskListEl.addEventListener("dragover", event => {
           if (event.dataTransfer.types[0] === "text/plain") {
             event.preventDefault();
           }
-
-          if (taskListEl.querySelector(".todo-list__pointer") !== null) {
-            const pointer = taskListEl.querySelector(".todo-list__pointer");
-            const taskEl = document.querySelector(".todo-list__item");
-            const taskElHeight = taskEl.offsetHeight;
-            const taskElMarginHeight = taskEl.nextElementSibling.offsetTop - (taskEl.offsetTop + taskElHeight);
-            const cursorOffset = event.clientY;
-            const selectedTask = (cursorOffset - taskEl.clientTop) / (taskElHeight + taskElMarginHeight);
-            console.log(taskEl);
-
-            let top = 0;
-
-            pointer.style.top = `${top}px`;
-          }
         });
 
         taskListEl.addEventListener("dragleave", event => {
-          if (event.dataTransfer.types[0] === "text/plain") {
+          const clientX = event.clientX;
+          const clientY = event.clientY;
+
+          if (event.dataTransfer.types[0] === "text/plain" && (clientX < leftOffset || clientX > rightOffset) && (clientY < bottomOffset || clientY > topOffset)) {
             event.preventDefault();
             if (taskListEl.querySelector(".todo-list__pointer") !== null) { taskListEl.querySelector(".todo-list__pointer").remove(); }
           }
@@ -122,22 +132,46 @@ export class Task {
 
         taskListEl.addEventListener("drop", event => {
           const taskElList = document.querySelectorAll(".todo-list__item");
-          const taskEl = Array.from(taskElList).find(element => event.dataTransfer.getData("text/plain") === element.dataset.taskId);
+          const dropTaskEl = Array.from(taskElList).find(element => event.dataTransfer.getData("text/plain") === element.dataset.taskId);
+          const taskElHeight = dropTaskEl.offsetHeight;
+          const taskElMarginHeight = parseFloat(window.getComputedStyle(dropTaskEl).marginBottom);
 
-          const sourceList = taskEl.parentElement.dataset.sourceList;
-          const sourceIndex = taskEl.dataset.taskIndex;
+          if (taskListEl.querySelector(".todo-list__pointer") !== null) { taskListEl.querySelector(".todo-list__pointer").remove(); }
+
+          const sourceList = dropTaskEl.parentElement.dataset.sourceList;
+          const sourceIndex = dropTaskEl.dataset.taskIndex;
           const targetList = taskListEl.dataset.sourceList;
 
-          this.moveTask(eval(`this.${sourceList}`), parseInt(sourceIndex), eval(`this.${targetList}`));
+          const cursorOffset = event.clientY;
+
+          const taskEl = document.querySelector(".todo-list__item");
+          let selectedTask = Math.round((cursorOffset - taskEl.getBoundingClientRect().top) / (taskElHeight + taskElMarginHeight) + .2);
+          if (selectedTask > taskListEl.querySelectorAll(".todo-list__item").length) { selectedTask = taskListEl.querySelectorAll(".todo-list__item").length; }
+
+          this.moveTask(eval(`this.${sourceList}`), parseInt(sourceIndex), eval(`this.${targetList}`), selectedTask);
         });
       }
     }
   }
 
   moveTask(sourceList, sourceIndex, targetList, targetIndex) {
-    console.log(sourceList[sourceIndex]);
-    targetList.push(sourceList[sourceIndex]);
-    sourceList.splice(sourceIndex, 1);
+    console.log(targetIndex);
+    const insertItem = sourceList[sourceIndex];
+    if (sourceList === targetList) {
+      if (sourceIndex === targetIndex || sourceIndex + 1 === targetIndex) {
+        return;
+      } else if (sourceIndex > targetIndex) {
+        sourceList.splice(sourceIndex, 1);
+        targetList.splice(targetIndex, 0, insertItem);
+      } else {
+        sourceList.splice(sourceIndex, 1);
+        sourceList.splice(targetIndex - 1, 0, insertItem);
+      }
+    } else {
+      // targetIndex -= 1;
+      sourceList.splice(sourceIndex, 1);
+      targetList.splice(targetIndex, 0, insertItem);
+    }
     this.render();
   }
 }
