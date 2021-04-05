@@ -63,13 +63,13 @@ export class Task {
       if (popup) {
         document.querySelector(".popup").style.display = "block";
       }
-      document.querySelector(".details__close").addEventListener("click", () => {
+      document.querySelector(".todo-list__close").addEventListener("click", () => {
         document.querySelector(".popup").style.display = "none";
       });
       document.querySelector(".popup").addEventListener("click", () => {
         document.querySelector(".popup").style.display = "none";
       });
-      document.querySelector(".popup > .details").addEventListener("click", e => e.stopPropagation());
+      document.querySelector(".popup > .content").addEventListener("click", e => e.stopPropagation());
     }
 
     for (const taskItemEl of document.querySelectorAll(".todo-list__item")) {
@@ -92,7 +92,7 @@ export class Task {
             event.preventDefault();
             if (taskListEl.querySelector(".todo-list__pointer") === null) {
               taskListEl.innerHTML += `
-              <span class="todo-list__pointer" style="display: block; width: 100%; height: 1px; border-top: 1px solid blue; position: absolute; left: 0; top: 0;">&nbsp;</span>
+              <span class="todo-list__pointer" style="display: block; width: 100%; height: 1px; border: 1px solid blue; position: absolute; left: 0; top: 0;">&nbsp;</span>
             `;
               taskListEl.style.position = "relative";
             }
@@ -109,7 +109,7 @@ export class Task {
             let selectedTask = Math.round((cursorOffset - taskEl.getBoundingClientRect().top) / (taskElHeight + taskElMarginHeight) + .2);
             if (selectedTask > taskListEl.querySelectorAll(".todo-list__item").length) { selectedTask = taskListEl.querySelectorAll(".todo-list__item").length; }
 
-            const top = Math.floor(selectedTask) * (taskElHeight + taskElMarginHeight);
+            const top = Math.floor(selectedTask) * (taskElHeight + taskElMarginHeight) + 2;
             pointer.style.top = `${top}px`;
           }
         });

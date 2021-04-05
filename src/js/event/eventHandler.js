@@ -1,6 +1,6 @@
 import { EventList} from "./eventList";
-import {eventListJSON, noteListJSON} from "../app";
-import {Note} from "../note/note";
+import { eventListJSON, noteListJSON } from "../app";
+import { Note } from "../note/note";
 
 export class EventHandler {
   constructor(date, mode) {
@@ -87,17 +87,89 @@ export class EventHandler {
     }
 
     //LOOP THROUGH ALL THE EVENT LISTS AND IF ENABLED RENDER THEM
+    let nextEvent;
+    let nextEventListId;
+    let nextEventColor;
+
     for (const eventHandler of this.eventLists) {
       if (eventHandler.isEnabled) {
         eventHandler.render(date, mode);
       }
+
+      const today = new Date();
+      const event = eventHandler.events.find(element =>
+        element.start.getFullYear() === today.getFullYear() &&
+        element.start.getMonth() === today.getMonth() &&
+        element.start.getDate() === today.getDate() &&
+        (element.start.getHours() > today.getHours() ||
+          (
+            element.start.getHours() === today.getHours() &&
+            element.start.getMinutes() > today.getMinutes()
+          )
+        )
+      )
+
+      if (nextEvent === undefined) {
+        nextEvent = event;
+        nextEventListId = eventHandler.id;
+        nextEventColor = eventHandler.color;
+      } else if (event === undefined) {
+      } else if (event.start.getHours() < nextEvent.start.getHours() || (event.start.getHours() === nextEvent.start.getHours() && event.start.getMinutes() < nextEvent.start.getHours())) {
+        nextEvent = event;
+        nextEventListId = eventHandler.id;
+        nextEventColor = eventHandler.color;
+      }
+    }
+
+    if (nextEvent !== undefined) {
+      const nextEventEl = document.querySelector(".recent__event");
+      const nextEventHours = nextEventEl.querySelector(".event__hours");
+      const nextEventTitle = nextEventEl.querySelector(".event__title");
+      const nextEventButton = nextEventEl.querySelector(".event__button");
+      const nextEventDuration = nextEventEl.querySelector(".event__duration");
+
+      nextEventHours.innerHTML = `
+        ${nextEvent.start.getHours() <= 12 ? nextEvent.start.getHours() + ":" + nextEvent.start.getMinutes() + "am" : (nextEvent.start.getHours() - 12) + ":" + nextEvent.start.getMinutes() + "pm"}
+         - 
+         ${nextEvent.end.getHours() <= 12 ? nextEvent.end.getHours() + ":" + nextEvent.end.getMinutes() + "am" : (nextEvent.end.getHours() - 12) + ":" + nextEvent.end.getMinutes() + "pm"}
+      `;
+      nextEventTitle.innerHTML = nextEvent.title;
+
+      let hours = nextEvent.end.getHours() - nextEvent.start.getHours();
+      let minutes = nextEvent.end.getMinutes() - nextEvent.start.getMinutes();
+
+      if (minutes < 0) {
+        minutes += 60;
+        hours -= 1;
+      } else if (minutes >= 60) {
+        minutes -= 60;
+        hours += 1;
+      }
+
+      nextEventDuration.innerHTML = `
+        ${hours === 0 ? "" : hours + "h"}${minutes === 0 ? "" : " " + minutes + " min"}
+      `;
+
+      nextEventButton.dataset.eventListId = nextEventListId;
+      nextEventButton.dataset.eventId = nextEvent.id;
+      nextEventButton.dataset.color = nextEventColor;
+      nextEventButton.dataset.noteListId = nextEvent.noteListId;
+      nextEventButton.dataset.noteId = nextEvent.noteId;
+
+      nextEventButton.addEventListener("click", e => {
+        const noteObj =
+          noteListJSON.find(element => element.id === parseInt(nextEventButton.dataset.noteListId))
+            .notes.find(element => element.id === parseInt(nextEventButton.dataset.noteId));
+        const note = new Note(noteObj, nextEventButton.dataset.color);
+        note.render(this.app.mode, this.eventLists.find(element => element.id = nextEventListId).events.find(element => element.id === parseInt(nextEventButton.dataset.eventId)));
+      });
     }
 
     if (document.querySelector(".event:not(.recent__event)") !== null) {
       const eventEl = document.querySelector(".event");
-      const noteObj =
-        noteListJSON.find(element => element.id === parseInt(eventEl.dataset.noteListId))
-          .notes.find(element => element.id === parseInt(eventEl.dataset.noteId));
+      const noteObj = noteListJSON
+        .find(element => element.id === parseInt(eventEl.dataset.noteListId)).notes
+        .find(element => element.id === parseInt(eventEl.dataset.noteId));
       const note = new Note(noteObj, eventEl.dataset.color);
       const event = this.eventLists.find(element => element.id === parseInt(eventEl.dataset.eventListId)).events.find(element => element.id === parseInt(eventEl.dataset.eventId));
       note.render(this.app.mode, event, false);

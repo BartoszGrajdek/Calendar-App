@@ -35,10 +35,10 @@ export let eventListJSON = [
         },
         {
           id: 4,
-          start: new Date(2021, new Date().getMonth(), new Date().getDate(), 20, 0),
-          end: new Date(2021, new Date().getMonth(), new Date().getDate(), 21, 30),
+          start: new Date(2021, new Date().getMonth(), new Date().getDate(), 23, 30),
+          end: new Date(2021, new Date().getMonth(), new Date().getDate(), 23, 55),
           title: "Send mail",
-          isSecond: true,
+          isSecond: false,
           noteId: 4
         }
       ],
