@@ -96,7 +96,11 @@ export class NoteHandler {
     const noteObj =
       noteListJSON.find(element => element.id === parseInt(noteEl.dataset.listId))
         .notes.find(element => element.id === parseInt(noteEl.dataset.noteId));
-    const note = new Note(noteObj, noteEl.dataset.color);
+    const note = new Note(noteObj, noteEl.dataset.color, parseInt(noteEl.dataset.listId));
     note.render();
+
+    if (((window.innerWidth > 0) ? window.innerWidth : screen.width) < 800) {
+      document.querySelector(".popup").style.display = "none";
+    }
   }
 }

@@ -1,10 +1,10 @@
-import { Task } from "./task";
 import { TasksList } from "./tasksList";
+import { TasksBoard } from "./tasksBoard";
 import { taskListJSON } from "../app";
 
 export class TaskHandler {
   constructor() {
-    this.taskListsListing = [];
+    this.taskBoardsList = [];
     this.init();
   }
 
@@ -24,29 +24,29 @@ export class TaskHandler {
     const categoriesList = categories.querySelector(".categories__list");
     let totalTasks = 0;
 
-    taskListJSON.map(taskList => {
-      totalTasks += taskList.tasks.length;
+    taskListJSON.map(taskBoard => {
+      totalTasks += taskBoard.tasks.length;
     })
 
     //ADDING HTML FOR EACH EVENTS LIST
-    for (let taskList of taskListJSON) {
-      this.taskListsListing.push(new TasksList(taskList));
+    for (let taskBoard of taskListJSON) {
+      this.taskBoardsList.push(new TasksBoard(taskBoard));
 
-      const checked = taskList.isEnabled ? "checked" : "";
-      const tasksRatio = taskList.tasks.length / totalTasks;
+      const checked = taskBoard.isEnabled ? "checked" : "";
+      const tasksRatio = taskBoard.tasks.length / totalTasks;
       const width = Math.ceil(tasksRatio * 100) + "%";
-      const color = `categories__progress-bar--${taskList.color}`;
+      const color = `categories__progress-bar--${taskBoard.color}`;
 
       contentHTML += `
         <div class="categories__item">
-          <label class="categories__label checkbox__label" for="${taskList.id}">
-            <input type="checkbox" id="${taskList.id}" class="categories__checkbox checkbox" name="category" ${checked}>
-            <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--${taskList.color}">&nbsp;</span>
-            <span class="checkbox__text">${taskList.name}</span>
+          <label class="categories__label checkbox__label" for="${taskBoard.id}">
+            <input type="checkbox" id="${taskBoard.id}" class="categories__checkbox checkbox" name="category" ${checked}>
+            <span class="categories__checkmark checkbox__checkmark checkbox__checkmark--${taskBoard.color}">&nbsp;</span>
+            <span class="checkbox__text">${taskBoard.name}</span>
           </label>
-          <span class="categories__progress-bar categories__progress-bar--${taskList.color}" id="${color}">&nbsp;</span>
+          <span class="categories__progress-bar categories__progress-bar--${taskBoard.color}" id="${color}">&nbsp;</span>
           <style>
-            .categories__progress-bar--${taskList.color}::after {
+            .categories__progress-bar--${taskBoard.color}::after {
               width: ${width};
             }
           </style>
@@ -66,7 +66,7 @@ export class TaskHandler {
       checkbox.addEventListener('change', e => {
         const id = e.target.id;
 
-        this.taskListsListing.find(element => element.id === parseInt(id)).isEnabled = !this.taskListsListing.find(element => element.id === parseInt(id)).isEnabled;
+        this.taskBoardsList.find(element => element.id === parseInt(id)).isEnabled = !this.taskBoardsList.find(element => element.id === parseInt(id)).isEnabled;
         this.render();
       });
     });
@@ -76,7 +76,7 @@ export class TaskHandler {
     document.querySelector(".side-nav").innerHTML = "";
 
     //LOOP THROUGH ALL THE EVENT LISTS AND IF ENABLED RENDER THEM
-    for (const taskHandler of this.taskListsListing) {
+    for (const taskHandler of this.taskBoardsList) {
       if (taskHandler.isEnabled) {
         taskHandler.render();
       }
@@ -86,12 +86,10 @@ export class TaskHandler {
 
     for (const el of tasksEl) {
       el.addEventListener("click", e => {
-        for (const todoEl of document.querySelectorAll(".todo-list__board")) {
-          todoEl.innerHTML = "";
-        }
+        console.log("Event listener");
 
-        this.taskListsListing.find(element => element.id === parseInt(el.dataset.listId))
-          .tasks.find(element => element.id === parseInt(el.dataset.taskId)).render();
+        this.taskBoardsList.find(element => element.id === parseInt(el.dataset.listId))
+          .tasks.find(element => element.id === parseInt(el.dataset.taskId)).render(undefined);
       });
     }
 
@@ -99,7 +97,11 @@ export class TaskHandler {
     const taskObj =
       taskListJSON.find(element => element.id === parseInt(taskEl.dataset.listId))
         .tasks.find(element => element.id === parseInt(taskEl.dataset.taskId));
-    const task = new Task(taskObj, taskEl.dataset.color);
+    const task = new TasksList(taskObj, taskEl.dataset.color, taskEl.dataset.listId);
     task.render(undefined, true);
+
+    if (((window.innerWidth > 0) ? window.innerWidth : screen.width) < 800) {
+      document.querySelector(".popup").style.display = "none";
+    }
   }
 }

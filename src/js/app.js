@@ -35,8 +35,8 @@ export let eventListJSON = [
         },
         {
           id: 4,
-          start: new Date(2021, new Date().getMonth(), new Date().getDate(), 23, 30),
-          end: new Date(2021, new Date().getMonth(), new Date().getDate(), 23, 55),
+          start: new Date(2021, new Date().getMonth(), new Date().getDate(), 6, 30),
+          end: new Date(2021, new Date().getMonth(), new Date().getDate(), 8, 0),
           title: "Send mail",
           isSecond: false,
           noteId: 4
@@ -1521,7 +1521,6 @@ export let taskListJSON = [
         doing: [
           "New bed",
           "Computer for Jane",
-          "Bedroom renovation",
           "Gym subscription",
           "New furniture for dining room"
         ],
@@ -1870,13 +1869,65 @@ class App {
       //SET DEFAULT DISPLAY MODE FOR CALENDAR
       this.app = { mode: "day" };
 
+      //MOBILE SETUP
+      const width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+      const isMobile = width < 800;
+
+      if (isMobile) {
+        console.log("mobile");
+        document.querySelector(".details").remove();
+        if (document.querySelector(".popup") !== null) document.querySelector(".popup").remove();
+
+        if (document.querySelector(".popup") === null) {
+          let popup = document.createElement("div");
+          popup.classList.add("popup");
+          popup.innerHTML = `
+        <div class="details details--popup">
+      
+          <div class="details__header">
+            <div class="details__headings">
+              <h2 class="details__event"></h2>
+              <h4 class="details__date"></h4>
+            </div>
+            <h5 class="details__time"></h5>
+            <span class="details__close">&nbsp;</span>
+          </div>
+      
+          <div class="details__description">
+            <h4 class="details__title"></h4>
+            <p class="details__text"></p>
+          </div>
+      
+          <div class="details__checklist checklist">
+      
+          </div>
+      
+          <div class="details__info">
+            <div class="details__info--item">
+              <img src="assets/icons/svg/bell.svg" alt="Notification bell" class="details__icon">
+              <h4 class="details__icon--title">30 minutes before</h4>
+            </div>
+            <div class="details__info--item">
+              <img src="assets/icons/svg/pin.svg" alt="Place pin" class="details__icon">
+              <h4 class="details__icon--title">Warsaw, Poland</h4>
+            </div>
+          </div>
+      
+        </div>
+        <!-- DETAILS POPUP-->
+      `;
+          document.querySelector(".content").append(popup);
+        }
+        document.querySelector(".popup").style.display = "none";
+      }
+
       //INITIALIZE MAIN CALENDAR
       const calendar = new Calendar(this.app);
 
       //INITIALIZE SIDE CALENDAR
       const sideCalendar = new SideCalendar(this.app, calendar);
 
-      this.renderCalendar(calendar, sideCalendar);
+      this.renderCalendar(calendar, sideCalendar, isMobile);
     } else if (window.location.pathname === "/notes.html") {
       const notepad = new Notepad();
     } else if (window.location.pathname === "/tasks.html") {

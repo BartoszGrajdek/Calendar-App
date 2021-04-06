@@ -1,3 +1,5 @@
+import {noteListJSON} from "../app";
+
 export class Note {
   constructor(note, listColor = "", listId) {
     this.id = note.id;
@@ -35,7 +37,11 @@ export class Note {
         checklistHTML += `
           <div class="checklist__item ${task.isIndented ? "checklist__item--indent" : ""}">
               <label class="checklist__label checkbox__label" for="checklist-${task.taskId}">
-                <input type="checkbox" id="checklist-${task.taskId}" class="checkbox checklist__checkbox" name="checklist" ${task.isDone ? "checked" : ""}>
+                <input type="checkbox" id="checklist-${task.taskId}" class="checkbox checklist__checkbox" name="checklist" ${task.isDone ? "checked" : ""} 
+                  data-note-id="${this.id}"
+                  data-note-list-id="${this.listId}"
+                  data-task-id="${task.taskId}"
+                >
                 <span class="checkbox__checkmark checkbox__checkmark--${this.listColor}">&nbsp;</span>
                 <span class="checklist__text checkbox__text">${task.name}</span>
               </label>
@@ -58,6 +64,16 @@ export class Note {
     }
 
     checklistEl.innerHTML = checklistHTML;
+
+    for (const taskEl of checklistEl.querySelectorAll(".checklist__checkbox")) {
+      taskEl.addEventListener('change', () => {
+        const task = noteListJSON
+          .find(element => element.id === parseInt(taskEl.dataset.noteListId)).notes
+          .find(element => element.id === parseInt(taskEl.dataset.noteId)).toDoList
+          .find(element => element.taskId === parseInt(taskEl.dataset.taskId));
+        task.isDone = !task.isDone;
+      });
+    }
 
     //CHECK IF IT'S MOBILE AND ADD POPUP FUNCTIONALITY
     const width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
