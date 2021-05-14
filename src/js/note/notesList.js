@@ -46,6 +46,7 @@ export class NotesList {
         }
       }
 
+      //RENDER NAVIGATION SUB-ELEMENTS
       navigation.querySelector(`div[data-category-id="${note.categoryId}"] .side-nav__notes`).innerHTML += `
         <span class="side-nav__heading--sub" data-color="${this.color}" data-list-id="${note.listId}" data-note-id="${note.id}">${note.name}</span>
       `;

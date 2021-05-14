@@ -62,7 +62,6 @@ export class NoteHandler {
     //CHECKBOXES CHANGE EVENT LIST STATE
     const categoriesCheckbox = categoriesList.querySelectorAll(".categories__item");
 
-
     categoriesCheckbox.forEach(checkbox => {
       checkbox.addEventListener('change', e => {
         const id = e.target.id;
@@ -74,6 +73,7 @@ export class NoteHandler {
   }
 
   render() {
+    //RESET SIDEBAR NAVIGATION CONTENT (NEEDED WHEN DISABLING SOME NOTEPADS)
     document.querySelector(".side-nav").innerHTML = "";
 
     //LOOP THROUGH ALL THE EVENT LISTS AND IF ENABLED RENDER THEM
@@ -83,6 +83,7 @@ export class NoteHandler {
       }
     }
 
+    //ADD EVENT LISTENERS TO ALL NOTES IN THE SIDEBAR TO MAKE THEM LOAD AFTER CLICK
     const notesEl = document.querySelectorAll(".side-nav__heading--sub");
 
     for (const el of notesEl) {
@@ -92,6 +93,7 @@ export class NoteHandler {
       });
     }
 
+    //RENDER FIRST NOTE TO HAVE SOME CONTENT AFTER FIRST LOAD
     const noteEl = document.querySelector(".side-nav__heading--sub");
     const noteObj =
       noteListJSON.find(element => element.id === parseInt(noteEl.dataset.listId))

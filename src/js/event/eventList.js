@@ -22,16 +22,25 @@ export class EventList {
   }
 
   render(date, app) {
+    //SETUP VARIABLES
     const calendarTable = document.querySelector(".calendar__table");
     const chosenDate = date.chosenDate;
     let chosenEvents = [];
     const chosenYear = chosenDate.getFullYear();
     const chosenMonth = chosenDate.getMonth();
     const chosenDay = chosenDate.getDate();
-    if (app.mode === "day") {
-      // console.log("It's day app.mode!");
 
+    //CHECK WHAT CALENDAR DISPLAY MODE IS TURNED ON AND RENDER CALENDAR EVENTS
+    if (app.mode === "day") {
+      //CHECK AND LOAD WHAT EVENTS ARE NEEDED FOR CALENDAR
       for (const event of this.events) {
+        //CONVERT STRINGS TO DATE OBJECTS BECAUSE OF LOCAL STORAGE JSON CONVERSION
+        const startDateString = event.start;
+        event.start = new Date(startDateString);
+
+        const endDateString = event.end;
+        event.end = new Date(endDateString);
+
         if (event.start.getFullYear() === chosenYear && event.start.getMonth() === chosenMonth && event.start.getDate() === chosenDay) {
           chosenEvents.push(event);
         }
@@ -40,11 +49,14 @@ export class EventList {
       const rows = calendarTable.querySelectorAll(".calendar__row");
       const height = rows[0].offsetHeight;
 
+      //LOOP THROUGH NEEDED EVENTS AND RENDER THEM
       for (const event of chosenEvents) {
+        //EVENT DURATION
         const eventDurationString =
           event.start.toLocaleTimeString(undefined, {hourCycle: "h12", hour: "numeric", minute: "2-digit"}) + " - " +
           event.end.toLocaleTimeString(undefined, {hourCycle: "h12", hour: "numeric", minute: "2-digit"});
 
+        //SETUP FOR EVENT POSITIONING
         const startRate = event.start.getMinutes() / 60;
         const differenceRate = event.getDifference();
 
@@ -60,6 +72,7 @@ export class EventList {
           hoursHTML = "<h5 class='event__hours'>" + eventDurationString + "</h5>";
         }
 
+        //ADD HTML TO CALENDAR
         rows[event.start.getHours()].querySelector("td").innerHTML += `
           <div class="event event--day event--${this.color} ${secondaryClass}" style="top: ${elTop}; height: ${elHeight}" data-event-list-id="${this.id}" data-event-id="${event.id}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
             ${hoursHTML}
@@ -68,14 +81,14 @@ export class EventList {
         `;
       }
     } else if (app.mode === "week") {
-      // console.log("It's week app.mode!");
-
+      //LOAD DATA NEEDED FOR WEEKLY DISPLAY
       const data = date.weekHandler(date.todayDate, chosenDate);
       data.pop();
 
       const prevMonthDays = [data[0]];
       const nextMonthDays = [];
 
+      //LOAD EVENTS NEEDED, AND CHECK IF THERE ARE DAYS FROM DIFFERENT MONTHS DISPLAYED
       for (let i = 1; i <= data.length; i++) {
         if (prevMonthDays[i-1] < data[i] && nextMonthDays.length === 0) {
           prevMonthDays.push(data[i])
@@ -83,9 +96,6 @@ export class EventList {
           nextMonthDays.push(data[i]);
         }
       }
-
-      // const weekFirstDay = chosenDay;
-      // const weekLastDay = chosenDay + 7;
 
       for (const event of this.events) {
         if (event.start.getFullYear() === chosenYear && event.start.getMonth() === chosenMonth && prevMonthDays.includes(event.start.getDate())) {
@@ -95,6 +105,7 @@ export class EventList {
         }
       }
 
+      //CHECK ROW HEIGHT FOR STYLING AND GET ALL ROWS
       const rows = calendarTable.querySelectorAll(".calendar__row");
       const height = rows[0].offsetHeight;
 
@@ -106,6 +117,7 @@ export class EventList {
         const startRate = event.start.getMinutes() / 60;
         const differenceRate = event.getDifference();
 
+        //STYLING HTML COMPONENTS
         const elTop = `${height * startRate}px`;
         const elHeight = `${height * differenceRate}px`;
 
@@ -117,6 +129,7 @@ export class EventList {
 
         const row = rows[event.start.getHours()].querySelectorAll("td");
 
+        //INSERT EVENT INTO CALENDAR TABLE
         row[event.start.getDay() === 0 ? 6 : event.start.getDay() - 1].innerHTML += `
           <div class="event event--week event--${this.color}" style="top: ${elTop}; height: ${elHeight}" data-event-list-id="${this.id}" data-event-id="${event.id}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
             ${hoursHTML}
@@ -125,14 +138,14 @@ export class EventList {
         `;
       }
     } else if (app.mode === "month") {
-      // console.log("It's month app.mode!");
-
+      //CHECK AND LOAD WHAT EVENTS ARE NEEDED FOR CALENDAR FOR MONTHLY DISPLAY
       for (const event of this.events) {
         if (event.start.getFullYear() === chosenYear && event.start.getMonth() === chosenMonth) {
           chosenEvents.push(event);
         }
       }
 
+      //GET ALL CALENDAR TABLE CELLS
       const cells = calendarTable.querySelectorAll(".calendar__table div:not(.event)");
       const firstDayIndex = new Date(
         chosenDate.getFullYear(),
@@ -140,6 +153,7 @@ export class EventList {
         0
       ).getDay();
 
+      //INSERT EVENTS INTO CALENDAR TABLE
       for (const event of chosenEvents) {
         cells[event.start.getDate()+firstDayIndex-1].innerHTML += `
           <div class="event event--month event--${this.color}" data-event-list-id="${this.id}" data-event-id="${event.id}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
@@ -149,12 +163,16 @@ export class EventList {
       }
     }
 
+    //ADD EVENT LISTENERS TO ALL EVENTS IN CALENDAR TABLE TO MAKE THEM LOAD DETAILS THROUGH GETTING NOTE LINKED
     for (const eventEl of document.querySelectorAll(`.event[data-note-list-id="${this.noteListId}"]`)) {
       eventEl.addEventListener("click", e => {
+        //FIND CORRESPONDING NOTE
         const noteObj =
           noteListJSON.find(element => element.id === parseInt(eventEl.dataset.noteListId))
           .notes.find(element => element.id === parseInt(eventEl.dataset.noteId));
-        const note = new Note(noteObj, eventEl.dataset.color);
+
+        //RENDER EVENT DETAILS
+        const note = new Note(noteObj, eventEl.dataset.color, eventEl.dataset.noteListId);
         note.render(app.mode, chosenEvents.find(element => element.id === parseInt(eventEl.dataset.eventId)));
       });
     }

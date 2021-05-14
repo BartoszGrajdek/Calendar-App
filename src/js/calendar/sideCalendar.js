@@ -96,6 +96,7 @@ export class SideCalendar extends CalendarHandler {
       weekPointer.style.display = "none";
     }
 
+    //SETUP EVENT LISTENERS FOR SIDE CALENDAR
     for (const day of document.querySelectorAll(".side-calendar__day--listener")) {
       day.addEventListener("click", () => {
         let chosenDate = new Date(day.dataset.year, day.dataset.month, day.dataset.day);

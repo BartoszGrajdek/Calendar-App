@@ -71,6 +71,7 @@ export class EventHandler {
   }
 
   render(date = this.date, mode = this.app) {
+    //RESET CURRENT CALENDAR CONTENT
     for (const td of document.querySelectorAll(".calendar__table .calendar__row td")) {
       if (td.querySelector(".calendar__pointer") !== null) {
         if (this.app.mode === "day" && !(date.todayDate.getDate() === date.chosenDate.getDate() && date.todayDate.getMonth() === date.chosenDate.getMonth() && date.todayDate.getFullYear() === date.chosenDate.getFullYear())) {
@@ -96,6 +97,7 @@ export class EventHandler {
         eventHandler.render(date, mode);
       }
 
+      //SETUP FOR NEXT EVENT
       const today = new Date();
       const event = eventHandler.events.find(element =>
         element.start.getFullYear() === today.getFullYear() &&
@@ -109,6 +111,7 @@ export class EventHandler {
         )
       )
 
+      //CHECK IF THIS LIST'S NEXT EVENT IS HAPPENING EARLIER THAN CURRENT ONE
       if (nextEvent === undefined) {
         nextEvent = event;
         nextEventListId = eventHandler.id;
@@ -121,6 +124,7 @@ export class EventHandler {
       }
     }
 
+    //RENDER NEXT UP EVENT
     if (nextEvent !== undefined) {
       const nextEventEl = document.querySelector(".recent__event");
       const nextEventHours = nextEventEl.querySelector(".event__hours");
@@ -129,9 +133,20 @@ export class EventHandler {
       const nextEventDuration = nextEventEl.querySelector(".event__duration");
 
       nextEventHours.innerHTML = `
-        ${nextEvent.start.getHours() <= 12 ? nextEvent.start.getHours() + ":" + nextEvent.start.getMinutes() + "am" : (nextEvent.start.getHours() - 12) + ":" + nextEvent.start.getMinutes() + "pm"}
+        ${nextEvent.start.getHours() <= 12 ? nextEvent.start.getHours() 
+        + ":" 
+        + (nextEvent.start.getMinutes() === 0 ? "00" : nextEvent.start.getMinutes())
+        + "am" : (nextEvent.start.getHours() - 12) + ":" 
+        + (nextEvent.start.getMinutes() === 0 ? "00" : nextEvent.start.getMinutes())
+        + "pm"}
          - 
-         ${nextEvent.end.getHours() <= 12 ? nextEvent.end.getHours() + ":" + nextEvent.end.getMinutes() + "am" : (nextEvent.end.getHours() - 12) + ":" + nextEvent.end.getMinutes() + "pm"}
+         ${nextEvent.end.getHours() <= 12 ? nextEvent.end.getHours() 
+        + ":" 
+        + (nextEvent.end.getMinutes() === 0 ? "00" : nextEvent.end.getMinutes()) 
+        + "am" : (nextEvent.end.getHours() - 12) 
+        + ":" 
+        + (nextEvent.end.getMinutes() === 0 ? "00" : nextEvent.end.getMinutes()) 
+        + "pm"}
       `;
       nextEventTitle.innerHTML = nextEvent.title;
 
@@ -150,27 +165,30 @@ export class EventHandler {
         ${hours === 0 ? "" : hours + "h"}${minutes === 0 ? "" : " " + minutes + " min"}
       `;
 
+      //SET DATASET FOR NEXT UP EVENT'S EVENT LISTENER
       nextEventButton.dataset.eventListId = nextEventListId;
       nextEventButton.dataset.eventId = nextEvent.id;
       nextEventButton.dataset.color = nextEventColor;
       nextEventButton.dataset.noteListId = nextEvent.noteListId;
       nextEventButton.dataset.noteId = nextEvent.noteId;
 
+      //EVENT LISTENER TO MAKE IT LOAD IN DETAILS
       nextEventButton.addEventListener("click", e => {
         const noteObj =
           noteListJSON.find(element => element.id === parseInt(nextEventButton.dataset.noteListId))
             .notes.find(element => element.id === parseInt(nextEventButton.dataset.noteId));
-        const note = new Note(noteObj, nextEventButton.dataset.color);
+        const note = new Note(noteObj, nextEventButton.dataset.color, nextEventButton.dataset.noteListId);
         note.render(this.app.mode, this.eventLists.find(element => element.id = nextEventListId).events.find(element => element.id === parseInt(nextEventButton.dataset.eventId)));
       });
     }
 
+    //LOAD FIRST EVENT OF THE DAY TO HAVE SOME CONTENT IN DETAILS
     if (document.querySelector(".event:not(.recent__event)") !== null) {
       const eventEl = document.querySelector(".event");
       const noteObj = noteListJSON
         .find(element => element.id === parseInt(eventEl.dataset.noteListId)).notes
         .find(element => element.id === parseInt(eventEl.dataset.noteId));
-      const note = new Note(noteObj, eventEl.dataset.color);
+      const note = new Note(noteObj, eventEl.dataset.color, eventEl.dataset.noteListId);
       const event = this.eventLists.find(element => element.id === parseInt(eventEl.dataset.eventListId)).events.find(element => element.id === parseInt(eventEl.dataset.eventId));
       note.render(this.app.mode, event, false);
     }

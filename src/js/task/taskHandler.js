@@ -61,7 +61,6 @@ export class TaskHandler {
     //CHECKBOXES CHANGE EVENT LIST STATE
     const categoriesCheckbox = categoriesList.querySelectorAll(".categories__item");
 
-
     categoriesCheckbox.forEach(checkbox => {
       checkbox.addEventListener('change', e => {
         const id = e.target.id;
@@ -82,6 +81,7 @@ export class TaskHandler {
       }
     }
 
+    //ADD EVENT LISTENERS TO ALL TASK LISTS IN THE SIDEBAR TO MAKE THEM LOAD AFTER CLICK
     const tasksEl = document.querySelectorAll(".side-nav__heading--sub");
 
     for (const el of tasksEl) {
@@ -93,6 +93,7 @@ export class TaskHandler {
       });
     }
 
+    //RENDER FIRST TASK BOARD TO HAVE SOME CONTENT AFTER FIRST LOAD
     const taskEl = document.querySelector(".side-nav__heading--sub");
     const taskObj =
       taskListJSON.find(element => element.id === parseInt(taskEl.dataset.listId))

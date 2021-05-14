@@ -45,7 +45,7 @@
       <!-- NAVIGATION LINKS -->
 
       <input type="checkbox" class="nav__checkbox" id="nav-hamburger">
-      <label for="nav-hamburger" class="nav__checkmark">&nbsp;</label>
+      <label for="nav-hamburger" class="nav__checkmark"><span>&nbsp;</span></label>
       <!-- MOBILE MENU HANDLERS -->
 
       <div class="nav__mobile">
@@ -128,29 +128,29 @@
   <div class="content content--noFlex">
 
 
-    <h2 class="todo-list__header">Payments</h2>
+    <h2 class="task-list__header">Payments</h2>
 
-    <div class="todo-list__container">
+    <div class="task-list__container">
 
-      <div class="todo-list">
-        <h3 class="todo-list__name">Pending</h3>
-        <div class="todo-list__board" data-source-list="pending">
-
-        </div>
-      </div>
-      <!-- TO-DO BOARD -->
-
-      <div class="todo-list">
-        <h3 class="todo-list__name">Doing</h3>
-        <div class="todo-list__board" data-source-list="doing">
+      <div class="task-list">
+        <h3 class="task-list__name">Pending</h3>
+        <div class="task-list__board" data-source-list="pending">
 
         </div>
       </div>
       <!-- TO-DO BOARD -->
 
-      <div class="todo-list">
-        <h3 class="todo-list__name">Done</h3>
-        <div class="todo-list__board" data-source-list="done">
+      <div class="task-list">
+        <h3 class="task-list__name">Doing</h3>
+        <div class="task-list__board" data-source-list="doing">
+
+        </div>
+      </div>
+      <!-- TO-DO BOARD -->
+
+      <div class="task-list">
+        <h3 class="task-list__name">Done</h3>
+        <div class="task-list__board" data-source-list="done">
 
         </div>
       </div>
@@ -325,83 +325,83 @@
 </div>
 <!-- PAGE WRAPPER -->
 
-<!--<div class="popup popup&#45;&#45;todo">
+<!--<div class="popup popup&#45;&#45;task">
 
   <div class="content content&#45;&#45;noFlex">
 
-    <span class="todo-list__close">&nbsp;</span>
+    <span class="task-list__close">&nbsp;</span>
 
-    <h2 class="todo-list__header">Payments</h2>
+    <h2 class="task-list__header">Payments</h2>
 
-    <div class="todo-list__container">
+    <div class="task-list__container">
 
-      <div class="todo-list">
-        <h3 class="todo-list__name">Pending</h3>
-        <div class="todo-list__board">
-          <div class="todo-list__item">
-            <h5 class="todo-list__title">Electricity</h5>
+      <div class="task-list">
+        <h3 class="task-list__name">Pending</h3>
+        <div class="task-list__board">
+          <div class="task-list__item">
+            <h5 class="task-list__title">Electricity</h5>
           </div>
 
-          <div class="todo-list__item">
-            <h5 class="todo-list__title">Water</h5>
+          <div class="task-list__item">
+            <h5 class="task-list__title">Water</h5>
           </div>
 
-          <div class="todo-list__item">
-            <h5 class="todo-list__title">Gas</h5>
+          <div class="task-list__item">
+            <h5 class="task-list__title">Gas</h5>
           </div>
-          <button class="todo-list__button"><span>+</span> Add more</button>
+          <button class="task-list__button"><span>+</span> Add more</button>
         </div>
       </div>
       &lt;!&ndash; TO-DO BOARD &ndash;&gt;
 
-      <div class="todo-list">
-        <h3 class="todo-list__name">Doing</h3>
-        <div class="todo-list__board">
-          <div class="todo-list__item">
-            <h5 class="todo-list__title">New bed</h5>
+      <div class="task-list">
+        <h3 class="task-list__name">Doing</h3>
+        <div class="task-list__board">
+          <div class="task-list__item">
+            <h5 class="task-list__title">New bed</h5>
           </div>
 
-          <div class="todo-list__item">
-            <h5 class="todo-list__title">Computer for Jane</h5>
+          <div class="task-list__item">
+            <h5 class="task-list__title">Computer for Jane</h5>
           </div>
 
-          <div class="todo-list__item">
-            <h5 class="todo-list__title">Bedroom renovation</h5>
+          <div class="task-list__item">
+            <h5 class="task-list__title">Bedroom renovation</h5>
           </div>
 
-          <div class="todo-list__item">
-            <h5 class="todo-list__title">Gym subscription</h5>
+          <div class="task-list__item">
+            <h5 class="task-list__title">Gym subscription</h5>
           </div>
 
-          <div class="todo-list__item">
-            <h5 class="todo-list__title">New furniture for dinning room</h5>
+          <div class="task-list__item">
+            <h5 class="task-list__title">New furniture for dinning room</h5>
           </div>
 
-          <button class="todo-list__button"><span>+</span> Add more</button>
+          <button class="task-list__button"><span>+</span> Add more</button>
         </div>
       </div>
       &lt;!&ndash; TO-DO BOARD &ndash;&gt;
 
-      <div class="todo-list">
-        <h3 class="todo-list__name">Done</h3>
-        <div class="todo-list__board">
-          <div class="todo-list__item">
-            <h5 class="todo-list__title">House rent</h5>
+      <div class="task-list">
+        <h3 class="task-list__name">Done</h3>
+        <div class="task-list__board">
+          <div class="task-list__item">
+            <h5 class="task-list__title">House rent</h5>
           </div>
 
-          <div class="todo-list__item">
-            <h5 class="todo-list__title">Car credit</h5>
+          <div class="task-list__item">
+            <h5 class="task-list__title">Car credit</h5>
           </div>
 
-          <div class="todo-list__item">
-            <h5 class="todo-list__title">Roof fix</h5>
+          <div class="task-list__item">
+            <h5 class="task-list__title">Roof fix</h5>
           </div>
 
-          <div class="todo-list__item">
-            <h5 class="todo-list__title">New house heating</h5>
+          <div class="task-list__item">
+            <h5 class="task-list__title">New house heating</h5>
           </div>
 
-          <button class="todo-list__button"><span>+</span> Add more</button>
+          <button class="task-list__button"><span>+</span> Add more</button>
         </div>
       </div>
       &lt;!&ndash; TO-DO BOARD &ndash;&gt;

@@ -5,20 +5,25 @@
   display: none;
   
   &:checked {
+    & ~ .nav__checkmark {
+      position: fixed;
+      top: 4.1%;
+    }
+    
     & ~ .nav__checkmark span {
       border-color: transparent;
       
       &::before {
-        width: 3.7rem;
+        top: 0;
         
-        transform-origin: left top;
+        transform-origin: center center;
         transform: rotate(45deg);
       }
       
       &::after {
-        width: 3.7rem;
+        top: 0;
         
-        transform-origin: left bottom;
+        transform-origin: center center;
         transform: rotate(-45deg);
       }
     }
@@ -82,7 +87,7 @@
     }
     
     &::after {
-      top: 1.2rem;
+      top: 1rem;
       left: 0;
     }
   }

@@ -94,6 +94,7 @@
         border-top: 2px solid $color-grey-light;
         
         @include afterOrBefore;
+        @include pointer;
       }
       
       &::before {

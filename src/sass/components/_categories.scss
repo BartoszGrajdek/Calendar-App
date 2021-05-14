@@ -65,6 +65,10 @@
     background-color: $color-grey-light-2;
     border-radius: 100px;
     
+    @include respond(tab-land) {
+      width: 60%;
+    }
+    
     &::after {
       height: .5rem;
       

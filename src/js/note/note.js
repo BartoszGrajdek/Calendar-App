@@ -18,16 +18,19 @@ export class Note {
   }
 
   render(mode = "", event, popup = true) {
+    //GET ALL DOM OBJECTS NEEDED
     const detailsEl = document.querySelector(".details");
     const titleEl = detailsEl.querySelector(".details__event");
     const textTitleEl = detailsEl.querySelector(".details__title");
     const textEl = detailsEl.querySelector(".details__text");
     const checklistEl = detailsEl.querySelector(".details__checklist");
 
+    //RENDER BASIC NOTE CONTENT
     titleEl.textContent = this.name;
     textTitleEl.textContent = this.textTitle;
     textEl.textContent = this.text;
 
+    //LOAD NOTE'S CHECKLIST
     let checklistHTML = `
       <h4 class="checklist__title">To be done</h4>
     `;
@@ -50,21 +53,26 @@ export class Note {
       }
     }
 
+    checklistEl.innerHTML = checklistHTML;
+
+    //CHECK WHETHER IT'S BEING DISPLAYED IN CALENDAR
     if (mode !== "") {
+      //GET DOM OBJECTS
       const dateEl = detailsEl.querySelector(".details__date");
       const timeEl = detailsEl.querySelector(".details__time");
       const [notificationEl, navigationEl] = detailsEl.querySelectorAll(".details__icon--title");
 
+      //DISPLAY TIME STAMPS FOR DURATION
       timeEl.innerHTML = event.start.toLocaleTimeString(undefined, {hourCycle: "h12", hour: "numeric", minute: "2-digit"}) + " - " +
         event.end.toLocaleTimeString(undefined, {hourCycle: "h12", hour: "numeric", minute: "2-digit"});
 
+      //FILL REST OF THE INFORMATION
       dateEl.innerHTML = event.start.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric"});
       notificationEl.innerHTML = this.notification;
       navigationEl.innerHTML = this.navigation;
     }
 
-    checklistEl.innerHTML = checklistHTML;
-
+    //MAKE CHANGES IN OBJECT WHEN CHANGING SOMETHING IN CHECKLIST TO SAVE EVERYTHING
     for (const taskEl of checklistEl.querySelectorAll(".checklist__checkbox")) {
       taskEl.addEventListener('change', () => {
         const task = noteListJSON

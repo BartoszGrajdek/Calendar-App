@@ -34,6 +34,7 @@ export class Calendar extends CalendarHandler {
   }
 
   scroll() {
+    //SCROLL CALENDAR TO CURRENT HOUR
     const calendarTable = document.querySelector(".calendar__table-box");
     const pointer = document.querySelector(".calendar__pointer");
     if (pointer !== null) { pointer.style.top = (this.date.todayDate.getHours() * 5 + (this.date.todayDate.getMinutes() / 60 * 5)) + "rem"; }

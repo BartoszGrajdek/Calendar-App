@@ -46,6 +46,7 @@ export class TasksBoard {
         }
       }
 
+      //RENDER NAVIGATION SUB-ELEMENTS
       navigation.querySelector(`div[data-category-id="${task.categoryId}"] .side-nav__notes`).innerHTML += `
         <span class="side-nav__heading--sub" data-color="${this.color}" data-list-id="${task.taskBoardId}" data-task-id="${task.id}">${task.name}</span>
       `;

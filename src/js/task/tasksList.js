@@ -6,7 +6,6 @@ export class TasksList {
     this.categoryId = taskList.categoryId;
     this.name = taskList.name;
 
-
     this.taskBoardId = taskBoardId;
     this.listColor = listColor;
 
@@ -16,9 +15,10 @@ export class TasksList {
   }
 
   render(popup = true, firstRender = false) {
+    //GET ALL DOM OBJECTS NEEDED AND RESET CONTENT
     const content = document.querySelector(".content");
-    const header = content.querySelector(".todo-list__header");
-    const [pendingEl, doingEl, doneEl] = content.querySelectorAll(".todo-list__board");
+    const header = content.querySelector(".task-list__header");
+    const [pendingEl, doingEl, doneEl] = content.querySelectorAll(".task-list__board");
     pendingEl.innerHTML = "";
     doingEl.innerHTML = "";
     doneEl.innerHTML = "";
@@ -26,38 +26,42 @@ export class TasksList {
 
     header.textContent = this.name;
 
+    //RENDER PENDING TASKS
     for (const task of this.pending) {
       pendingEl.innerHTML += `
-        <div class="todo-list__item" draggable="true" data-task-board-id="${this.taskBoardId}" data-task-list-id="${this.id}" data-task-id="${i}" data-task-index="${i}">
-          <h5 class="todo-list__title">${task}</h5>
+        <div class="task-list__item" draggable="true" data-task-board-id="${this.taskBoardId}" data-task-list-id="${this.id}" data-task-id="${i}" data-task-index="${i}">
+          <h5 class="task-list__title">${task}</h5>
         </div>
       `;
       i++;
     }
     let j = i;
 
+    //RENDER TASKS THAT ARE BEING WORKED ON
     for (const task of this.doing) {
       doingEl.innerHTML += `
-        <div class="todo-list__item" draggable="true" data-task-board-id="${this.taskBoardId}" data-task-list-id="${this.id}" data-task-id="${i}" data-task-index="${i-j}">
-          <h5 class="todo-list__title">${task}</h5>
+        <div class="task-list__item" draggable="true" data-task-board-id="${this.taskBoardId}" data-task-list-id="${this.id}" data-task-id="${i}" data-task-index="${i-j}">
+          <h5 class="task-list__title">${task}</h5>
         </div>
       `;
       i++;
     }
     j = i;
 
+    //RENDER DONE TASKS
     for (const task of this.done) {
       doneEl.innerHTML += `
-        <div class="todo-list__item" draggable="true" data-task-board-id="${this.taskBoardId}" data-task-list-id="${this.id}" data-task-id="${i}" data-task-index="${i-j}">
-          <h5 class="todo-list__title">${task}</h5>
+        <div class="task-list__item" draggable="true" data-task-board-id="${this.taskBoardId}" data-task-list-id="${this.id}" data-task-id="${i}" data-task-index="${i-j}">
+          <h5 class="task-list__title">${task}</h5>
         </div>
       `;
       i++;
     }
 
-    pendingEl.innerHTML += `<button class="todo-list__button"><span>+</span> Add more</button>`;
-    doingEl.innerHTML += `<button class="todo-list__button"><span>+</span> Add more</button>`;
-    doneEl.innerHTML += `<button class="todo-list__button"><span>+</span> Add more</button>`;
+    //RENDER ADD MORE BUTTONS
+    pendingEl.innerHTML += `<button class="task-list__button"><span>+</span> Add more</button>`;
+    doingEl.innerHTML += `<button class="task-list__button"><span>+</span> Add more</button>`;
+    doneEl.innerHTML += `<button class="task-list__button"><span>+</span> Add more</button>`;
 
     //CHECK IF IT'S MOBILE AND ADD POPUP FUNCTIONALITY
     const width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
@@ -66,7 +70,7 @@ export class TasksList {
       if (popup) {
         document.querySelector(".popup").style.display = "block";
       }
-      document.querySelector(".todo-list__close").addEventListener("click", () => {
+      document.querySelector(".task-list__close").addEventListener("click", () => {
         document.querySelector(".popup").style.display = "none";
       });
       document.querySelector(".popup").addEventListener("click", () => {
@@ -75,42 +79,55 @@ export class TasksList {
       document.querySelector(".popup > .content").addEventListener("click", e => e.stopPropagation());
     }
 
-    for (const taskItemEl of document.querySelectorAll(".todo-list__item")) {
+    //ADD EVENT LISTENERS FOR DRAG START EVENT AND START DATA TRANSFER
+    for (const taskItemEl of document.querySelectorAll(".task-list__item")) {
       taskItemEl.addEventListener("dragstart", event => {
         event.dataTransfer.setData("text/plain", taskItemEl.dataset.taskId);
         event.dataTransfer.effectAllowed = "move";
       });
     }
 
+    //CHECK IF IT'S FIRST TIME RENDERING TASK BOARD, TO AVOID HAVING MORE THAN ONE EVENT LISTENER PER TASK
     if (firstRender) {
-      for (const taskListEl of document.querySelectorAll(".todo-list__board")) {
+      //LOOP THROUGH ALL TASK BOARDS
+      for (const taskListEl of document.querySelectorAll(".task-list__board")) {
+        //GET BOARD OFFSETS FOR CHECKING IF USER STOPS HOVERING OVER IT
         const rect = taskListEl.getBoundingClientRect();
         const leftOffset = rect.left;
         const rightOffset = rect.right;
         const topOffset = rect.top;
         const bottomOffset = rect.bottom;
 
+        //USER ENTERS BOARD
         taskListEl.addEventListener("dragenter", event => {
           if (event.dataTransfer.types[0] === "text/plain") {
             event.preventDefault();
-            if (taskListEl.querySelector(".todo-list__pointer") === null) {
+
+            //ADD POINTER IF THERE'S NO POINTER AT THE MOMENT
+            if (taskListEl.querySelector(".task-list__pointer") === null) {
+              //REMOVE OTHER POINTERS IF THERE ARE ANY IN OTHER BOARDS
+              if (document.querySelector(".task-list__board .task-list__pointer") !== null) {
+                document.querySelector(".task-list__board .task-list__pointer").remove();
+              }
+              
               taskListEl.innerHTML += `
-              <span class="todo-list__pointer" style="display: block; width: 100%; height: 1px; border: 1px solid blue; position: absolute; left: 0; top: 0;">&nbsp;</span>
+              <span class="task-list__pointer" style="display: block; width: 100%; height: 1px; border: 1px solid blue; position: absolute; left: 0; top: 0;">&nbsp;</span>
             `;
               taskListEl.style.position = "relative";
             }
           }
 
-          if (taskListEl.querySelector(".todo-list__pointer") !== null) {
-            const pointer = taskListEl.querySelector(".todo-list__pointer");
+          //CONTROL WHERE POINTER IS BEING DISPLAYED
+          if (taskListEl.querySelector(".task-list__pointer") !== null) {
+            const pointer = taskListEl.querySelector(".task-list__pointer");
             const cursorOffset = event.clientY;
 
-            const taskEl = document.querySelector(".todo-list__item");
+            const taskEl = document.querySelector(".task-list__item");
             const taskElHeight = taskEl.offsetHeight;
             const taskElMarginHeight = parseFloat(window.getComputedStyle(taskEl).marginBottom);
 
             let selectedTask = Math.round((cursorOffset - taskEl.getBoundingClientRect().top) / (taskElHeight + taskElMarginHeight) + .2);
-            if (selectedTask > taskListEl.querySelectorAll(".todo-list__item").length) { selectedTask = taskListEl.querySelectorAll(".todo-list__item").length; }
+            if (selectedTask > taskListEl.querySelectorAll(".task-list__item").length) { selectedTask = taskListEl.querySelectorAll(".task-list__item").length; }
 
             const top = Math.floor(selectedTask) * (taskElHeight + taskElMarginHeight) + 2;
             pointer.style.top = `${top}px`;
@@ -123,30 +140,35 @@ export class TasksList {
           }
         });
 
+        //CHECK IF USER REALLY LEFT BOARD
         taskListEl.addEventListener("dragleave", event => {
           const clientX = event.clientX;
           const clientY = event.clientY;
 
           if (event.dataTransfer.types[0] === "text/plain" && (clientX < leftOffset || clientX > rightOffset) && (clientY < bottomOffset || clientY > topOffset)) {
             event.preventDefault();
-            if (taskListEl.querySelector(".todo-list__pointer") !== null) { taskListEl.querySelector(".todo-list__pointer").remove(); }
+            if (taskListEl.querySelector(".task-list__pointer") !== null) { taskListEl.querySelector(".task-list__pointer").remove(); }
           }
         });
 
         taskListEl.addEventListener("drop", event => {
-          const taskElList = document.querySelectorAll(".todo-list__item");
+          //GET ALL DOM OBJECTS NEEDED
+          const taskElList = document.querySelectorAll(".task-list__item");
           const dropTaskEl = Array.from(taskElList).find(element => event.dataTransfer.getData("text/plain") === element.dataset.taskId);
           const taskElHeight = dropTaskEl.offsetHeight;
           const taskElMarginHeight = parseFloat(window.getComputedStyle(dropTaskEl).marginBottom);
 
-          if (taskListEl.querySelector(".todo-list__pointer") !== null) { taskListEl.querySelector(".todo-list__pointer").remove(); }
+          //IF THERE'S POINTER ACTIVE REMOVE IT
+          if (taskListEl.querySelector(".task-list__pointer") !== null) { taskListEl.querySelector(".task-list__pointer").remove(); }
 
+          //CHECK WHERE IS THIS TASK BEING DROPPED IN THE LIST
           const cursorOffset = event.clientY;
 
-          const taskEl = document.querySelector(".todo-list__item");
+          const taskEl = document.querySelector(".task-list__item");
           let selectedTask = Math.round((cursorOffset - taskEl.getBoundingClientRect().top) / (taskElHeight + taskElMarginHeight) + .2);
-          if (selectedTask > taskListEl.querySelectorAll(".todo-list__item").length) { selectedTask = taskListEl.querySelectorAll(".todo-list__item").length; }
+          if (selectedTask > taskListEl.querySelectorAll(".task-list__item").length) { selectedTask = taskListEl.querySelectorAll(".task-list__item").length; }
 
+          //MOVE TASK IN TASK LIST OBJECT
           this.moveTask(
             dropTaskEl.parentElement.dataset.sourceList,
             parseInt(dropTaskEl.dataset.taskIndex),
