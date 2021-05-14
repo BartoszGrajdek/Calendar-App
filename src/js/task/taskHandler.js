@@ -86,8 +86,6 @@ export class TaskHandler {
 
     for (const el of tasksEl) {
       el.addEventListener("click", e => {
-        console.log("Event listener");
-
         this.taskBoardsList.find(element => element.id === parseInt(el.dataset.listId))
           .tasks.find(element => element.id === parseInt(el.dataset.taskId)).render(undefined);
       });

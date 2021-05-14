@@ -16,35 +16,35 @@ export class TaskBoard {
 
       //ADD POPUP TO APP
       let popup = document.createElement("div");
-      popup.classList.add("popup", "popup--todo");
+      popup.classList.add("popup", "popup--task");
       popup.innerHTML += `
         <div class="content content--noFlex">
       
-          <span class="todo-list__close">&nbsp;</span>
+          <span class="task-list__close">&nbsp;</span>
       
-          <h2 class="todo-list__header">Payments</h2>
+          <h2 class="task-list__header">Payments</h2>
       
-          <div class="todo-list__container">
+          <div class="task-list__container">
       
-            <div class="todo-list">
-              <h3 class="todo-list__name">Pending</h3>
-              <div class="todo-list__board">
+            <div class="task-list">
+              <h3 class="task-list__name">Pending</h3>
+              <div class="task-list__board" data-source-list="pending">
 
               </div>
             </div>
             <!-- TO-DO BOARD -->
       
-            <div class="todo-list">
-              <h3 class="todo-list__name">Doing</h3>
-              <div class="todo-list__board">
+            <div class="task-list">
+              <h3 class="task-list__name">Doing</h3>
+              <div class="task-list__board" data-source-list="doing">
                 
               </div>
             </div>
             <!-- TO-DO BOARD -->
       
-            <div class="todo-list">
-              <h3 class="todo-list__name">Done</h3>
-              <div class="todo-list__board">
+            <div class="task-list">
+              <h3 class="task-list__name">Done</h3>
+              <div class="task-list__board" data-source-list="done">
                 
               </div>
             </div>

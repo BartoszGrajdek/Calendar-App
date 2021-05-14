@@ -1,4 +1,4 @@
-import {taskListJSON} from "../app";
+import { taskListJSON } from "../app";
 
 export class TasksList {
   constructor(taskList, listColor = "", taskBoardId) {
@@ -19,9 +19,11 @@ export class TasksList {
     const content = document.querySelector(".content");
     const header = content.querySelector(".task-list__header");
     const [pendingEl, doingEl, doneEl] = content.querySelectorAll(".task-list__board");
-    pendingEl.innerHTML = "";
-    doingEl.innerHTML = "";
-    doneEl.innerHTML = "";
+    if (pendingEl !== undefined || doingEl !== undefined || doneEl !== undefined) {
+      pendingEl.innerHTML = "";
+      doingEl.innerHTML = "";
+      doneEl.innerHTML = "";
+    }
     let i = 0;
 
     header.textContent = this.name;
@@ -122,7 +124,7 @@ export class TasksList {
             const pointer = taskListEl.querySelector(".task-list__pointer");
             const cursorOffset = event.clientY;
 
-            const taskEl = document.querySelector(".task-list__item");
+            const taskEl = taskListEl.querySelector(".task-list__item");
             const taskElHeight = taskEl.offsetHeight;
             const taskElMarginHeight = parseFloat(window.getComputedStyle(taskEl).marginBottom);
 
@@ -164,7 +166,7 @@ export class TasksList {
           //CHECK WHERE IS THIS TASK BEING DROPPED IN THE LIST
           const cursorOffset = event.clientY;
 
-          const taskEl = document.querySelector(".task-list__item");
+          const taskEl = taskListEl.querySelector(".task-list__item");
           let selectedTask = Math.round((cursorOffset - taskEl.getBoundingClientRect().top) / (taskElHeight + taskElMarginHeight) + .2);
           if (selectedTask > taskListEl.querySelectorAll(".task-list__item").length) { selectedTask = taskListEl.querySelectorAll(".task-list__item").length; }
 
