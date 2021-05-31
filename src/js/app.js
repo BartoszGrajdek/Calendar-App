@@ -26,7 +26,7 @@ export let taskCategoriesListJSON = JSON.parse(window.localStorage.getItem("task
 class App {
   static init() {
     //DEPENDING ON PAGE USER'S ON LOAD ACCORDING JS TO IT
-    if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+    if (window.location.pathname.match(".*\/$") || window.location.pathname.match(".*\/index.html")) {
       //SET DEFAULT DISPLAY MODE FOR CALENDAR
       this.app = { mode: "day" };
 
@@ -89,9 +89,9 @@ class App {
       const sideCalendar = new SideCalendar(this.app, calendar);
 
       this.renderCalendar(calendar, sideCalendar, isMobile);
-    } else if (window.location.pathname === "/notes.html") {
+    } else if (window.location.pathname.match(".*\/notes.html")) {
       const notepad = new Notepad();
-    } else if (window.location.pathname === "/tasks.html") {
+    } else if (window.location.pathname.match(".*\/tasks.html")) {
       const taskBoard = new TaskBoard();
     }
   }
