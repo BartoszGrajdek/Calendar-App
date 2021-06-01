@@ -64,6 +64,10 @@ export class EventHandler {
       checkbox.addEventListener('change', e => {
         const id = e.target.id;
 
+        for (const eventEl of document.querySelectorAll(".calendar__table div div")) {
+          eventEl.remove();
+        }
+
         this.eventLists[id-1].isEnabled = !this.eventLists[id-1].isEnabled;
         this.render();
       });
