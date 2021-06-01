@@ -7,11 +7,11 @@
   text-align: left;
   font-size: 1.8rem;
   
-  height: 91vh;
-  
   @include spacer;
   
   @include respond(tab-land) {
+    height: 91vh;
+    
     display: flex;
     flex-direction: column;
     align-items: center;

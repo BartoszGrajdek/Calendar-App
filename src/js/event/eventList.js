@@ -155,17 +155,26 @@ export class EventList {
 
       //INSERT EVENTS INTO CALENDAR TABLE
       for (const event of chosenEvents) {
-        cells[event.start.getDate()+firstDayIndex-1].innerHTML += `
-          <div class="event event--month event--${this.color}" data-event-list-id="${this.id}" data-event-id="${event.id}" data-color="${this.color}" data-note-list-id="${event.noteListId}" data-note-id="${event.noteId}">
-            <h3 class="event__title">${event.title}</h3>
-          </div>
+        const eventEl = document.createElement("div");
+        eventEl.classList.add("event", "event--month", `event--${this.color}`);
+
+        eventEl.dataset.eventId = event.id;
+        eventEl.dataset.eventListId = this.id;
+        eventEl.dataset.color = this.color;
+        eventEl.dataset.noteId = event.noteId;
+        eventEl.dataset.noteListId = event.noteListId;
+
+        eventEl.innerHTML = `
+          <h3 class="event__title">${event.title}</h3>
         `;
+
+        cells[event.start.getDate()+firstDayIndex-1].appendChild(eventEl);
       }
     }
 
     //ADD EVENT LISTENERS TO ALL EVENTS IN CALENDAR TABLE TO MAKE THEM LOAD DETAILS THROUGH GETTING NOTE LINKED
     for (const eventEl of document.querySelectorAll(`.event[data-note-list-id="${this.noteListId}"]`)) {
-      eventEl.addEventListener("click", e => {
+      eventEl.addEventListener("click", () => {
         //FIND CORRESPONDING NOTE
         const noteObj =
           noteListJSON.find(element => element.id === parseInt(eventEl.dataset.noteListId))
