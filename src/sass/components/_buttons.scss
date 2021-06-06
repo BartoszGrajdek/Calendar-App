@@ -30,6 +30,7 @@
   }
   
   &:checked ~ .nav__mobile {
+    top: 0;
     transform: translateY(0);
   }
 }
@@ -44,7 +45,7 @@
   position: absolute;
   top: 50%;
   right: 5%;
-  z-index: 3;
+  z-index: 5;
   
   transform: translate(-50%, -50%);
   
